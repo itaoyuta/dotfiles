@@ -1,0 +1,14 @@
+#全てのファイルを除外
+/*
+#全ての隠しファイルを除外
+/*.
+
+
+!/.bash_profile
+!/.vimrc
+!/.vim
+!/.gitignore
+!/.gitconfig
+!/.gitmodules
+
+/.vim/bundle
