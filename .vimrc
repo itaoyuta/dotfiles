@@ -6,6 +6,10 @@ set fileencodings=ucs-bom,iso-2022-jp-3,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,
 "
 "
 "
+"
+"
+"
+"
 
 "Tab
 set expandtab
