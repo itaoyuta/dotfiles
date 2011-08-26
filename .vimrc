@@ -26,6 +26,8 @@ Bundle 'Shougo/neocomplcache'
 Bundle "git://github.com/scrooloose/nerdtree.git"
 Bundle 'ZenCoding.vim'
 Bundle "https://github.com/thinca/vim-quickrun.git"
+Bundle "Shougo/unite.vim"
+Bundle "http://github.com/thinca/vim-ref.git"
 
 " neocomplacache
 let g:neocomplcache_enable_at_startup = 1 "起動時に有効化
@@ -39,6 +41,8 @@ hi Comment ctermfg=3
 "zen-coding
 let g:user_zen_expandabbr_key='<c-z>'
 
+"ref.vim
+let g:ref_phpmanual_path = $HOME.'/Dropbox/Public/manual/phpmanual'
 
 ""pathogen
 "call pathogen#runtime_append_all_bundles()
