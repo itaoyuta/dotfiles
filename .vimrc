@@ -1,4 +1,5 @@
 "set nocompatible
+scriptencoding utf-8
 set number
 set encoding=utf-8
 set fileencodings=ucs-bom,iso-2022-jp-3,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
@@ -6,13 +7,19 @@ set fileencodings=ucs-bom,iso-2022-jp-3,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,
 set directory=~/.vim/tmp
 set backupdir=~/.vim/tmp
 
-"
-"
-"
-"
-"
-"
-"
+"カーソル行をハイライト
+set cursorline
+"Escの2回押しでハイライト消去
+nmap <ESC><ESC> ;nohlsearch<CR><ESC>
+"全角スペースを視覚化
+augroup higlightIdegtaphicSpace
+  autocmd!
+  autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
+  autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+augroup END
+
+colorscheme{macvim}
+
 
 "Tab
 set expandtab
@@ -20,17 +27,24 @@ set smartindent
 set ts=2 sw=2 sts=2
 
 "" Vundle
-set rtp+=~/.vim/vundle/
+set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 filetype plugin on
-
 "利用中のプラグインをBundle
+Bundle 'gmarik/vundle'
+"githubにあるプラグイン
 Bundle 'Shougo/neocomplcache'
 Bundle "git://github.com/scrooloose/nerdtree.git"
 Bundle 'ZenCoding.vim'
 Bundle "https://github.com/thinca/vim-quickrun.git"
 Bundle "Shougo/unite.vim"
 Bundle "http://github.com/thinca/vim-ref.git"
+"www.vim.orgにあるプラグイン
+
+"それ以外にあるgitリポジトリにあるプラグイン
+
+
+
 
 " neocomplacache
 let g:neocomplcache_enable_at_startup = 1 "起動時に有効化
