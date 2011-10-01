@@ -2,7 +2,6 @@
 /*
 #全ての隠しファイルを除外
 /*.
-/.vim/bundle
 
 !/.bash_profile
 !/.vimrc
@@ -10,3 +9,4 @@
 !/.gitignore
 !/.gitconfig
 !/.gitmodules
+!/.vim/template

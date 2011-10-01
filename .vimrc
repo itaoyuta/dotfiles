@@ -10,15 +10,15 @@ set backupdir=~/.vim/tmp
 "カーソル行をハイライト
 set cursorline
 "Escの2回押しでハイライト消去
-nmap <ESC><ESC> ;nohlsearch<CR><ESC>
+set hlsearch
+nmap <ESC><ESC> :nohlsearch<CR><ESC>
 "全角スペースを視覚化
 augroup higlightIdegtaphicSpace
   autocmd!
-  autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
+  autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkGray guibg=DarkGray
   autocmd VimEnter,WinEnter * match IdeographicSpace /　/
 augroup END
-
-colorscheme{macvim}
+colorscheme macvim
 
 
 "Tab
@@ -26,7 +26,7 @@ set expandtab
 set smartindent
 set ts=2 sw=2 sts=2
 
-"" Vundle
+"Vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 filetype plugin on
@@ -39,8 +39,9 @@ Bundle 'ZenCoding.vim'
 Bundle "https://github.com/thinca/vim-quickrun.git"
 Bundle "Shougo/unite.vim"
 Bundle "http://github.com/thinca/vim-ref.git"
+Bundle "tomtom/tcomment_vim"
 "www.vim.orgにあるプラグイン
-
+Bundle "http://www.vim.org/scripts/script.php?script_id=2390"
 "それ以外にあるgitリポジトリにあるプラグイン
 
 
@@ -52,8 +53,7 @@ let g:neocomplcache_enable_at_startup = 1 "起動時に有効化
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
 smap <C-k> <Plug>(neocomplcache_snippets_expan)
 
-"文字色
-hi Comment ctermfg=3
+"文字hi Comment ctermfg=3
 
 "zen-coding
 let g:user_zen_expandabbr_key='<c-z>'
@@ -61,6 +61,11 @@ let g:user_zen_expandabbr_key='<c-z>'
 "ref.vim
 let g:ref_phpmanual_path = $HOME.'/Dropbox/Public/manual/phpmanual'
 
-""pathogen
-"call pathogen#runtime_append_all_bundles()
-"call pathogen#helptags()
+"テンプレートを読み込む
+augroup templateload
+  autocmd!
+  autocmd BufNewFile *.html 0r ~/.vim/template/skeleton.html
+  autocmd BufNewFile *.js 0r ~/.vim/template/skeleton.js
+  autocmd BufNewFile *.css 0r ~/.vim/template/skeleton.css
+augroup END
+
