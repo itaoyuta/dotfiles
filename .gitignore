@@ -5,8 +5,8 @@
 
 !/.bash_profile
 !/.vimrc
-!/.vim
 !/.gitignore
 !/.gitconfig
 !/.gitmodules
-!/.vim/template/skeleton.html
+!/.vim/template
+!/.vim/template/*
