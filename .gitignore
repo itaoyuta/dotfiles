@@ -8,4 +8,8 @@
 !/.gitignore
 !/.gitconfig
 !/.gitmodules
-!/.vim/template
+!/.vim
+
+/.vim/*.DS_Store
+/.vim/tmp
+/.vim/bundle
