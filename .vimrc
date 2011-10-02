@@ -1,3 +1,4 @@
+"Last Change: 2011/10/02 20:52:01.
 "set nocompatible
 scriptencoding utf-8
 set number
@@ -41,7 +42,10 @@ Bundle "Shougo/unite.vim"
 Bundle "http://github.com/thinca/vim-ref.git"
 Bundle "tomtom/tcomment_vim"
 "www.vim.orgにあるプラグイン
-Bundle "http://www.vim.org/scripts/script.php?script_id=2390"
+Bundle "CSApprox" 
+Bundle "grep.vim"
+Bundle "autodate.vim"
+Bundle "DirDiff.vim"
 "それ以外にあるgitリポジトリにあるプラグイン
 
 
@@ -60,6 +64,10 @@ let g:user_zen_expandabbr_key='<c-z>'
 
 "ref.vim
 let g:ref_phpmanual_path = $HOME.'/Dropbox/Public/manual/phpmanual'
+
+"autodate.vim
+let autodate_format="%Y/%m/%d %H:%M:%S"
+
 
 "テンプレートを読み込む
 augroup templateload
