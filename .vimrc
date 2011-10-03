@@ -1,4 +1,4 @@
-"Last Change: 2011/10/02 20:52:01.
+"Last Change: 2011/10/03 16:37:19.
 "set nocompatible
 scriptencoding utf-8
 set number
@@ -34,9 +34,9 @@ filetype plugin on
 "利用中のプラグインをBundle
 Bundle 'gmarik/vundle'
 "githubにあるプラグイン
-Bundle 'Shougo/neocomplcache'
+Bundle "Shougo/neocomplcache"
 Bundle "git://github.com/scrooloose/nerdtree.git"
-Bundle 'ZenCoding.vim'
+Bundle "ZenCoding.vim"
 Bundle "https://github.com/thinca/vim-quickrun.git"
 Bundle "Shougo/unite.vim"
 Bundle "http://github.com/thinca/vim-ref.git"
