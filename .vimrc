@@ -1,4 +1,4 @@
-"Last Change: 2011/10/03 16:37:19.
+"Last Change: 2011/10/06 19:40:03.
 "set nocompatible
 scriptencoding utf-8
 set number
@@ -46,16 +46,23 @@ Bundle "CSApprox"
 Bundle "grep.vim"
 Bundle "autodate.vim"
 Bundle "DirDiff.vim"
+"Bundle "actionscript.vim"
 "それ以外にあるgitリポジトリにあるプラグイン
 
 
 
 
+
 " neocomplacache
-let g:neocomplcache_enable_at_startup = 1 "起動時に有効化
-" <C-k>にマッピング
+" <C-k> にマッピング
+let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
+"let g:neocomplcache_snippents_dir = '~/.vim/snippets'
+let g:neocomplcache_enable_at_startup=1
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
-smap <C-k> <Plug>(neocomplcache_snippets_expan)
+smap <C-k> <Plug>(neocomplcache_snippets_expand)
+
+
+
 
 "文字hi Comment ctermfg=3
 
@@ -68,6 +75,8 @@ let g:ref_phpmanual_path = $HOME.'/Dropbox/Public/manual/phpmanual'
 "autodate.vim
 let autodate_format="%Y/%m/%d %H:%M:%S"
 
+"asファイルを設定
+au BufNewFile,BufRead *.as set ft=actionscript
 
 "テンプレートを読み込む
 augroup templateload
