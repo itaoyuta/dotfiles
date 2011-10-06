@@ -1,0 +1,21 @@
+#comment
+snippet hoge
+abbr kokonisetumei
+    function hoge (){
+        console.log("hogehogehoge");
+    };
+
+snippet pageScroll
+    function pageScroll(){
+        $('html,body').animate({
+            scrollTop: 0
+        },{
+            easing:'easeInOutCirc',
+            duration: 500
+        });
+    }
+    $('#pageTop>a').click(function(){
+        pageScroll();
+        return false;
+    });
+

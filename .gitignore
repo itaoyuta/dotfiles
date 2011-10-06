@@ -10,7 +10,8 @@
 !/.gitmodules
 !/.vim
 
-/.vim/*.DS_Store
+/.vim/.DS_Store
 /.vim/tmp
 /.vim/bundle
 /.vim/syntax
+/.vim/snippets/.DS_Store
