@@ -13,4 +13,4 @@
 /.vim/*.DS_Store
 /.vim/tmp
 /.vim/bundle
-/.vim/snippets
+/.vim/syntax
