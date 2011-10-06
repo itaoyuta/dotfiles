@@ -1,4 +1,4 @@
-"Last Change: 2011/10/06 19:40:03.
+"Last Change: 2011/10/06 23:12:24.
 "set nocompatible
 scriptencoding utf-8
 set number
@@ -55,9 +55,8 @@ Bundle "DirDiff.vim"
 
 " neocomplacache
 " <C-k> にマッピング
-let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
-"let g:neocomplcache_snippents_dir = '~/.vim/snippets'
 let g:neocomplcache_enable_at_startup=1
+let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
 smap <C-k> <Plug>(neocomplcache_snippets_expand)
 
