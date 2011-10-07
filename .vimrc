@@ -1,4 +1,4 @@
-"Last Change: 2011/10/06 23:12:24.
+"Last Change: 2011/10/07 11:15:08.
 "set nocompatible
 scriptencoding utf-8
 set number
@@ -69,7 +69,8 @@ smap <C-k> <Plug>(neocomplcache_snippets_expand)
 let g:user_zen_expandabbr_key='<c-z>'
 
 "ref.vim
-let g:ref_phpmanual_path = $HOME.'/Dropbox/Public/manual/phpmanual'
+"let g:ref_phpmanual_path = $HOME.'/Dropbox/Public/manual/phpmanual'
+let g:ref_phpmanual_path = '/Applications/MAMP/htdocs/Dropbox/Public/manual/phpmanual'
 
 "autodate.vim
 let autodate_format="%Y/%m/%d %H:%M:%S"
