@@ -1,4 +1,4 @@
-"Last Change: 2011/10/07 11:15:08.
+"Last Change: 2011/10/09 19:04:46.
 "set nocompatible
 scriptencoding utf-8
 set number
@@ -41,17 +41,18 @@ Bundle "https://github.com/thinca/vim-quickrun.git"
 Bundle "Shougo/unite.vim"
 Bundle "http://github.com/thinca/vim-ref.git"
 Bundle "tomtom/tcomment_vim"
+Bundle "git://gist.github.com/256840.git"
 "www.vim.orgにあるプラグイン
 Bundle "CSApprox" 
 Bundle "grep.vim"
 Bundle "autodate.vim"
-Bundle "DirDiff.vim"
+"Bundle "DirDiff.vim"
 "Bundle "actionscript.vim"
 "それ以外にあるgitリポジトリにあるプラグイン
 
 
-
-
+"html5-ruby
+autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
 
 " neocomplacache
 " <C-k> にマッピング
