@@ -1,4 +1,4 @@
-"Last Change: 2011/10/09 19:04:46.
+"Last Change: 2011/10/11 19:02:08.
 "set nocompatible
 scriptencoding utf-8
 set number
@@ -85,5 +85,6 @@ augroup templateload
   autocmd BufNewFile *.html 0r ~/.vim/template/skeleton.html
   autocmd BufNewFile *.js 0r ~/.vim/template/skeleton.js
   autocmd BufNewFile *.css 0r ~/.vim/template/skeleton.css
+  autocmd BufNewFile *.php 0r ~/.vim/template/skeleton.php
 augroup END
 
