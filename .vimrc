@@ -1,5 +1,4 @@
-"Last Change: 2011/10/09 19:04:46.
-"set nocompatible
+"Last Change: 2012/01/04 15:17:19.
 scriptencoding utf-8
 set number
 set encoding=utf-8
@@ -21,11 +20,13 @@ augroup higlightIdegtaphicSpace
 augroup END
 colorscheme macvim
 
-
 "Tab
 set expandtab
 set smartindent
 set ts=2 sw=2 sts=2
+
+"javascript実行環境をnodejsへ
+let $JS_CMD='node'
 
 "Vundle
 set rtp+=~/.vim/bundle/vundle/
@@ -34,37 +35,57 @@ filetype plugin on
 "利用中のプラグインをBundle
 Bundle 'gmarik/vundle'
 "githubにあるプラグイン
-Bundle "Shougo/neocomplcache"
-Bundle "git://github.com/scrooloose/nerdtree.git"
-Bundle "ZenCoding.vim"
-Bundle "https://github.com/thinca/vim-quickrun.git"
 Bundle "Shougo/unite.vim"
+Bundle "Shougo/neocomplcache"
+Bundle "git://github.com/Shougo/vimfiler"
+Bundle "https://github.com/Shougo/vimshell.git"
+Bundle "https://github.com/tsukkee/unite-help.git"
+Bundle "https://github.com/thinca/vim-quickrun.git"
 Bundle "http://github.com/thinca/vim-ref.git"
+Bundle "git://github.com/thinca/vim-qfreplace"
+Bundle "ZenCoding.vim"
 Bundle "tomtom/tcomment_vim"
 Bundle "git://gist.github.com/256840.git"
+Bundle "git://github.com/scrooloose/nerdtree.git"
 "www.vim.orgにあるプラグイン
 Bundle "CSApprox" 
 Bundle "grep.vim"
 Bundle "autodate.vim"
 "Bundle "DirDiff.vim"
-"Bundle "actionscript.vim"
 "それ以外にあるgitリポジトリにあるプラグイン
 
+"unite
+" 入力モードで開始する
+let g:unite_enable_start_insert=1
+" バッファ一覧
+noremap <C-P> :Unite buffer<CR>
+" ファイル一覧
+noremap <C-N> :Unite -buffer-name=file file<CR>
+" 最近使ったファイルの一覧
+noremap <C-Z> :Unite file_mru<CR>
+" ウィンドウを分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+" ウィンドウを縦に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+" ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
+"vimfiler
+let g:vimfiler_as_default_explorer=1
+let g:vimfiler_safe_mode_by_default=0
 "html5-ruby
 autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
 
 " neocomplacache
 " <C-k> にマッピング
 let g:neocomplcache_enable_at_startup=1
+let g:neocomplcache_enable_auto_select=1
 let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
 smap <C-k> <Plug>(neocomplcache_snippets_expand)
-
-
-
-
-"文字hi Comment ctermfg=3
 
 "zen-coding
 let g:user_zen_expandabbr_key='<c-z>'
@@ -75,9 +96,6 @@ let g:ref_phpmanual_path = '/Applications/MAMP/htdocs/Dropbox/Public/manual/phpm
 
 "autodate.vim
 let autodate_format="%Y/%m/%d %H:%M:%S"
-
-"asファイルを設定
-au BufNewFile,BufRead *.as set ft=actionscript
 
 "テンプレートを読み込む
 augroup templateload
