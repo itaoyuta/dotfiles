@@ -1,4 +1,4 @@
-"Last Change: 2012/01/05 11:52:11.
+"Last Change: 2012/01/06 11:12:55.
 scriptencoding utf-8
 set number
 set encoding=utf-8
@@ -52,6 +52,7 @@ Bundle "CSApprox"
 Bundle "grep.vim"
 Bundle "autodate.vim"
 "Bundle "DirDiff.vim"
+Bundle "actionscript.vim"
 "それ以外にあるgitリポジトリにあるプラグイン
 
 "unite
@@ -76,6 +77,8 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 "vimfiler
 let g:vimfiler_as_default_explorer=1
 let g:vimfiler_safe_mode_by_default=0
+call vimfiler#set_execute_file('html','com.google.chrome')
+
 "html5-ruby
 autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
 
@@ -93,6 +96,10 @@ let g:user_zen_expandabbr_key='<c-z>'
 "ref.vim
 "let g:ref_phpmanual_path = $HOME.'/Dropbox/Public/manual/phpmanual'
 let g:ref_phpmanual_path = '/Applications/MAMP/htdocs/Dropbox/Public/manual/phpmanual'
+
+
+"as
+autocmd BufNewFile,BufRead *.as set filetype=actionscript
 
 "autodate.vim
 let autodate_format="%Y/%m/%d %H:%M:%S"
