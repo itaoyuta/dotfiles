@@ -1,4 +1,4 @@
-"Last Change: 2012/01/06 11:12:55.
+"Last Change: 2012/10/16 22:39:03.
 scriptencoding utf-8
 set number
 set encoding=utf-8
@@ -56,6 +56,8 @@ Bundle "actionscript.vim"
 "それ以外にあるgitリポジトリにあるプラグイン
 
 "unite
+"設定ファイルを書き出すディレクトリ
+let g:unite_data_directory = '~/.vim/data/.unite'
 " 入力モードで開始する
 let g:unite_enable_start_insert=1
 " バッファ一覧
@@ -75,17 +77,26 @@ au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 "vimfiler
+"設定ファイルを書き出すディレクトリ
+let g:vimfiler_data_directory = '~/.vim/data/.vimfiler'
 let g:vimfiler_as_default_explorer=1
 let g:vimfiler_safe_mode_by_default=0
 call vimfiler#set_execute_file('html','com.google.chrome')
+
+"vimShell
+"設定ファイルを書き出すディレクトリ
+let g:vimshell_temporary_directory = '~/.vim/data/.vimshell'
+
 
 "html5-ruby
 autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
 
 " neocomplacache
+"設定ファイルを書き出すディレクトリ
+let g:neocomplcache_temporary_dir = '~/.vim/data/.neocon'
 " <C-k> にマッピング
 let g:neocomplcache_enable_at_startup=1
-let g:neocomplcache_enable_auto_select=1
+"let g:neocomplcache_enable_auto_select=1
 let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
 smap <C-k> <Plug>(neocomplcache_snippets_expand)
