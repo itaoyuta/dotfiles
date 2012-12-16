@@ -1,4 +1,4 @@
-"Last Change: 2012/12/16 05:40:55.
+"Last Change: 2012/12/16 19:12:47.
 scriptencoding utf-8
 set number
 set encoding=utf-8
@@ -86,6 +86,8 @@ let g:vimfiler_data_directory = '~/.vim/data/.vimfiler'
 let g:vimfiler_as_default_explorer=1
 let g:vimfiler_safe_mode_by_default=0
 call vimfiler#set_execute_file('html','com.google.chrome')
+
+
 
 "vimShell
 "設定ファイルを書き出すディレクトリ
