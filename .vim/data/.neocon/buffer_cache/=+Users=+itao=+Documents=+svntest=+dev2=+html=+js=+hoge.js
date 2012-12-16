@@ -1,0 +1,1 @@
+[{'word': 'function', 'menu': '[B] hoge.js', 'kind': '', 'abbr': 'function'}, {'word': 'hihihi', 'menu': '[B] hoge.js', 'kind': '', 'abbr': 'hihihi'}, {'word': 'huga', 'menu': '[B] hoge.js', 'kind': '', 'abbr': 'huga'}, {'word': 'HIHIHIHITTTTT', 'menu': '[B] hoge.js', 'kind': '', 'abbr': 'HIHIHIHITTTTT'}]

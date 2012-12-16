@@ -14,6 +14,7 @@
 /.vim/.DS_Store
 /.vim/tmp
 /.vim/bundle
+/.vim/data
 /.vim/syntax/.DS_Store
 /.vim/indent/.DS_Store
 /.vim/snippets/.DS_Store

@@ -1,4 +1,4 @@
-"Last Change: 2012/10/16 22:39:03.
+"Last Change: 2012/12/16 05:40:55.
 scriptencoding utf-8
 set number
 set encoding=utf-8
@@ -7,18 +7,21 @@ set fileencodings=ucs-bom,iso-2022-jp-3,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,
 set directory=~/.vim/tmp
 set backupdir=~/.vim/tmp
 
+"ColorSheme利用
+set t_Co=256
+
 "カーソル行をハイライト
 set cursorline
 "Escの2回押しでハイライト消去
 set hlsearch
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 "全角スペースを視覚化
-augroup higlightIdegtaphicSpace
-  autocmd!
-  autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkGray guibg=DarkGray
-  autocmd VimEnter,WinEnter * match IdeographicSpace /　/
-augroup END
-colorscheme macvim
+" augroup higlightIdegtaphicSpace
+"   autocmd!
+"   autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkGray guibg=DarkGray
+"   autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+" augroup END
+" colorscheme macvim
 
 "Tab
 set expandtab
@@ -53,6 +56,7 @@ Bundle "grep.vim"
 Bundle "autodate.vim"
 "Bundle "DirDiff.vim"
 Bundle "actionscript.vim"
+Bundle "sudo.vim"
 "それ以外にあるgitリポジトリにあるプラグイン
 
 "unite
@@ -123,4 +127,3 @@ augroup templateload
   autocmd BufNewFile *.css 0r ~/.vim/template/skeleton.css
   autocmd BufNewFile *.php 0r ~/.vim/template/skeleton.php
 augroup END
-

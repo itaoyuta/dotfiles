@@ -11,3 +11,7 @@ alias safari='open -a safari'
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH:~/bin
 # Finished adapting your PATH environment variable for use with MacPorts.
 
+
+export PATH=/Applications/SenchaSDKTools-2.0.0-beta3:$PATH
+
+export SENCHA_SDK_TOOLS_2_0_0_BETA3="/Applications/SenchaSDKTools-2.0.0-beta3"

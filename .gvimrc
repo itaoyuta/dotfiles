@@ -34,3 +34,23 @@ function! GetStatusEx()
   return str
 endfunction
 set statusline=%<%f\ %m%r%h%w%=%{GetStatusEx()}\ \ %l,%c%V%8P
+
+
+
+"colorscheme pyte
+colorscheme molokai
+
+
+
+augroup hack234
+  autocmd!
+  if has('mac')
+    autocmd FocusGained * set transparency=10
+    autocmd FocusLost * set transparency=50
+  endif
+augroup END
+
+
+
+
+
