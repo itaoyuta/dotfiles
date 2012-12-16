@@ -1,4 +1,4 @@
-"Last Change: 2012/12/16 19:12:47.
+"Last Change: 2012/12/16 19:35:47.
 scriptencoding utf-8
 set number
 set encoding=utf-8
@@ -16,12 +16,12 @@ set cursorline
 set hlsearch
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 "全角スペースを視覚化
-" augroup higlightIdegtaphicSpace
-"   autocmd!
-"   autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkGray guibg=DarkGray
-"   autocmd VimEnter,WinEnter * match IdeographicSpace /　/
-" augroup END
-" colorscheme macvim
+augroup higlightIdegtaphicSpace
+  autocmd!
+  autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkGray guibg=DarkGray
+  autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+augroup END
+colorscheme macvim
 
 "Tab
 set expandtab
@@ -129,3 +129,6 @@ augroup templateload
   autocmd BufNewFile *.css 0r ~/.vim/template/skeleton.css
   autocmd BufNewFile *.php 0r ~/.vim/template/skeleton.php
 augroup END
+
+"colorscheme pyte
+colorscheme molokai

@@ -35,22 +35,18 @@ function! GetStatusEx()
 endfunction
 set statusline=%<%f\ %m%r%h%w%=%{GetStatusEx()}\ \ %l,%c%V%8P
 
-
-
-"colorscheme pyte
-colorscheme molokai
-
-
+set guifont=MigMix\ 1M\ Regular:h14
 
 augroup hack234
   autocmd!
   if has('mac')
     autocmd FocusGained * set transparency=10
     autocmd FocusLost * set transparency=50
+    autocmd GUIEnter * set transparency=10
   endif
 augroup END
 
-
-
+"colorscheme pyte
+colorscheme molokai
 
 
