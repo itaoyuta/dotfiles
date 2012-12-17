@@ -1,8 +1,8 @@
 [user]
-	name = itaoyuta
-	email = yuta.ito@eure.jp
+	name = yito1
+	email = yito1@crooz.co.jp
 [core]
-	excludesfile = /Users/itaoyuta/.gitignore_global
+	excludesfile = /Users/yito1/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 

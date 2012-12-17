@@ -48,5 +48,3 @@ augroup END
 
 "colorscheme pyte
 colorscheme molokai
-
-
