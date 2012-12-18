@@ -1,4 +1,4 @@
-"Last Change: 2012/12/16 19:35:47.
+"Last Change: 2012/12/18 12:04:21.
 scriptencoding utf-8
 set number
 set encoding=utf-8
@@ -60,6 +60,8 @@ Bundle "sudo.vim"
 "それ以外にあるgitリポジトリにあるプラグイン
 
 "unite
+"最近開いたファイル履歴の保存数
+let g:unite_source_file_mru_limit = 500
 "設定ファイルを書き出すディレクトリ
 let g:unite_data_directory = '~/.vim/data/.unite'
 " 入力モードで開始する
@@ -132,3 +134,8 @@ augroup END
 
 "colorscheme pyte
 colorscheme molokai
+
+
+" 関連付け
+" au BufNewFile,BufRead *.tpl set filetype=tpl
+au BufNewFile,BufRead *.tpl set filetype=html
