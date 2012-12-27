@@ -1,4 +1,4 @@
-"Last Change: 2012/12/18 12:04:21.
+"Last Change: 2012/12/18 15:50:14.
 scriptencoding utf-8
 set number
 set encoding=utf-8
@@ -7,29 +7,33 @@ set fileencodings=ucs-bom,iso-2022-jp-3,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,
 set directory=~/.vim/tmp
 set backupdir=~/.vim/tmp
 
-"ColorSheme利用
-set t_Co=256
-
 "カーソル行をハイライト
 set cursorline
 "Escの2回押しでハイライト消去
 set hlsearch
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 "全角スペースを視覚化
-augroup higlightIdegtaphicSpace
-  autocmd!
-  autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkGray guibg=DarkGray
-  autocmd VimEnter,WinEnter * match IdeographicSpace /　/
-augroup END
-colorscheme macvim
+" augroup higlightIdegtaphicSpace
+"   autocmd!
+"   autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkGray guibg=DarkGray
+"   autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+" augroup END
+" colorscheme macvim
 
 "Tab
-set expandtab
+" set expandtab
 set smartindent
 set ts=2 sw=2 sts=2
 
+set noexpandtab
+
 "javascript実行環境をnodejsへ
 let $JS_CMD='node'
+
+
+
+
+
 
 "Vundle
 set rtp+=~/.vim/bundle/vundle/
@@ -40,8 +44,10 @@ Bundle 'gmarik/vundle'
 "githubにあるプラグイン
 Bundle "Shougo/unite.vim"
 Bundle "Shougo/neocomplcache"
+Bundle "https://github.com/Shougo/neosnippet"
 Bundle "git://github.com/Shougo/vimfiler"
 Bundle "https://github.com/Shougo/vimshell.git"
+Bundle "https://github.com/Shougo/vimproc"
 Bundle "https://github.com/tsukkee/unite-help.git"
 Bundle "https://github.com/thinca/vim-quickrun.git"
 Bundle "http://github.com/thinca/vim-ref.git"
@@ -56,12 +62,9 @@ Bundle "grep.vim"
 Bundle "autodate.vim"
 "Bundle "DirDiff.vim"
 Bundle "actionscript.vim"
-Bundle "sudo.vim"
 "それ以外にあるgitリポジトリにあるプラグイン
 
 "unite
-"最近開いたファイル履歴の保存数
-let g:unite_source_file_mru_limit = 500
 "設定ファイルを書き出すディレクトリ
 let g:unite_data_directory = '~/.vim/data/.unite'
 " 入力モードで開始する
@@ -82,6 +85,10 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vspli
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
+"最近開いたファイル履歴の保存数
+let g:unite_source_file_mru_limit = 500
+
+
 "vimfiler
 "設定ファイルを書き出すディレクトリ
 let g:vimfiler_data_directory = '~/.vim/data/.vimfiler'
@@ -89,11 +96,14 @@ let g:vimfiler_as_default_explorer=1
 let g:vimfiler_safe_mode_by_default=0
 call vimfiler#set_execute_file('html','com.google.chrome')
 
-
-
 "vimShell
+"
+"
 "設定ファイルを書き出すディレクトリ
 let g:vimshell_temporary_directory = '~/.vim/data/.vimshell'
+let g:vimproc_dll_path = '/.vim/bundle/vimproc/autoload/proc.so'
+let g:VimShell_EnableInteractive = 1
+
 
 
 "html5-ruby
@@ -105,7 +115,7 @@ let g:neocomplcache_temporary_dir = '~/.vim/data/.neocon'
 " <C-k> にマッピング
 let g:neocomplcache_enable_at_startup=1
 "let g:neocomplcache_enable_auto_select=1
-let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
+let g:neocomplcache_snippets_dir = '~/.vim/snippets'
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
 smap <C-k> <Plug>(neocomplcache_snippets_expand)
 
@@ -132,10 +142,17 @@ augroup templateload
   autocmd BufNewFile *.php 0r ~/.vim/template/skeleton.php
 augroup END
 
+
 "colorscheme pyte
 colorscheme molokai
+
+
 
 
 " 関連付け
 " au BufNewFile,BufRead *.tpl set filetype=tpl
 au BufNewFile,BufRead *.tpl set filetype=html
+
+
+
+

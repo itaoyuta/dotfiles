@@ -40,9 +40,9 @@ set guifont=MigMix\ 1M\ Regular:h14
 augroup hack234
   autocmd!
   if has('mac')
-    autocmd FocusGained * set transparency=10
+    autocmd FocusGained * set transparency=6
     autocmd FocusLost * set transparency=50
-    autocmd GUIEnter * set transparency=10
+    autocmd GUIEnter * set transparency=6
   endif
 augroup END
 
