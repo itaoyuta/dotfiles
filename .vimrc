@@ -1,4 +1,4 @@
-"Last Change: 2012/12/18 15:50:14.
+"Last Change: 2012/12/30 18:37:15.
 scriptencoding utf-8
 set number
 set encoding=utf-8
@@ -9,16 +9,13 @@ set backupdir=~/.vim/tmp
 
 "カーソル行をハイライト
 set cursorline
-"Escの2回押しでハイライト消去
-set hlsearch
-nmap <ESC><ESC> :nohlsearch<CR><ESC>
 "全角スペースを視覚化
-" augroup higlightIdegtaphicSpace
-"   autocmd!
-"   autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkGray guibg=DarkGray
-"   autocmd VimEnter,WinEnter * match IdeographicSpace /　/
-" augroup END
-" colorscheme macvim
+augroup higlightIdegtaphicSpace
+  autocmd!
+  autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkGray guibg=DarkGray
+  autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+augroup END
+colorscheme macvim
 
 "Tab
 " set expandtab
@@ -30,6 +27,12 @@ set noexpandtab
 "javascript実行環境をnodejsへ
 let $JS_CMD='node'
 
+"map関連
+"Escの2回押しでハイライト消去
+set hlsearch
+nmap <ESC><ESC> :nohlsearch<CR><ESC>
+"VimFilerの設定
+nmap <C-E> :VimFiler -split -simple -winwidth=35 -no-quit
 
 
 
@@ -64,6 +67,18 @@ Bundle "autodate.vim"
 Bundle "actionscript.vim"
 "それ以外にあるgitリポジトリにあるプラグイン
 
+
+
+
+
+
+
+
+
+
+
+
+
 "unite
 "設定ファイルを書き出すディレクトリ
 let g:unite_data_directory = '~/.vim/data/.unite'
@@ -94,6 +109,7 @@ let g:unite_source_file_mru_limit = 500
 let g:vimfiler_data_directory = '~/.vim/data/.vimfiler'
 let g:vimfiler_as_default_explorer=1
 let g:vimfiler_safe_mode_by_default=0
+"ダブルクリックで起動するシステムを設定
 call vimfiler#set_execute_file('html','com.google.chrome')
 
 "vimShell
@@ -101,7 +117,6 @@ call vimfiler#set_execute_file('html','com.google.chrome')
 "
 "設定ファイルを書き出すディレクトリ
 let g:vimshell_temporary_directory = '~/.vim/data/.vimshell'
-let g:vimproc_dll_path = '/.vim/bundle/vimproc/autoload/proc.so'
 let g:VimShell_EnableInteractive = 1
 
 

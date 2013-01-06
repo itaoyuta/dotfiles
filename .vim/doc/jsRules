@@ -1,0 +1,55 @@
+/////コンストラクタ/////
+//頭文字大文字のキャメルケース
+var Person = function () {
+	var name , age , area;
+};
+Person.prototype.setName = function (v) {
+	this.name = v;
+};
+var yuta = new Person();
+yuta.setName("yuta");
+
+/////変数/////
+//定数
+//大文字とスネークケース
+var MY_STATUS = {"sex" : "men" , "area" : "japan"};
+//グローバル変数,関数
+//キャメルケース
+var myDrink = "銀河高原ビール";
+//ローカル変数,関数
+//頭がアンスコ
+var _myDiner = "ローストチキン";
+
+
+
+/////プロトタイプsample/////
+var Person = function () {
+	var name , age , area;
+};
+Person.prototype.setName = function (v) {
+	this.name = v;
+};
+Person.prototype.setAge = function (v) {
+	this.age = v;
+};
+Person.prototype.setArea = function (v) {
+	this.area = v;
+};
+Person.prototype.say = function () {
+	return "name* " + this.name +"; age*" + this.age + "; area*" + this.area;
+};
+
+var yuta = new Person();
+yuta.setName("yuta");
+yuta.setAge(29);
+yuta.setArea("tokyo");
+
+console.log(yuta.say());
+
+var ayu = new Person();
+ayu.setName("ayumi");
+ayu.setAge(31);
+ayu.setArea("hokaido");
+
+console.log(ayu.say());
+console.log(yuta.say());
