@@ -1,4 +1,4 @@
-"Last Change: 2012/12/30 18:37:15.
+"Last Change: 2013/01/31 12:09:06.
 scriptencoding utf-8
 set number
 set encoding=utf-8
@@ -59,6 +59,7 @@ Bundle "ZenCoding.vim"
 Bundle "tomtom/tcomment_vim"
 Bundle "git://gist.github.com/256840.git"
 Bundle "git://github.com/scrooloose/nerdtree.git"
+Bundle "https://github.com/jimsei/winresizer"
 "www.vim.orgにあるプラグイン
 Bundle "CSApprox" 
 Bundle "grep.vim"
