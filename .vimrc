@@ -1,4 +1,4 @@
-"Last Change: 2013/01/31 12:09:06.
+"Last Change: 2013/02/09 18:24:26.
 scriptencoding utf-8
 set number
 set encoding=utf-8
@@ -33,8 +33,10 @@ set hlsearch
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 "VimFilerの設定
 nmap <C-E> :VimFiler -split -simple -winwidth=35 -no-quit
-
-
+"vimの裏がみたい
+nmap <C-K><C-K> :set transparency=80<CR><ESC>
+"vimの裏がみたいをもどしたい
+nmap <C-J><C-J> :set transparency=6<CR><ESC>
 
 
 
