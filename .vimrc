@@ -1,8 +1,8 @@
-"Last Change: 2013/02/09 18:24:26.
 scriptencoding utf-8
 set number
 set encoding=utf-8
 set fileencodings=ucs-bom,iso-2022-jp-3,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
+set fileformats=unix,dos,mac
 
 set directory=~/.vim/tmp
 set backupdir=~/.vim/tmp
@@ -32,7 +32,7 @@ let $JS_CMD='node'
 set hlsearch
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 "VimFilerの設定
-nmap <C-E> :VimFiler -split -simple -winwidth=35 -no-quit
+nmap <C-A><C-A> :VimFiler -split -simple -winwidth=35 -no-quit<CR><ESC>
 "vimの裏がみたい
 nmap <C-K><C-K> :set transparency=80<CR><ESC>
 "vimの裏がみたいをもどしたい
@@ -57,6 +57,7 @@ Bundle "https://github.com/tsukkee/unite-help.git"
 Bundle "https://github.com/thinca/vim-quickrun.git"
 Bundle "http://github.com/thinca/vim-ref.git"
 Bundle "git://github.com/thinca/vim-qfreplace"
+"Bundle "git://github.com/Sixeight/unite-grep.git"
 Bundle "ZenCoding.vim"
 Bundle "tomtom/tcomment_vim"
 Bundle "git://gist.github.com/256840.git"
@@ -64,7 +65,7 @@ Bundle "git://github.com/scrooloose/nerdtree.git"
 Bundle "https://github.com/jimsei/winresizer"
 "www.vim.orgにあるプラグイン
 Bundle "CSApprox" 
-Bundle "grep.vim"
+"Bundle "grep.vim"
 Bundle "autodate.vim"
 "Bundle "DirDiff.vim"
 Bundle "actionscript.vim"
@@ -127,7 +128,7 @@ let g:VimShell_EnableInteractive = 1
 "html5-ruby
 autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
 
-" neocomplacache
+" neocomplacache(neosnippet)
 "設定ファイルを書き出すディレクトリ
 let g:neocomplcache_temporary_dir = '~/.vim/data/.neocon'
 " <C-k> にマッピング
@@ -136,6 +137,7 @@ let g:neocomplcache_enable_at_startup=1
 let g:neocomplcache_snippets_dir = '~/.vim/snippets'
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
 smap <C-k> <Plug>(neocomplcache_snippets_expand)
+set completeopt-=preview
 
 "zen-coding
 let g:user_zen_expandabbr_key='<c-z>'
