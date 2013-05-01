@@ -3,6 +3,8 @@ set number
 set encoding=utf-8
 set fileencodings=ucs-bom,iso-2022-jp-3,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
 set fileformats=unix,dos,mac
+map ¥ <leader>
+
 
 set directory=~/.vim/tmp
 set backupdir=~/.vim/tmp
@@ -77,10 +79,10 @@ NeoBundle "mattn/zencoding-vim"
 NeoBundle "tomtom/tcomment_vim"
 NeoBundle "jimsei/winresizer"
 "NeoBundle "git://gist.github.com/rcmachado/256840" "html5のシンタックス
-"NeoBundle	"vim-scripts/smarty.vim"
 "www.vim.orgにあるプラグイン
 NeoBundle "CSApprox" 
 NeoBundle "autodate.vim"
+NeoBundle "nathanaelkane/vim-indent-guides"
 "それ以外にあるgitリポジトリにあるプラグイン
 
 
@@ -188,6 +190,20 @@ augroup END
 colorscheme molokai
 
 
+
+
+
+" テンプレを開く
+nnoremap <Leader>g :call VenusSwitchFile("tpl")<CR>
+" テンプレ(スマホ)を開く
+nnoremap <Leader>s :call VenusSwitchFile("tplSp")<CR>
+" コントローラーを開く
+nnoremap <Leader>p :call VenusSwitchFile("Controller")<CR>
+" インクルードファイルを開く
+nnoremap <Leader>i :call VenusSwitchFile("Include")<CR>
+
+
+
 " 関連付け
 " au BufNewFile,BufRead *.tpl set filetype=tpl
-au BufNewFile,BufRead *.tpl set filetype=html
+" au BufNewFile,BufRead *.tpl set filetype=html
