@@ -11,9 +11,9 @@ set backupdir=~/.vim/tmp
 set cursorline
 "全角スペースを視覚化
 augroup higlightIdegtaphicSpace
-  autocmd!
-  autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkGray guibg=DarkGray
-  autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+	autocmd!
+	autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkGray guibg=DarkGray
+	autocmd VimEnter,WinEnter * match IdeographicSpace /　/
 augroup END
 colorscheme macvim
 
@@ -48,8 +48,8 @@ set runtimepath+=~/.vim/vimfiles/
 set nocompatible
 filetype plugin indent off
 if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-  call neobundle#rc(expand('~/.vim/bundle/'))
+	set runtimepath+=~/.vim/bundle/neobundle.vim/
+	call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
 "利用中のプラグインをBundle
@@ -61,7 +61,15 @@ NeoBundle "Shougo/neocomplcache"
 NeoBundle "Shougo/neosnippet"
 NeoBundle "Shougo/vimfiler"
 NeoBundle "Shougo/vimshell"
-NeoBundle "Shougo/vimproc"
+NeoBundle 'Shougo/vimproc', {
+			\ 'build' : {
+			\     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
+			\     'cygwin' : 'make -f make_cygwin.mak',
+			\     'mac' : 'make -f make_mac.mak',
+			\     'unix' : 'make -f make_unix.mak',
+			\    },
+			\ }
+NeoBundle "fuenor/qfixgrep"
 NeoBundle "thinca/vim-qfreplace"
 NeoBundle "thinca/vim-quickrun"
 NeoBundle "thinca/vim-ref"
@@ -69,21 +77,14 @@ NeoBundle "mattn/zencoding-vim"
 NeoBundle "tomtom/tcomment_vim"
 NeoBundle "jimsei/winresizer"
 "NeoBundle "git://gist.github.com/rcmachado/256840" "html5のシンタックス
-NeoBundle	"vim-scripts/smarty.vim"
+"NeoBundle	"vim-scripts/smarty.vim"
 "www.vim.orgにあるプラグイン
 NeoBundle "CSApprox" 
 NeoBundle "autodate.vim"
 "それ以外にあるgitリポジトリにあるプラグイン
 
 
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
+
 
 filetype plugin indent on
 
@@ -113,6 +114,22 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 "最近開いたファイル履歴の保存数
 let g:unite_source_file_mru_limit = 500
+
+
+"" unite-grep {{{
+" unite-grepのバックエンドをagに切り替える
+" http://qiita.com/items/c8962f9325a5433dc50d
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '--nocolor --nogroup'
+let g:unite_source_grep_recursive_opt = ''
+let g:unite_source_grep_max_candidates = 200
+
+ 
+" unite-grepのキーマップ
+" 選択した文字列をunite-grep
+" https://github.com/shingokatsushima/dotfiles/blob/master/.vimrc
+vnoremap /g y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
+" }}}
 
 
 "vimfiler
@@ -159,11 +176,11 @@ let autodate_format="%Y/%m/%d %H:%M:%S"
 
 "テンプレートを読み込む
 augroup templateload
-  autocmd!
-  autocmd BufNewFile *.html 0r ~/.vim/template/skeleton.html
-  autocmd BufNewFile *.js 0r ~/.vim/template/skeleton.js
-  autocmd BufNewFile *.css 0r ~/.vim/template/skeleton.css
-  autocmd BufNewFile *.php 0r ~/.vim/template/skeleton.php
+	autocmd!
+	autocmd BufNewFile *.html 0r ~/.vim/template/skeleton.html
+	autocmd BufNewFile *.js 0r ~/.vim/template/skeleton.js
+	autocmd BufNewFile *.css 0r ~/.vim/template/skeleton.css
+	autocmd BufNewFile *.php 0r ~/.vim/template/skeleton.php
 augroup END
 
 
