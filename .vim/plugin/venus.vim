@@ -4,15 +4,14 @@
 " Usage:
 "
 " テンプレを開く
-nnoremap <Leader>g :call VenusSwitchFile("tpl")<CR>
+" nnoremap <Leader>g :call VenusSwitchFile("tpl")<CR>
 " テンプレ(スマホ)を開く
-nnoremap <Leader>s :call VenusSwitchFile("tplSp")<CR>
+" nnoremap <Leader>s :call VenusSwitchFile("tplSp")<CR>
 " コントローラーを開く
-nnoremap <Leader>p :call VenusSwitchFile("Controller")<CR>
+" nnoremap <Leader>p :call VenusSwitchFile("Controller")<CR>
 " インクルードファイルを開く
-nnoremap <Leader>i :call VenusSwitchFile("Include")<CR>
+" nnoremap <Leader>i :call VenusSwitchFile("Include")<CR>
  
-
 
 function! VenusSwitchFile(action)
 

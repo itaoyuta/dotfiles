@@ -40,45 +40,52 @@ nmap <C-J><C-J> :set transparency=6<CR><ESC>
 
 
 
-"Vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-filetype plugin on
+"vimプラグイン等、読み込み指定
+set runtimepath+=~/.vim/vimfiles/
+"----------------------------------------------------
+"" neobundle.vim
+"----------------------------------------------------
+set nocompatible
+filetype plugin indent off
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  call neobundle#rc(expand('~/.vim/bundle/'))
+endif
+
 "利用中のプラグインをBundle
-Bundle 'gmarik/vundle'
 "githubにあるプラグイン
-Bundle "Shougo/unite.vim"
-Bundle "Shougo/neocomplcache"
-Bundle "https://github.com/Shougo/neosnippet"
-Bundle "git://github.com/Shougo/vimfiler"
-Bundle "https://github.com/Shougo/vimshell.git"
-Bundle "https://github.com/Shougo/vimproc"
-Bundle "https://github.com/tsukkee/unite-help.git"
-Bundle "https://github.com/thinca/vim-quickrun.git"
-Bundle "http://github.com/thinca/vim-ref.git"
-Bundle "git://github.com/thinca/vim-qfreplace"
-"Bundle "git://github.com/Sixeight/unite-grep.git"
-Bundle "ZenCoding.vim"
-Bundle "tomtom/tcomment_vim"
-Bundle "git://gist.github.com/256840.git"
-Bundle "git://github.com/scrooloose/nerdtree.git"
-Bundle "https://github.com/jimsei/winresizer"
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle "Shougo/unite.vim"
+NeoBundle "tsukkee/unite-help"
+NeoBundle "Shougo/neocomplcache"
+NeoBundle "Shougo/neosnippet"
+NeoBundle "Shougo/vimfiler"
+NeoBundle "Shougo/vimshell"
+NeoBundle "Shougo/vimproc"
+NeoBundle "thinca/vim-qfreplace"
+NeoBundle "thinca/vim-quickrun"
+NeoBundle "thinca/vim-ref"
+NeoBundle "mattn/zencoding-vim"
+NeoBundle "tomtom/tcomment_vim"
+NeoBundle "jimsei/winresizer"
+"NeoBundle "git://gist.github.com/rcmachado/256840" "html5のシンタックス
+NeoBundle	"vim-scripts/smarty.vim"
 "www.vim.orgにあるプラグイン
-Bundle "CSApprox" 
-"Bundle "grep.vim"
-Bundle "autodate.vim"
-"Bundle "DirDiff.vim"
-Bundle "actionscript.vim"
+NeoBundle "CSApprox" 
+NeoBundle "autodate.vim"
 "それ以外にあるgitリポジトリにあるプラグイン
 
 
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
 
-
-
-
-
-
-
+filetype plugin indent on
 
 
 
@@ -147,9 +154,6 @@ let g:user_zen_expandabbr_key='<c-z>'
 let g:ref_phpmanual_path = '/Applications/MAMP/htdocs/Dropbox/Public/manual/phpmanual'
 
 
-"as
-autocmd BufNewFile,BufRead *.as set filetype=actionscript
-
 "autodate.vim
 let autodate_format="%Y/%m/%d %H:%M:%S"
 
@@ -167,12 +171,6 @@ augroup END
 colorscheme molokai
 
 
-
-
 " 関連付け
 " au BufNewFile,BufRead *.tpl set filetype=tpl
 au BufNewFile,BufRead *.tpl set filetype=html
-
-
-
-

@@ -11,11 +11,17 @@
 !/.gitmodules
 !/.vim
 
+#一時ファイル系と、git管理のプラグインを省く
 /.vim/.DS_Store
 /.vim/tmp
 /.vim/bundle
 /.vim/data
-/.vim/syntax/.DS_Store
+
+#各静的プラグインディレクトリのキャッシュファイルを取り除く
+/.vim/colors/.DS_Store
 /.vim/indent/.DS_Store
+/.vim/plugin/.DS_Store
 /.vim/snippets/.DS_Store
+/.vim/syntax/.DS_Store
 /.vim/template/.DS_Store
+/.vim/vimfiles/.DS_Store
