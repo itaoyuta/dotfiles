@@ -3,8 +3,6 @@ set number
 set encoding=utf-8
 set fileencodings=ucs-bom,iso-2022-jp-3,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
 set fileformats=unix,dos,mac
-map ¥ <leader>
-
 
 set directory=~/.vim/tmp
 set backupdir=~/.vim/tmp
@@ -23,7 +21,6 @@ colorscheme macvim
 " set expandtab
 set smartindent
 set ts=2 sw=2 sts=2
-
 set noexpandtab
 
 "javascript実行環境をnodejsへ
@@ -39,7 +36,8 @@ nmap <C-A><C-A> :VimFiler -split -simple -winwidth=35 -no-quit<CR><ESC>
 nmap <C-K><C-K> :set transparency=80<CR><ESC>
 "vimの裏がみたいをもどしたい
 nmap <C-J><C-J> :set transparency=6<CR><ESC>
-
+"<leader>の設定を変更する 
+nmap ¥ <leader>
 
 
 "vimプラグイン等、読み込み指定
@@ -89,10 +87,6 @@ NeoBundle "nathanaelkane/vim-indent-guides"
 
 
 filetype plugin indent on
-
-
-
-
 "unite
 "設定ファイルを書き出すディレクトリ
 let g:unite_data_directory = '~/.vim/data/.unite'
@@ -143,8 +137,6 @@ let g:vimfiler_safe_mode_by_default=0
 call vimfiler#set_execute_file('html','com.google.chrome')
 
 "vimShell
-"
-"
 "設定ファイルを書き出すディレクトリ
 let g:vimshell_temporary_directory = '~/.vim/data/.vimshell'
 let g:VimShell_EnableInteractive = 1
@@ -169,9 +161,7 @@ set completeopt-=preview
 let g:user_zen_expandabbr_key='<c-z>'
 
 "ref.vim
-"let g:ref_phpmanual_path = $HOME.'/Dropbox/Public/manual/phpmanual'
 let g:ref_phpmanual_path = '/Applications/MAMP/htdocs/Dropbox/Public/manual/phpmanual'
-
 
 "autodate.vim
 let autodate_format="%Y/%m/%d %H:%M:%S"
@@ -185,14 +175,10 @@ augroup templateload
 	autocmd BufNewFile *.php 0r ~/.vim/template/skeleton.php
 augroup END
 
-
 "colorscheme pyte
 colorscheme molokai
 
-
-
-
-
+" venus.vim
 " テンプレを開く
 nnoremap <Leader>g :call VenusSwitchFile("tpl")<CR>
 " テンプレ(スマホ)を開く
