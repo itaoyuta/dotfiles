@@ -1,7 +1,7 @@
 #comment
 snippet html5
 abbr htmlTemplate
-        <!--Last Change: 2013/03/16 16:24:09.-->
+        <!--Last Change: 2013/07/11 17:56:49.-->
         <!DOCTYPE HTML>
         <html lang="ja">
           <head>
@@ -20,47 +20,54 @@ abbr htmlTemplate
         </html>
 
 
-snippet tplBgImgCss
+snippet TplForeach
+abbr smartyのforeach
+    {foreach from=$arenaInfoList item=item name=name key=key}
+
+    {/foreach}
+
+
+snippet TplBgImgCss
 abbr bgImgCss
 			background: {/literal}{cssUrl url="http://\`$smarty.const.IMAGE_HOST\`/img/\`$device.viewType\`/common/new\`$device.pngExt\`"}{literal} no-repeat;
 
 
 
-snippet tplSubTitle
+snippet TplSubTitle
 abbr 見出し中
 					{include file="__parts/SubTitle.tpl" title="魔石所持数 \`$smarty\`個"}
 
-snippet tplSubTitle2
+snippet TplSubTitle2
 abbr 見出し小
 					{include file="__parts/SubTitle2.tpl" title="魔石所持数 \`$smarty\`個"}
 
-snippet tplFntEmClass
+snippet TplFntEmClass
 abbr 文字強調色(class)
 	fnt_emphasis
 
-snippet tplFntNoClass
+snippet TplFntNoClass
 abbr 文字普通色(class)
 	fnt_normal
 
-snippet tplFntWarClass
+snippet TplFntWarClass
 abbr 文字警告色(class)
 	fnt_warning
 
-snippet tplLinkColorStyle
+snippet TplLinkColorStyle
 abbr リンク色(style)
 	{#FONT_LINK}
 
-snippet tplLinkBgColorStyle
+snippet TplLinkBgColorStyle
 abbr リンク色BG付き(style)
 	{#LINK_BG_NORMAL#}
 
 
-snippet tplFntEmStyle
+snippet TplFntEmStyle
 abbr 文字強調色(style)
 	{#FONT_ENHANCE#}
 
 
-snippet tplGroup
+snippet TplGroup
 abbr grouping
 	<div class="section margin_bottom_20 clearfix">
 		<p class="section_header">お知らせ</p>
@@ -83,48 +90,48 @@ abbr grouping
 		</ul>
 	</div>
 
-snippet tplButtonS
+snippet TplButtonS
 abbr ボタン小
 	<div class="btn_small btn_base box_center">
 		{a href="#"}ボタン{/a}
 	</div>
 
-snippet tplButtonM
+snippet TplButtonM
 abbr ボタン中
 	<div class="btn_medium btn_base box_center">
 		{a href="#"}ボタン{/a}
 	</div>
 
 
-snippet tplButtonL
+snippet TplButtonL
 abbr ボタン大
 	<div class="btn_large btn_base box_center">
 		{a href="#"}ボタン{/a}
 	</div>
 
 
-snippet tplCButtonS
+snippet TplCButtonS
 abbr チェックボタン小
 	<div class="btn_check_small">
 		<input type="checkbox" />
 		<label>チェック</label>
 	</div>
 
-snippet tplCButtonM
+snippet TplCButtonM
 abbr チェックボタン中
 	<div class="btn_check_medium">
 		<input type="checkbox" />
 		<label>チェック</label>
 	</div>
 		
-snippet tplCButtonL
+snippet TplCButtonL
 abbr チェックボタン大
 	<div class="btn_check_large">
 		<input type="checkbox" />
 		<label>チェック</label>
 	</div>
 
-snippet tplSwitchBtn
+snippet TplSwitchBtn
 abbr スイッチボタン
 	<ul class="btn_switch">
 		<li class="current">ボタン</li>
@@ -132,7 +139,25 @@ abbr スイッチボタン
 		<li>{a href="#"}ボタン{/a}</li>
 	</ul>
 
-snippet tplTabBtn
+
+snippet TplSwitchBtnJs
+abbr スイッチボタンjs
+  <div class="switchs">
+    <ul class="switch_header btn_switch">
+      <li class="current"><a>ボタン</a></li>
+      <li><a>ボタン</a></li>
+    </ul>
+		<div class="switch_body">
+      <div class="switch_content">
+      
+      </div>
+      <div class="switch_content">
+      
+      </div>
+    </div>
+  </div>
+
+snippet TplTabBtn
 abbr タブボタン
 	<ul class="btn_tabs">
 		<li class="current">ボタン</li>
@@ -140,24 +165,24 @@ abbr タブボタン
 		<li>{a href="#"}ボタン{/a}</li>
 	</ul>
 
-snippet tplTableBg
+snippet TplTableBg
 abbr ガラケーテーブルタグのdiv
 	<div style="color:{#FONTCOLORW#}; font-size:{#FONT_SMALL#};">
 	
 	</div>
 
-snippet tplComment
+snippet TplComment
 abbr コメント汎用
 	{*▼  ▼*}
 	{*▲  ▲*}
 
-snippet tplLineGold
+snippet TplLineGold
 abbr 金色の線
 		{img width="100%" height="5" viewtype=$device.dispType host=$IMAGE_HOST}/img/{$device.viewType}/mypage/h3{$device.gifExt}{/img}<br />
 
 
 
-snippet tplTab
+snippet TplTab
 abbr タブきりかえ
 	<div class="tabs">
 		<ul class="btn_tabs">
@@ -182,14 +207,92 @@ abbr タブきりかえ
 		</div>
 	</div>
 
-snippet tplTimeStamp
+snippet TplTimeStamp
 abbr タイムスタンプ
 	{time on="2012/12/25 00:00:00" off="2022/12/21 17:00:00"}{/time}
 
 
 
-snippet tplPrizeLink
+snippet TplPrizeLink
 abbr 贈り物へ
 	{a href="/prizeReceive/PrizeReceiveTop/"}
 		贈り物BOXヘ
 	{/a}
+
+snippet TplOverRay
+abbr オーバーレイ
+  <div class="btn_base btn_medium box_center popup_btn margin_top_20">オーバーレイ</div>
+  <div id="overrayArea" class="hide">
+    <div id="popup_content" class="hide">
+      <div class="overray_content" style="margin-top:36px;">
+        <div class="menu_sprite menu_close_image overrayAreaClose"></div>
+        <div class="section">
+          <div class="section_title">オーバーレイのエリア</div>
+          <div class="padding">
+            こんてんつこんてんつこんてんつこんてんつこんてんつこんてんつこんてんつこんてんつこんてんつこんてんつ
+          </div>
+          <div class="btn_base btn_medium box_center overrayAreaCloseBtn margin_y_20">これもクローズ</div>
+        </div>
+      </div>
+      <div id="overray_default_view" class="overray_content">
+        <div class="menu_sprite menu_close_image overrayAreaClose"></div>
+        <div>デフォルトで表示されるコンテンツ</div>
+      </div>
+    </div>
+    <div id="overrayAreaBg"></div>
+  </div>
+
+snippet TplToggle
+abbr トグル
+  <dl class="hide_toggle lst_info">
+    <dt class="hide">
+      <div>
+        トグルのタイトル
+      </div>
+    </dt>
+    <dd>
+      コンテンツ
+    </dd>
+  </dl>
+
+snippet TplSwitch
+abbr スイッチ
+  <div class="switchs">
+    <ul class="switch_header btn_switch">
+      <li class="current"><a href="#">左タブ</a></li>
+      <li><a href="#">右タブ</a></li>
+    </ul>
+    <div class="section switch_body margin_10">
+      <div class="switch_content">左コンテンツ</div>
+      <div class="switch_content" style="display:none;">右コンテンツ</div>
+    </div>
+  </div>
+
+snippet TplEventId
+abbr イベントID
+  {$eventQuestList.arenaEvent.arena_event_id}
+
+
+
+
+snippet TplRandSnip
+abbr ランダムのスニペット
+  {assign var=rand value=1|rand:3}
+  {if $rand == 1}
+    テキスト１
+  {elseif $rand == 2}
+    テキスト２
+  {elseif $rand == 3}
+    テキスト３
+  {else}
+  {/if}
+
+
+
+
+
+#以下、アヴァロン
+snippet TplAFpEmphasis
+abbr [A]ガラケーの強調文字
+  <span style="{#STYLE_FNT_EMPHASIS#}"></span>
+
