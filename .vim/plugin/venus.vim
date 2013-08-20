@@ -14,8 +14,9 @@
  
 
 function! VenusSwitchFile(action)
-
   let target = VenusGetTargetFilePath(a:action)
+	echo target
+
 
   if findfile(target) != ""
     execute ":e " . target
@@ -47,6 +48,14 @@ function! VenusGetTargetFilePath(action)
 		else
 			let path = substitute(path, "controller", "templates_html5", "")
 			return substitute(path, "\.php", ".tpl", "")
+		endif
+
+	elseif a:action == "tpl_switch_devpre"
+
+		if path =~ "__PRE__"
+			return substitute(path, "__PRE__", "__DEV__", "")
+		else
+			return substitute(path, "__DEV__", "__PRE__", "")
 		endif
 
 	elseif a:action == "Controller"

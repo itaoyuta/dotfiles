@@ -1,4 +1,6 @@
 scriptencoding utf-8
+"set guifont=Ricty_for_Powerline:h16
+
 set number
 set encoding=utf-8
 set fileencodings=ucs-bom,iso-2022-jp-3,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
@@ -15,7 +17,7 @@ augroup higlightIdegtaphicSpace
 	autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkGray guibg=DarkGray
 	autocmd VimEnter,WinEnter * match IdeographicSpace /　/
 augroup END
-colorscheme macvim
+" colorscheme macvim
 
 "Tab
 " set expandtab
@@ -38,6 +40,10 @@ nmap <C-K><C-K> :set transparency=80<CR><ESC>
 nmap <C-J><C-J> :set transparency=6<CR><ESC>
 "<leader>の設定を変更する 
 nmap ¥ <leader>
+"タブの切り替えを行う
+nmap <S-T><S-N> :tabnext<CR><ESC>
+nmap <S-T><S-P> :tabprevious<CR><ESC>
+
 
 
 "vimプラグイン等、読み込み指定
@@ -57,8 +63,9 @@ endif
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle "Shougo/unite.vim"
 NeoBundle "tsukkee/unite-help"
-NeoBundle "Shougo/neocomplcache"
+NeoBundle "kmnk/vim-unite-svn.git"
 NeoBundle "Shougo/neosnippet"
+NeoBundle "Shougo/neocomplcache"
 NeoBundle "Shougo/vimfiler"
 NeoBundle "Shougo/vimshell"
 NeoBundle 'Shougo/vimproc', {
@@ -76,7 +83,15 @@ NeoBundle "thinca/vim-ref"
 NeoBundle "mattn/zencoding-vim"
 NeoBundle "tomtom/tcomment_vim"
 NeoBundle "jimsei/winresizer"
+NeoBundle "osyo-manga/unite-airline_themes"
+
+NeoBundle "bling/vim-airline.git"
+NeoBundle 'alpaca-tc/alpaca_powertabline'
+NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+
+"NeoBundle "http://www.vim.org/scripts/script.php?script_id=102"
 "NeoBundle "git://gist.github.com/rcmachado/256840" "html5のシンタックス
+"
 "www.vim.orgにあるプラグイン
 NeoBundle "CSApprox" 
 NeoBundle "autodate.vim"
@@ -149,6 +164,7 @@ autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
 " neocomplacache(neosnippet)
 "設定ファイルを書き出すディレクトリ
 let g:neocomplcache_temporary_dir = '~/.vim/data/.neocon'
+let g:neocomplcache_auto_completion_start_length = 5
 " <C-k> にマッピング
 let g:neocomplcache_enable_at_startup=1
 "let g:neocomplcache_enable_auto_select=1
@@ -156,6 +172,65 @@ let g:neocomplcache_snippets_dir = '~/.vim/snippets'
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
 smap <C-k> <Plug>(neocomplcache_snippets_expand)
 set completeopt-=preview
+"スニペットが日本語入力の邪魔をするから
+nmap <S-T><S-T> :NeoComplCacheToggle<CR>
+
+
+
+"dirDiffの設定
+let g:DirDiffExcludes = ".svn,*.swp,.DS_Store"
+
+
+
+"試しに他の人の設定
+" let g:AutoComplPop_NotEnableAtStartup = 1
+" let g:NeoComplCache_EnableAtStartup = 1
+" let g:NeoComplCache_SmartCase = 1
+" let g:NeoComplCache_TagsAutoUpdate = 1
+" let g:NeoComplCache_EnableInfo = 1
+" let g:NeoComplCache_EnableCamelCaseCompletion = 1
+" let g:NeoComplCache_MinSyntaxLength = 3
+" let g:NeoComplCache_EnableSkipCompletion = 1
+" let g:NeoComplCache_SkipInputTime = '0.5'
+" inoremap <expr><Up> pumvisible() ? neocomplcache#close_popup()."\<Up>" : "\<Up>"
+" inoremap <expr><Down> pumvisible() ? neocomplcache#close_popup()."\<Down>" : "\<Down>"
+
+
+
+
+
+" vim-airlines
+"
+
+
+
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_linecolumn_prefix = '␊ '
+let g:airline_linecolumn_prefix = '␤ '
+let g:airline_linecolumn_prefix = '¶ '
+let g:airline#extensions#branch#symbol = '⎇ '
+let g:airline_paste_symbol = 'ρ'
+let g:airline_paste_symbol = 'Þ'
+let g:airline_paste_symbol = '∥'
+let g:airline#extensions#whitespace#symbol = 'Ξ'
+
+
+"------------------------------------------------------------------------"
+" vim airline & powerline
+" ------------------------------------------------------------------------ "
+set laststatus=2
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+
+" powerline fontを使用
+let g:airline_powerline_fonts = 0
+
+
+
+
+
 
 "zen-coding
 let g:user_zen_expandabbr_key='<c-z>'
@@ -178,6 +253,7 @@ augroup END
 "colorscheme pyte
 colorscheme molokai
 
+
 " venus.vim
 " テンプレを開く
 nnoremap <Leader>g :call VenusSwitchFile("tpl")<CR>
@@ -187,6 +263,28 @@ nnoremap <Leader>s :call VenusSwitchFile("tplSp")<CR>
 nnoremap <Leader>p :call VenusSwitchFile("Controller")<CR>
 " インクルードファイルを開く
 nnoremap <Leader>i :call VenusSwitchFile("Include")<CR>
+" add
+" preを開く
+nnoremap <Leader>tt :call VenusSwitchFile("tpl_switch_devpre")<CR>
+
+
+" ラグナの環境を開く
+nmap <S-R><S-S> :VimFiler /Users/yito1/Documents/svn/__DEV__/webapps/mobile/templates_html5<CR><ESC>
+nmap <S-R><S-G> :VimFiler /Users/yito1/Documents/svn/__DEV__/webapps/mobile/templates<CR><ESC>
+" アヴァロンの環境を開く
+nmap <S-A><S-S> :VimFiler /Users/yito1/Documents/svn/__DEV__AVALON/webapps/mobile/templates_html5<CR><ESC>
+nmap <S-A><S-G> :VimFiler /Users/yito1/Documents/svn/__DEV__AVALON/webapps/mobile/templates<CR><ESC>
+
+" クロームリロードショートカット
+nmap <S-R><S-R> :ChromeReload<CR><ESC>
+
+
+
+
+
+
+" Uniteの実験
+
 
 
 
