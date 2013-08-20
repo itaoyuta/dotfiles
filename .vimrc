@@ -225,7 +225,7 @@ let g:airline_paste_symbol = 'ρ'
 let g:airline_paste_symbol = 'Þ'
 let g:airline_paste_symbol = '∥'
 let g:airline#extensions#whitespace#symbol = 'Ξ'
-
+let g:airline_theme='light'
 
 
 "zen-coding
