@@ -191,5 +191,6 @@ nnoremap <Leader>i :call VenusSwitchFile("Include")<CR>
 
 
 " 関連付け
+au BufNewFile,BufRead *.jsx set filetype=javascript
 " au BufNewFile,BufRead *.tpl set filetype=tpl
 " au BufNewFile,BufRead *.tpl set filetype=html
