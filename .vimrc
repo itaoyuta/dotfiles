@@ -172,8 +172,12 @@ let g:neocomplcache_auto_completion_start_length = 5
 let g:neocomplcache_enable_at_startup=1
 "let g:neocomplcache_enable_auto_select=1
 let g:neocomplcache_snippets_dir = '~/.vim/snippets'
-imap <C-k> <Plug>(neocomplcache_snippets_expand)
-smap <C-k> <Plug>(neocomplcache_snippets_expand)
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+imap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" imap <C-k> <Plug>(neocomplcache_snippets_expand)
+" smap <C-k> <Plug>(neocomplcache_snippets_expand)
 set completeopt-=preview
 "スニペットが日本語入力の邪魔をするから
 nmap <S-T><S-T> :NeoComplCacheToggle<CR>
