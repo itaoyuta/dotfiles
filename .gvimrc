@@ -35,7 +35,7 @@ function! GetStatusEx()
 endfunction
 set statusline=%<%f\ %m%r%h%w%=%{GetStatusEx()}\ \ %l,%c%V%8P
 
-set guifont=MigMix\ 1M\ Regular:h14
+set guifont=Ricty_for_Powerline:h18
 
 augroup hack234
   autocmd!

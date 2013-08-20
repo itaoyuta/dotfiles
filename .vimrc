@@ -1,4 +1,6 @@
 scriptencoding utf-8
+"set guifont=Ricty_for_Powerline:h16
+
 set number
 set encoding=utf-8
 set fileencodings=ucs-bom,iso-2022-jp-3,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
@@ -81,8 +83,15 @@ NeoBundle "thinca/vim-ref"
 NeoBundle "mattn/zencoding-vim"
 NeoBundle "tomtom/tcomment_vim"
 NeoBundle "jimsei/winresizer"
+NeoBundle "osyo-manga/unite-airline_themes"
+
+NeoBundle "bling/vim-airline.git"
+NeoBundle 'alpaca-tc/alpaca_powertabline'
+NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+
 "NeoBundle "http://www.vim.org/scripts/script.php?script_id=102"
 "NeoBundle "git://gist.github.com/rcmachado/256840" "html5のシンタックス
+"
 "www.vim.orgにあるプラグイン
 NeoBundle "CSApprox" 
 NeoBundle "autodate.vim"
@@ -189,6 +198,34 @@ let g:DirDiffExcludes = ".svn,*.swp,.DS_Store"
 
 
 
+
+" vim-airlines
+"
+
+
+
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_linecolumn_prefix = '␊ '
+let g:airline_linecolumn_prefix = '␤ '
+let g:airline_linecolumn_prefix = '¶ '
+let g:airline#extensions#branch#symbol = '⎇ '
+let g:airline_paste_symbol = 'ρ'
+let g:airline_paste_symbol = 'Þ'
+let g:airline_paste_symbol = '∥'
+let g:airline#extensions#whitespace#symbol = 'Ξ'
+
+
+"------------------------------------------------------------------------"
+" vim airline & powerline
+" ------------------------------------------------------------------------ "
+set laststatus=2
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+
+" powerline fontを使用
+let g:airline_powerline_fonts = 0
 
 
 
