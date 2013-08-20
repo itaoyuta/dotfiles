@@ -213,6 +213,8 @@ let g:DirDiffExcludes = ".svn,*.swp,.DS_Store"
 
 if has('gui_running')
 	let g:airline_powerline_fonts = 1
+	let g:airline_right_sep = ''
+	let g:airline_right_sep = ''
 else
 	let g:airline_left_sep = '»'
 	let g:airline_left_sep = '▶'
