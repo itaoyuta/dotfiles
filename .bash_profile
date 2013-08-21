@@ -10,11 +10,3 @@ alias safari='open -a safari'
 # MacPorts Installer addition on 2011-08-23_at_18:15:04: adding an appropriate PATH variable for use with MacPorts.
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH:~/bin
 # Finished adapting your PATH environment variable for use with MacPorts.
-
-
-export PATH=/Applications/SenchaSDKTools-2.0.0-beta3:$PATH
-
-export SENCHA_SDK_TOOLS_2_0_0_BETA3="/Applications/SenchaSDKTools-2.0.0-beta3"
-
-
-#export SVN_EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim

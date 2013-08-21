@@ -73,7 +73,6 @@ function! s:do_replace()
 			let e.text=substitute(e.text,"","","g")
 
       if getline(e.lnum) != e.text
-			"if tarLineTest != e.text
         echoerr printf('Original text are changed: %s:%d', bufname(e.bufnr),
          \ e.lnum)
 			else
