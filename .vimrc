@@ -1,5 +1,5 @@
 scriptencoding utf-8
-"set guifont=Ricty_for_Powerline:h16
+set guifont=Ricty_for_Powerline:h20
 
 set number
 set encoding=utf-8
@@ -204,10 +204,10 @@ let g:DirDiffExcludes = ".svn,*.swp,.DS_Store"
 
 
 
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
+"let g:airline_left_sep = '»'
+"let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '«'
+"let g:airline_right_sep = '◀'
 let g:airline_linecolumn_prefix = '␊ '
 let g:airline_linecolumn_prefix = '␤ '
 let g:airline_linecolumn_prefix = '¶ '
@@ -221,11 +221,11 @@ let g:airline#extensions#whitespace#symbol = 'Ξ'
 "------------------------------------------------------------------------"
 " vim airline & powerline
 " ------------------------------------------------------------------------ "
-set laststatus=2
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+" set laststatus=2
+" set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 " powerline fontを使用
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 
 
 
