@@ -60,6 +60,7 @@ endif
 
 "利用中のプラグインをBundle
 "githubにあるプラグイン
+NeoBundle 'rking/ag.vim'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle "Shougo/unite.vim"
 NeoBundle "tsukkee/unite-help"
@@ -80,7 +81,17 @@ NeoBundle "fuenor/qfixgrep"
 NeoBundle "thinca/vim-qfreplace"
 NeoBundle "thinca/vim-quickrun"
 NeoBundle "thinca/vim-ref"
-NeoBundle "mattn/zencoding-vim"
+NeoBundle "mattn/emmet-vim"
+call neobundle#config('emmet-vim', {
+      \ 'autoload' : {
+      \   'filetypes' : [
+      \     'html',
+      \     'haml',
+      \     'slim',
+      \     'css',
+      \   ],
+      \ },
+      \ })
 NeoBundle "tomtom/tcomment_vim"
 NeoBundle "jimsei/winresizer"
 
@@ -167,7 +178,7 @@ autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
 " neocomplacache(neosnippet)
 "設定ファイルを書き出すディレクトリ
 let g:neocomplcache_temporary_dir = '~/.vim/data/.neocon'
-let g:neocomplcache_auto_completion_start_length = 5
+let g:neocomplcache_auto_completion_start_length = 2
 " <C-k> にマッピング
 let g:neocomplcache_enable_at_startup=1
 "let g:neocomplcache_enable_auto_select=1
@@ -186,6 +197,9 @@ nmap <S-T><S-T> :NeoComplCacheToggle<CR>
 
 "dirDiffの設定
 let g:DirDiffExcludes = ".svn,*.swp,.DS_Store"
+
+"zencoding
+" let g:user_emmet_leader_key = '<C-e>'
 
 
 
@@ -235,7 +249,7 @@ let g:airline_theme='light'
 
 
 "zen-coding
-let g:user_zen_expandabbr_key='<c-z>'
+"let g:user_zen_expandabbr_key='<c-z>'
 
 "ref.vim
 let g:ref_phpmanual_path = '/Applications/MAMP/htdocs/Dropbox/Public/manual/phpmanual'
