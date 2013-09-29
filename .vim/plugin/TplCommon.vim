@@ -26,3 +26,4 @@ function! TplComment()
 	call setline(line(".") , tabTxt . "{*▼ " . singleTxt . " ▼*}")
 	call append(line(".") , tabTxt . "{*▲ " . singleTxt . " ▲*}")
 endfunction
+

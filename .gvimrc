@@ -48,3 +48,7 @@ augroup END
 
 "colorscheme pyte
 colorscheme molokai
+
+
+
+hi DiffAdd term=bold ctermbg=1 guibg=#ff0000

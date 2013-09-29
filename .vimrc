@@ -92,6 +92,7 @@ call neobundle#config('emmet-vim', {
       \   ],
       \ },
       \ })
+NeoBundle "mattn/livestyle-vim"
 NeoBundle "tomtom/tcomment_vim"
 NeoBundle "jimsei/winresizer"
 
@@ -158,6 +159,7 @@ vnoremap /g y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
 
 
 "vimfiler
+noremap <Leader>vf :VimFiler<CR>
 "設定ファイルを書き出すディレクトリ
 let g:vimfiler_data_directory = '~/.vim/data/.vimfiler'
 let g:vimfiler_as_default_explorer=1
@@ -167,6 +169,7 @@ call vimfiler#set_execute_file('html','com.google.chrome')
 
 "vimShell
 "設定ファイルを書き出すディレクトリ
+noremap <Leader>vs :VimShell<CR>
 let g:vimshell_temporary_directory = '~/.vim/data/.vimshell'
 let g:VimShell_EnableInteractive = 1
 
@@ -293,9 +296,10 @@ nmap <S-A><S-G> :VimFiler /Users/yito1/Documents/svn/__DEV__AVALON/webapps/mobil
 
 " クロームリロードショートカット
 nmap <S-R><S-R> :ChromeReload<CR><ESC>
-
-
-
+" tplのコメント
+nmap <S-C><S-C> :call TplComment()<CR>
+" sectionのsnip
+nmap <S-S><S-S> :call TplSection()<CR>
 
 
 
@@ -308,3 +312,5 @@ nmap <S-R><S-R> :ChromeReload<CR><ESC>
 au BufNewFile,BufRead *.jsx set filetype=javascript
 " au BufNewFile,BufRead *.tpl set filetype=tpl
 " au BufNewFile,BufRead *.tpl set filetype=html
+
+
