@@ -1,6 +1,8 @@
 scriptencoding utf-8
 set guifont=Ricty_for_Powerline:h24
 
+
+
 set number
 set encoding=utf-8
 set fileencodings=ucs-bom,iso-2022-jp-3,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
