@@ -1,5 +1,5 @@
 scriptencoding utf-8
-set guifont=Ricty_for_Powerline:h24
+set guifont=Ricty_for_Powerline:h18
 
 
 
@@ -36,6 +36,8 @@ set hlsearch
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 "VimFilerの設定
 nmap <C-A><C-A> :VimFiler -split -simple -winwidth=35 -no-quit<CR><ESC>
+autocmd FileType vimfiler call unite#custom_default_action('directory', 'cd')
+
 "vimの裏がみたい
 nmap <C-K><C-K> :set transparency=80<CR><ESC>
 "vimの裏がみたいをもどしたい
@@ -97,6 +99,8 @@ call neobundle#config('emmet-vim', {
 NeoBundle "mattn/livestyle-vim"
 NeoBundle "tomtom/tcomment_vim"
 NeoBundle "jimsei/winresizer"
+NeoBundle 'tpope/vim-surround'
+
 
 " if has('gui_running')
 	NeoBundle "osyo-manga/unite-airline_themes"
@@ -130,6 +134,8 @@ noremap <C-P> :Unite buffer<CR>
 noremap <C-N> :Unite -buffer-name=file file<CR>
 " 最近使ったファイルの一覧
 noremap <C-Z> :Unite file_mru<CR>
+noremap <C-Y> :Unite directory_mru<CR>
+noremap <C-B> :Unite bookmark<CR>
 " ウィンドウを分割して開く
 au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
 au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
@@ -290,11 +296,11 @@ nnoremap <Leader>tt :call VenusSwitchFile("tpl_switch_devpre")<CR>
 
 
 " ラグナの環境を開く
-nmap <S-R><S-S> :VimFiler /Users/yito1/Documents/svn/__DEV__/webapps/mobile/templates_html5<CR><ESC>
-nmap <S-R><S-G> :VimFiler /Users/yito1/Documents/svn/__DEV__/webapps/mobile/templates<CR><ESC>
+nmap <S-R><S-S> :VimFiler /Users/yito1/Documents/svn/__DEV__/mragnarok/webapps/mobile/templates_html5<CR><ESC>
+nmap <S-R><S-G> :VimFiler /Users/yito1/Documents/svn/__DEV__/mragnarok/webapps/mobile/templates<CR><ESC>
 " アヴァロンの環境を開く
-nmap <S-A><S-S> :VimFiler /Users/yito1/Documents/svn/__DEV__AVALON/webapps/mobile/templates_html5<CR><ESC>
-nmap <S-A><S-G> :VimFiler /Users/yito1/Documents/svn/__DEV__AVALON/webapps/mobile/templates<CR><ESC>
+nmap <S-A><S-S> :VimFiler /Users/yito1/Documents/svn/__DEV__AVALON/mguildbattle/webapps/mobile/templates_html5<CR><ESC>
+nmap <S-A><S-G> :VimFiler /Users/yito1/Documents/svn/__DEV__AVALON/mguildbattle/webapps/mobile/templates<CR><ESC>
 
 " クロームリロードショートカット
 nmap <S-R><S-R> :ChromeReload<CR><ESC>
@@ -304,8 +310,87 @@ nmap <S-C><S-C> :call TplComment()<CR>
 nmap <S-S><S-S> :call TplSection()<CR>
 
 
+" " Uniteのkind例
+" let read = {
+"       \ 'is_selectable' : 1,
+"       \ }
+" function! diff_dev_pre.func(candidates)
+" 	echo "diff_dev_preを作成"
+" endfunction
+" 
+" call unite#custom_action('file', 'diff_dev_pre', diff_dev_pre)
+" unlet read
+" 
 
-" Uniteの実験
+"test
+function! MyFuncTest(srcA,srcB)
+	echo a:srcA . ' / ' . a:srcB
+	" echo a:srcA . ' / ' . a:srcB
+endfunction
+
+"アクション
+let diff_dev_pre = {'description' : 'devとpreをDirDiff'}
+function! diff_dev_pre.func(candidate)
+	let path = expand('#:p')
+	let vimfiler = vimfiler#get_current_vimfiler()
+	let marked_files = vimfiler#get_marked_files()
+
+	let dirA = marked_files[0].action__path
+	if empty(dirA)
+			let dirA =  [ vimfiler#get_file(cursor_linenr) ]
+	endif
+
+	if dirA =~ "DEV"
+		let dirB = substitute(dirA, "DEV", "PRE", "") 
+	else 
+		let dirB = substitute(dirA, "PRE", "DEV", "") 
+	endif
+
+	call DirDiff(dirA,dirB)
+
+endfunction
+
+call unite#custom_action('file' , 'diff_dev_pre' , diff_dev_pre)
+unlet diff_dev_pre
+
+" Uniteのsorce作り方
+" let s:unite_source = {
+" \   'name': 'diff_dev_pre',
+" \ }
+" function! s:unite_source.gather_candidates(args, context)
+" 	let hoge = {"val":["aa" , "bb" , "cc"]}
+" 	let vimfiler = vimfiler#get_current_vimfiler()
+" 	let marked_files = vimfiler#get_marked_files()
+"   if empty(marked_files)
+"       let marked_files = [ vimfiler#get_file(cursor_linenr) ]
+"   endif
+" 
+" 
+" 	let path = expand('#:p')
+"     return [
+"     \   { 'word': marked_files, 'source': 'diff_dev_pre', 'kind': 'directory' },
+"     \   { 'word': path, 'source': 'diff_dev_pre', 'kind': 'directory' },
+"     \ ]
+
+
+
+  " let path = expand('#:p')
+  " let lines = getbufline('#', 1, '$')
+  " let format = '%' . strlen(len(lines)) . 'd: %s'
+  " return map(lines, '{
+  " \   "word": printf(format, v:key + 1, v:val),
+  " \   "source": "diff_dev_pre",
+  " \   "kind": "jump_list",
+  " \   "action__path": path,
+  " \   "action__line": v:key + 1,
+  " \ }')
+" endfunction
+" 
+" call unite#define_source(s:unite_source)
+" unlet s:unite_source
+
+
+
 
 
 

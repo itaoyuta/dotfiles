@@ -25,8 +25,8 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 
 
-# emacs 風キーバインドにする
-bindkey -e
+# vim 風キーバインドにする
+bindkey -v
 
 # その他とりあえずいるもの
 export LANG=ja_JP.UTF-8
@@ -43,6 +43,5 @@ setopt interactive_comments
 # vim:set ft=zsh :
 
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH:~/bin
-
-
 export PATH=/usr/local/opt/subversion1.7/bin:$PATH
+export PATH=/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/bin:$PATH

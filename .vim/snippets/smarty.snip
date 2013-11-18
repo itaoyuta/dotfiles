@@ -233,6 +233,72 @@ abbr math関数
 	{math assign=hoge equation="x + y" x=$height y=$width}
 
 
+
+snippet TplSSelector
+abbr ユーザセレクター
+	<div class="ragna_selector" data-auto-preview="true">
+		{capture assign=header_css}
+			<link rel="stylesheet" type="text/css" href="http://{$smarty.const.APP_SITE_DOMAIN}/css/addon/style.css?_=0" />
+		{/capture}
+		{literal}
+			<script>
+				//addonのどの機能を利用するか、明示的にsetActionに格納(かぶっても大丈夫)
+				RAGNA.addon.initAction.setAction("userSelector");
+			</script>
+		{/literal}
+
+		{* ここでコンテンツ本体の高さを指定(自動取得はよりは、直接書いた方が処理早いため) *}
+		<div class="content_wrapper box_center" style="height : 460px;">
+			{*▼ コンテンツ本体 ▼*}
+			<ul class="content hide">
+				<li>
+					<div class="child_content">
+						{img width="100%" viewtype=$device.dispType host=$IMAGE_HOST}/img/{$device.viewType}/arena/7/pickupcard/4887{$device.jpgExt}{/img}
+						<div>
+							説明とか説明とか説明とか説明とか説明とか説明とか説明とか説明とか説明とか説明とか説明とか説明とか説明とか説明とか
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="child_content">
+						{img width="100%" viewtype=$device.dispType host=$IMAGE_HOST}/img/{$device.viewType}/arena/7/pickupcard/4891{$device.jpgExt}{/img}
+					</div>
+				</li>
+				<li>
+					<div class="child_content" style="width:280px;">
+						{img width="100%" viewtype=$device.dispType host=$IMAGE_HOST}/img/{$device.viewType}/arena/7/pickupcard/4895{$device.jpgExt}{/img}
+					</div>
+				</li>
+				<li>
+					<div class="child_content"	style="width:200px;">
+						{img width="100%" viewtype=$device.dispType host=$IMAGE_HOST}/img/{$device.viewType}/arena/7/pickupcard/4899{$device.jpgExt}{/img}
+						<div>説明とか説明とか説明とか説明とか説明とか説明とか説明とか説明とか説明とか</div>
+					</div>
+				</li>
+			</ul>
+			{*▲ コンテンツ本体 ▲*}
+
+			{*▼ 右と左の矢印 ▼*}
+			<div class="arrow_control">
+				<div class="left hide">&nbsp;</div>
+				<div class="right hide">&nbsp;</div>
+			</div>
+			{*▲ 右と左の矢印 ▲*}
+		</div>
+
+		{*▼ 下の丸いボタン ▼*}
+		<ul class="page_control box_center"></ul>
+		{*▲ 下の丸いボタン ▲*}
+	</div>
+
+snippet TplSelfOnly
+abbr 自分のみ
+			{if $userData.user_id == "97139"}
+			{else}
+			{/if}
+
+
+
 #以下、アヴァロン
 snippet TplAFpEmphasis
 abbr [A]ガラケーの強調文字

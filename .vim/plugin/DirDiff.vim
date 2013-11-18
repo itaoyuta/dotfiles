@@ -347,7 +347,8 @@ else
 endif
 
 
-function! <SID>DirDiff(srcA, srcB)
+" function! <SID>DirDiff(srcA, srcB)
+function! DirDiff(srcA, srcB)
     " Setup
     let DirDiffAbsSrcA = fnamemodify(expand(a:srcA, ":p"), ":p")
     let DirDiffAbsSrcB = fnamemodify(expand(a:srcB, ":p"), ":p")
