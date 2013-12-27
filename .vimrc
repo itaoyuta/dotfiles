@@ -125,7 +125,7 @@ filetype plugin indent on
 " 設定ファイルを書き出すディレクトリ
 let g:unite_data_directory = '~/.vim/data/.unite'
 " nmap <C-R> :Unite -start-insert file_rec:!
-let g:unite_source_rec_max_cache_files = 5000
+let g:unite_source_rec_max_cache_files = 10000
 " 入力モードで開始する
 let g:unite_enable_start_insert=1
 " バッファ一覧
@@ -135,7 +135,7 @@ noremap <C-N> :Unite -buffer-name=file file<CR>
 " 最近使ったファイルの一覧
 noremap <C-I> :Unite file_mru<CR>
 noremap <C-Y> :Unite directory_mru<CR>
-noremap <C-W> :Unite bookmark<CR>
+noremap <C-O> :Unite bookmark<CR>
 " ウィンドウを分割して開く
 au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
 au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
