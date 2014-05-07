@@ -4,6 +4,8 @@
 /*.
 
 !/.bash_profile
+!/.zshrc
+!/.vimshrc
 !/.vimrc
 !/.gvimrc
 !/.gitignore
