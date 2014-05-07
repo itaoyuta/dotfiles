@@ -314,6 +314,7 @@ nnoremap <Leader>tt :call VenusSwitchFile("tpl_switch_devpre")<CR>
 " 環境を開く
 nmap <S-R><S-S> :VimFiler /Users/yito1/Documents/svn/RAGNA_MBG/__DEV__/mragnarok/webapps/mobile/templates_html5<CR><ESC>
 nmap <S-R><S-G> :VimFiler /Users/yito1/Documents/svn/RAGNA_MBG/__DEV__/mragnarok/webapps/mobile/templates<CR><ESC>
+nmap <S-M><S-S> :VimFiler /crooz/venus4_space/venus/venus_4.0/project/gsmonsteregg/master/apps/web/view/SP/<CR><ESC>
 " 環境を開く
 nmap <S-A><S-S> :VimFiler /Users/yito1/Documents/svn/AVALON_MBG/__DEV__AVALON/mguildbattle/webapps/mobile/templates_html5<CR><ESC>
 nmap <S-A><S-G> :VimFiler /Users/yito1/Documents/svn/AVALON_MBG/__DEV__AVALON/mguildbattle/webapps/mobile/templates<CR><ESC>
