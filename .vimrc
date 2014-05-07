@@ -29,7 +29,6 @@ let $JS_CMD='node'
 
 "<leader>の設定を変更する 
 nmap ¥ <leader>
-
 "map関連
 "Escの2回押しでハイライト消去
 set hlsearch
@@ -40,8 +39,8 @@ nmap <C-K><C-K> :set transparency=80<CR><ESC>
 nmap <C-J><C-J> :set transparency=6<CR><ESC>
 
 "タブの切り替えを行う
-nmap <S-T><S-N> :tabnext<CR><ESC>
-nmap <S-T><S-P> :tabprevious<CR><ESC>
+nmap <C-T><C-N> :tabnext<CR><ESC>
+nmap <C-T><C-P> :tabprevious<CR><ESC>
 
 "vimプラグイン等、読み込み指定
 set runtimepath+=~/.vim/vimfiles/
@@ -62,10 +61,12 @@ endif
 "githubにあるプラグイン
 NeoBundle 'rking/ag.vim'
 NeoBundle 'Shougo/neobundle.vim'
+NeoBundle "Shougo/neomru.vim"
 NeoBundle "Shougo/unite.vim"
 NeoBundle "tsukkee/unite-help"
 NeoBundle "kmnk/vim-unite-svn.git"
 NeoBundle "Shougo/neosnippet"
+NeoBundle "Shougo/neosnippet-snippets"
 NeoBundle "Shougo/neocomplcache"
 NeoBundle "Shougo/vimfiler"
 NeoBundle "Shougo/vimshell"
@@ -82,6 +83,11 @@ NeoBundle "thinca/vim-qfreplace"
 NeoBundle "thinca/vim-quickrun"
 NeoBundle "thinca/vim-ref"
 NeoBundle "mattn/emmet-vim"
+
+NeoBundle "kana/vim-textobj-user"
+NeoBundle "kana/vim-operator-user"
+NeoBundle "kana/vim-operator-replace"
+NeoBundle "osyo-manga/vim-textobj-multitextobj"
 call neobundle#config('emmet-vim', {
       \ 'autoload' : {
       \   'filetypes' : [
@@ -96,6 +102,9 @@ NeoBundle "mattn/livestyle-vim"
 NeoBundle "tomtom/tcomment_vim"
 NeoBundle "jimsei/winresizer"
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'tpope/vim-fugitive'
+" NeoBundle 'hallettj/jslint.vim'
 
 
 " if has('gui_running')
@@ -105,8 +114,7 @@ NeoBundle 'tpope/vim-surround'
 	NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
 " endif
 
-
-"NeoBundle "http://www.vim.org/scripts/script.php?script_id=102"
+NeoBundle "https://github.com/vim-scripts/DirDiff.vim"
 "NeoBundle "git://gist.github.com/rcmachado/256840" "html5のシンタックス
 "
 "www.vim.orgにあるプラグイン
@@ -116,6 +124,32 @@ NeoBundle "nathanaelkane/vim-indent-guides"
 "それ以外にあるgitリポジトリにあるプラグイン
 
 filetype plugin indent on
+
+
+
+
+"indent-guides
+"===================================================================
+
+" vim-indent-guides
+
+"===================================================================
+" vim立ち上げたときに、自動的にvim-indent-guidesをオンにする
+let g:indent_guides_enable_on_vim_startup=1
+" ガイドをスタートするインデントの量
+let g:indent_guides_start_level=1
+" 自動カラーを無効にする
+let g:indent_guides_auto_colors=0
+" 奇数インデントのカラー
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#222222
+" 偶数インデントのカラー
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#010101 
+" ハイライト色の変化の幅
+let g:indent_guides_color_change_percent = 30
+" ガイドの幅
+let g:indent_guides_guide_size = 1
+
+
 
 
 
@@ -133,7 +167,7 @@ noremap <C-P> :Unite buffer<CR>
 " ファイル一覧
 noremap <C-N> :Unite -buffer-name=file file<CR>
 " 最近使ったファイルの一覧
-noremap <C-I> :Unite file_mru<CR>
+noremap <C-U> :Unite file_mru<CR>
 noremap <C-Y> :Unite directory_mru<CR>
 noremap <C-O> :Unite bookmark<CR>
 " ウィンドウを分割して開く
@@ -182,9 +216,11 @@ autocmd FileType vimfiler call unite#custom_default_action('directory', 'cd')
 "----------------------------------------------------
 "設定ファイルを書き出すディレクトリ
 noremap <Leader>vs :VimShell<CR>
-let g:vimshell_temporary_directory = '~/.vim/data/.vimshell'
+" let g:vimshell_temporary_directory = '~/.vim/data/.vimshell'
+" let g:vimshell_data_directory = $HOME . '/.vim/data/.vimshell'
+"let g:unite_source_vimshell_external_history_path = '~/.vim/data/.vimshell/command-history'
 let g:VimShell_EnableInteractive = 1
-
+let g:vimshell_no_save_history_commands = {}
 
 "----------------------------------------------------
 "" neocomplacache(neosnippet)
@@ -245,6 +281,9 @@ let g:ref_phpmanual_path = '/Applications/MAMP/htdocs/Dropbox/Public/manual/phpm
 "autodate.vim
 let autodate_format="%Y/%m/%d %H:%M:%S"
 
+"
+map R  <Plug>(operator-replace)
+
 "テンプレートを読み込む
 augroup templateload
 	autocmd!
@@ -273,11 +312,11 @@ nnoremap <Leader>i :call VenusSwitchFile("Include")<CR>
 " preを開く
 nnoremap <Leader>tt :call VenusSwitchFile("tpl_switch_devpre")<CR>
 " 環境を開く
-nmap <S-R><S-S> :VimFiler /Users/yito1/Documents/svn/__DEV__/mragnarok/webapps/mobile/templates_html5<CR><ESC>
-nmap <S-R><S-G> :VimFiler /Users/yito1/Documents/svn/__DEV__/mragnarok/webapps/mobile/templates<CR><ESC>
+nmap <S-R><S-S> :VimFiler /Users/yito1/Documents/svn/RAGNA_MBG/__DEV__/mragnarok/webapps/mobile/templates_html5<CR><ESC>
+nmap <S-R><S-G> :VimFiler /Users/yito1/Documents/svn/RAGNA_MBG/__DEV__/mragnarok/webapps/mobile/templates<CR><ESC>
 " 環境を開く
-nmap <S-A><S-S> :VimFiler /Users/yito1/Documents/svn/__DEV__AVALON/mguildbattle/webapps/mobile/templates_html5<CR><ESC>
-nmap <S-A><S-G> :VimFiler /Users/yito1/Documents/svn/__DEV__AVALON/mguildbattle/webapps/mobile/templates<CR><ESC>
+nmap <S-A><S-S> :VimFiler /Users/yito1/Documents/svn/AVALON_MBG/__DEV__AVALON/mguildbattle/webapps/mobile/templates_html5<CR><ESC>
+nmap <S-A><S-G> :VimFiler /Users/yito1/Documents/svn/AVALON_MBG/__DEV__AVALON/mguildbattle/webapps/mobile/templates<CR><ESC>
 
 
 
@@ -287,7 +326,8 @@ nmap <S-R><S-R> :ChromeReload<CR><ESC>
 nmap <S-C><S-C> :call TplComment()<CR>
 " sectionのsnip
 nmap <S-S><S-S> :call TplSection()<CR>
-
+" smartyコメント
+nmap <S-N><S-N> :call TplLineComment()<CR>
 
 "----------------------------------------------------
 "" 自作unite
@@ -341,15 +381,40 @@ endfunction
 call unite#define_source(s:unite_source)
 unlet s:unite_source
 
+" Capture {{{
+command!
+      \ -nargs=+ -bang
+      \ -complete=command
+      \ Capture
+      \ call s:cmd_capture([<f-args>], <bang>0)
+ 
+function! C(cmd)
+  redir => result
+  silent execute a:cmd
+  redir END
+  return result
+endfunction
+ 
+function! s:cmd_capture(args, banged) "{{{
+  new
+  silent put =C(join(a:args))
+  1,2delete _
+endfunction "}}}
+" }}}
+
 
 
 "html5-ruby
 autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
 
-
+"tidy
+map <leader>= :%! tidy -config ~/tidy/html<cr>
 
 
 " 関連付け
 au BufNewFile,BufRead *.jsx set filetype=javascript
 " au BufNewFile,BufRead *.tpl set filetype=tpl
 " au BufNewFile,BufRead *.tpl set filetype=html
+"
+" md as markdown, instead of modula2
+autocmd MyAutoGroup BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown

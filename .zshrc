@@ -43,5 +43,6 @@ setopt interactive_comments
 # vim:set ft=zsh :
 
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH:~/bin
+export PATH=/usr/local/lib/node_modules:$PATH
 export PATH=/usr/local/opt/subversion1.7/bin:$PATH
 export PATH=/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/bin:$PATH
