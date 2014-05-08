@@ -34,7 +34,6 @@ function! GetStatusEx()
   return str
 endfunction
 set statusline=%<%f\ %m%r%h%w%=%{GetStatusEx()}\ \ %l,%c%V%8P
-
 set guifont=Ricty_for_Powerline:h18
 
 augroup hack234
@@ -48,7 +47,4 @@ augroup END
 
 "colorscheme pyte
 colorscheme molokai
-
-
-
 hi DiffAdd term=bold ctermbg=1 guibg=#ff0000
