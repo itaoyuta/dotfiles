@@ -2,7 +2,8 @@ scriptencoding utf-8
 set guifont=Ricty_for_Powerline:h18
 set number
 set encoding=utf-8
-set fileencodings=ucs-bom,iso-2022-jp-3,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
+set fileencodings=iso-2022-jp,utf-8,cp932,euc-jp,default,latin
+" set fileencodings=ucs-bom,iso-2022-jp-3,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
 set fileformats=unix,dos,mac
 set directory=~/.vim/tmp
 set backupdir=~/.vim/tmp
@@ -28,7 +29,11 @@ set noexpandtab
 let $JS_CMD='node'
 
 "<leader>の設定を変更する 
-nmap ¥ <leader>
+" nmap ¥ <leader>
+let mapleader=","
+" ,のデフォルトの機能は、\で使えるように退避
+noremap \  ,
+
 "map関連
 "Escの2回押しでハイライト消去
 set hlsearch
@@ -114,7 +119,8 @@ NeoBundle 'tpope/vim-fugitive'
 	NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
 " endif
 
-NeoBundle "https://github.com/vim-scripts/DirDiff.vim"
+" NeoBundle "https://github.com/vim-scripts/DirDiff.vim"
+NeoBundle "osyo-manga/vim-over"
 "NeoBundle "git://gist.github.com/rcmachado/256840" "html5のシンタックス
 "
 "www.vim.orgにあるプラグイン
@@ -162,65 +168,76 @@ let g:unite_data_directory = '~/.vim/data/.unite'
 let g:unite_source_rec_max_cache_files = 10000
 " 入力モードで開始する
 let g:unite_enable_start_insert=1
-" バッファ一覧
-noremap <C-P> :Unite buffer<CR>
-" ファイル一覧
-noremap <C-N> :Unite -buffer-name=file file<CR>
-" 最近使ったファイルの一覧
-noremap <C-U> :Unite file_mru<CR>
-noremap <C-Y> :Unite directory_mru<CR>
-noremap <C-O> :Unite bookmark<CR>
-" ウィンドウを分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-" ウィンドウを縦に分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-" ESCキーを2回押すと終了する
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-"最近開いたファイル履歴の保存数
-let g:unite_source_file_mru_limit = 500
+let g:unite_source_file_mru_limit = 1000
 " unite-grepのバックエンドをagに切り替える
 " http://qiita.com/items/c8962f9325a5433dc50d
 let g:unite_source_grep_command = 'ag'
 let g:unite_source_grep_default_opts = '--nocolor --nogroup'
 let g:unite_source_grep_recursive_opt = ''
-let g:unite_source_grep_max_candidates = 200
-" unite-grepのキーマップ
-" 選択した文字列をunite-grep
-" https://github.com/shingokatsushima/dotfiles/blob/master/.vimrc
-vnoremap /g y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
-" }}}
+let g:unite_source_grep_max_candidates = 1000
+
+
+" キーマッピング
+nnoremap [unite] <Nop>
+nmap <Leader>u [unite]
+nnoremap <silent> [unite]u :Unite file_mru<CR>
+nnoremap <silent> [unite]d :Unite directory_mru<CR>
+nnoremap <silent> [unite]b :Unite buffer<CR>
+nnoremap <silent> [unite]m :Unite bookmark<CR>
+
+" ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+
 
 
 "----------------------------------------------------
 "" vimfiler
 "----------------------------------------------------
-noremap <Leader>vf :VimFiler<CR>
-"現在開いているバッファのディレクトリを開く
-noremap <Leader>vc :VimFilerBufferDir<CR>
-"設定ファイルを書き出すディレクトリ
 let g:vimfiler_data_directory = '~/.vim/data/.vimfiler'
 let g:vimfiler_as_default_explorer=1
 let g:vimfiler_safe_mode_by_default=0
-VimFilerBufferDir
 "ダブルクリックで起動するシステムを設定
 call vimfiler#set_execute_file('html','com.google.chrome')
-nmap <C-A><C-A> :VimFiler -split -simple -winwidth=35 -no-quit<CR><ESC>
 autocmd FileType vimfiler call unite#custom_default_action('directory', 'cd')
+
+" キーマッピング
+nnoremap [vimfiler] <Nop>
+nmap <Leader>f [vimfiler]
+nnoremap <silent> [vimfiler]f :VimFiler<CR>
+nnoremap <silent> [vimfiler]c :VimFilerBufferDir<CR>
+nnoremap <silent> [vimfiler]rs :VimFiler /Users/yito1/Documents/svn/RAGNA_MBG/__DEV__/mragnarok/webapps/mobile/templates_html5<CR><ESC>
+nnoremap <silent> [vimfiler]rg :VimFiler /Users/yito1/Documents/svn/RAGNA_MBG/__DEV__/mragnarok/webapps/mobile/templates<CR><ESC>
+nnoremap <silent> [vimfiler]prs :VimFiler /Users/yito1/Documents/svn/RAGNA_MBG/__PRE__/mragnarok/webapps/mobile/templates_html5<CR><ESC>
+nnoremap <silent> [vimfiler]prg :VimFiler /Users/yito1/Documents/svn/RAGNA_MBG/__PRE__/mragnarok/webapps/mobile/templates<CR><ESC>
+nnoremap <silent> [vimfiler]ms :VimFiler /crooz/venus4_space/venus/venus_4.0/project/gsmonsteregg/master/apps/web/view/SP/<CR><ESC>
+
+
+" noremap <Leader>vf :VimFiler<CR>
+"現在開いているバッファのディレクトリを開く
+" noremap <Leader>vc :VimFilerBufferDir<CR>
+"設定ファイルを書き出すディレクトリ
+"VimFilerBufferDir
+" nmap <C-A><C-A> :VimFiler -split -simple -winwidth=35 -no-quit<CR><ESC>
 
 
 "----------------------------------------------------
 "" vimShell
 "----------------------------------------------------
+let g:VimShell_EnableInteractive = 1
+let g:vimshell_no_save_history_commands = {}
+
+" キーマッピング
+nnoremap [vimshell] <Nop>
+nmap <Leader>c [vimshell]
+nnoremap <silent> [vimshell]c :VimShell<CR>
+
+" noremap <Leader>vs :VimShell<CR>
+
 "設定ファイルを書き出すディレクトリ
-noremap <Leader>vs :VimShell<CR>
 " let g:vimshell_temporary_directory = '~/.vim/data/.vimshell'
 " let g:vimshell_data_directory = $HOME . '/.vim/data/.vimshell'
 "let g:unite_source_vimshell_external_history_path = '~/.vim/data/.vimshell/command-history'
-let g:VimShell_EnableInteractive = 1
-let g:vimshell_no_save_history_commands = {}
 
 "----------------------------------------------------
 "" neocomplacache(neosnippet)
@@ -273,7 +290,7 @@ let g:airline_paste_symbol = 'Þ'
 let g:airline_paste_symbol = '∥'
 let g:airline#extensions#whitespace#symbol = 'Ξ'
 let g:airline_theme='light'
-
+let g:airline_detect_whitespace=0
 
 "ref.vim
 let g:ref_phpmanual_path = '/Applications/MAMP/htdocs/Dropbox/Public/manual/phpmanual'
@@ -283,7 +300,7 @@ let autodate_format="%Y/%m/%d %H:%M:%S"
 
 "
 map R  <Plug>(operator-replace)
-
+map <Leader>S :OverCommandLine<CR>
 "テンプレートを読み込む
 augroup templateload
 	autocmd!
@@ -300,24 +317,26 @@ colorscheme molokai
 "----------------------------------------------------
 "" venus.vim
 "----------------------------------------------------
+" キーマッピング
+nnoremap [venus] <Nop>
+nmap <Leader>v [venus]
+
 " テンプレを開く
-nnoremap <Leader>g :call VenusSwitchFile("tpl")<CR>
+nnoremap <silent> [venus]g :call VenusSwitchFile("tpl")<CR>
 " テンプレ(スマホ)を開く
-nnoremap <Leader>s :call VenusSwitchFile("tplSp")<CR>
+nnoremap <silent> [venus]s :call VenusSwitchFile("tplSp")<CR>
 " コントローラーを開く
-nnoremap <Leader>p :call VenusSwitchFile("Controller")<CR>
+nnoremap <silent> [venus]p :call VenusSwitchFile("Controller")<CR>
 " インクルードファイルを開く
-nnoremap <Leader>i :call VenusSwitchFile("Include")<CR>
-" add
+nnoremap <silent> [venus]i :call VenusSwitchFile("Include")<CR>
 " preを開く
-nnoremap <Leader>tt :call VenusSwitchFile("tpl_switch_devpre")<CR>
+nnoremap <silent> [venus]tt :call VenusSwitchFile("tpl_switch_devpre")<CR>
 " 環境を開く
-nmap <S-R><S-S> :VimFiler /Users/yito1/Documents/svn/RAGNA_MBG/__DEV__/mragnarok/webapps/mobile/templates_html5<CR><ESC>
-nmap <S-R><S-G> :VimFiler /Users/yito1/Documents/svn/RAGNA_MBG/__DEV__/mragnarok/webapps/mobile/templates<CR><ESC>
-nmap <S-M><S-S> :VimFiler /crooz/venus4_space/venus/venus_4.0/project/gsmonsteregg/master/apps/web/view/SP/<CR><ESC>
-" 環境を開く
-nmap <S-A><S-S> :VimFiler /Users/yito1/Documents/svn/AVALON_MBG/__DEV__AVALON/mguildbattle/webapps/mobile/templates_html5<CR><ESC>
-nmap <S-A><S-G> :VimFiler /Users/yito1/Documents/svn/AVALON_MBG/__DEV__AVALON/mguildbattle/webapps/mobile/templates<CR><ESC>
+" nmap <S-R><S-S> :VimFiler /Users/yito1/Documents/svn/RAGNA_MBG/__DEV__/mragnarok/webapps/mobile/templates_html5<CR><ESC>
+" nmap <S-R><S-G> :VimFiler /Users/yito1/Documents/svn/RAGNA_MBG/__DEV__/mragnarok/webapps/mobile/templates<CR><ESC>
+" nmap <S-M><S-S> :VimFiler /crooz/venus4_space/venus/venus_4.0/project/gsmonsteregg/master/apps/web/view/SP/<CR><ESC>
+" nmap <S-A><S-S> :VimFiler /Users/yito1/Documents/svn/AVALON_MBG/__DEV__AVALON/mguildbattle/webapps/mobile/templates_html5<CR><ESC>
+" nmap <S-A><S-G> :VimFiler /Users/yito1/Documents/svn/AVALON_MBG/__DEV__AVALON/mguildbattle/webapps/mobile/templates<CR><ESC>
 
 
 
@@ -418,4 +437,4 @@ au BufNewFile,BufRead *.jsx set filetype=javascript
 " au BufNewFile,BufRead *.tpl set filetype=html
 "
 " md as markdown, instead of modula2
-autocmd MyAutoGroup BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
