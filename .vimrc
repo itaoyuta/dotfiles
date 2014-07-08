@@ -9,6 +9,8 @@ set backupdir=~/.vim/tmp
 set nocompatible "vi互換
 set showmatch "対応括弧をハイライト
 set cursorline "カーソル行をハイライト
+set hlsearch 
+set undodir=./.vimundo,~/.vimundo
 "全角スペースを視覚化
 augroup higlightIdegtaphicSpace
 	autocmd!
@@ -19,12 +21,10 @@ augroup END
 "Tab
 set smartindent
 set ts=2 sw=2 sts=2
-" set expandtab
+"set expandtab
 set noexpandtab
-
 "javascript実行環境をnodejsへ
 let $JS_CMD='node'
-
 
 "map関連
 "<leader>の設定を変更する 
@@ -32,19 +32,58 @@ let mapleader=","
 " ,のデフォルトの機能は、\で使えるように退避
 noremap \  ,
 "Escの2回押しでハイライト消去
-set hlsearch
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 "vimの裏がみたい
 nmap <C-K><C-K> :set transparency=80<CR><ESC>
 "vimの裏がみたいをもどしたい
 nmap <C-J><C-J> :set transparency=6<CR><ESC>
+
+
+"----------------------------------------------------
+" カスタムのキーマップ 
+"----------------------------------------------------
 "タブの切り替えを行う
-nmap <C-T><C-N> :tabnext<CR><ESC>
-nmap <C-T><C-P> :tabprevious<CR><ESC>
-"vimプラグイン等、読み込み指定
-" set runtimepath+=~/.vim/vimfiles/
+nnoremap [tabmove] <Nop>
+nmap <Leader>t [tabmove]
+"windowのリサイズをする
+nnoremap [windowAndFont] <Nop>
+nmap <Leader>w [windowAndFont]
+"Unite
+nnoremap [unite] <Nop>
+nmap <Leader>u [unite]
+"VimFiler
+nnoremap [vimfiler] <Nop>
+nmap <Leader>f [vimfiler]
+"VimShell
+nnoremap [vimshell] <Nop>
+nmap <Leader>c [vimshell]
+"Venus
+nnoremap [venus] <Nop>
+nmap <Leader>v [venus]
 
 
+
+
+
+"タブの切り替えを行う
+nmap <silent> [tabmove]n :tabnext<CR><ESC>
+nmap <silent> [tabmove]p :tabprevious<CR><ESC>
+
+"fontサイズとwindowのリサイズをする
+nmap <silent> [windowAndFont]1 :call SetFontAndWindow(1) <CR><ESC>
+nmap <silent> [windowAndFont]2 :call SetFontAndWindow(2) <CR><ESC>
+
+function! SetFontAndWindow(v1)
+	if a:v1 == 1
+		set guifont=Ricty_for_Powerline:h18
+		set columns=230
+		set lines=60
+	elseif a:v1 == 2
+		set guifont=Ricty_for_Powerline:h12
+		set columns=250
+		set lines=200
+	endif
+endfunction
 
 
 "----------------------------------------------------
@@ -74,7 +113,7 @@ NeoBundle 'Shougo/vimproc', {
 			\     'unix' : 'make -f make_unix.mak',
 			\    },
 			\ }
-" NeoBundle 'thinca/vim-qfreplace' "個人的に修正したのでいったん除外
+NeoBundle 'thinca/vim-qfreplace' "個人的に修正したのでいったん除外
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'mattn/livestyle-vim'
@@ -100,7 +139,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'jimsei/winresizer'
 NeoBundle 'tsukkee/unite-help'
-NeoBundle 'kmnk/vim-unite-svn.git'
+" NeoBundle 'kmnk/vim-unite-svn.git'
 NeoBundle 'fuenor/qfixgrep'
 NeoBundle 'tomtom/tcomment_vim'
 "ステータスライン
@@ -113,6 +152,7 @@ NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
 NeoBundle 'CSApprox' 
 NeoBundle 'autodate.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+" NeoBundle 'vcscommand.vim'
 " NeoBundle 'https://github.com/vim-scripts/DirDiff.vim'
 " NeoBundle 'git://gist.github.com/rcmachado/256840' "html5のシンタックス
 filetype plugin indent on
@@ -161,8 +201,7 @@ let g:unite_source_grep_max_candidates = 1000
 
 
 " キーマッピング
-nnoremap [unite] <Nop>
-nmap <Leader>u [unite]
+"Unite
 nnoremap <silent> [unite]u :Unite file_mru<CR>
 nnoremap <silent> [unite]r :Unite file_rec<CR>
 nnoremap <silent> [unite]a :Unite file_rec/async<CR>
@@ -213,8 +252,6 @@ call vimfiler#set_execute_file('html','com.google.chrome')
 autocmd FileType vimfiler call unite#custom_default_action('directory', 'cd')
 
 " キーマッピング
-nnoremap [vimfiler] <Nop>
-nmap <Leader>f [vimfiler]
 nnoremap <silent> [vimfiler]f :VimFiler<CR>
 nnoremap <silent> [vimfiler]c :VimFilerBufferDir<CR>
 nnoremap <silent> [vimfiler]rs :VimFiler /Users/yito1/Documents/svn/RAGNA_MBG/__DEV__/mragnarok/webapps/mobile/templates_html5<CR><ESC>
@@ -222,6 +259,9 @@ nnoremap <silent> [vimfiler]rg :VimFiler /Users/yito1/Documents/svn/RAGNA_MBG/__
 nnoremap <silent> [vimfiler]prs :VimFiler /Users/yito1/Documents/svn/RAGNA_MBG/__PRE__/mragnarok/webapps/mobile/templates_html5<CR><ESC>
 nnoremap <silent> [vimfiler]prg :VimFiler /Users/yito1/Documents/svn/RAGNA_MBG/__PRE__/mragnarok/webapps/mobile/templates<CR><ESC>
 nnoremap <silent> [vimfiler]ms :VimFiler /crooz/venus4_space/venus/venus_4.0/project/gsmonsteregg/master/apps/web/view/SP/<CR><ESC>
+nnoremap <silent> [vimfiler]bs :VimFiler /crooz/venus3_space/venus/venus_3.0/project/msbattle/master/webapps/mobile/templates_html5/<CR><ESC>
+nnoremap <silent> [vimfiler]bg :VimFiler /crooz/venus3_space/venus/venus_3.0/project/msbattle/master/webapps/mobile/templates/<CR><ESC>
+nnoremap <silent> [vimfiler]gs :VimFiler /crooz/venus3_space/venus/venus_3.0/project/gsbattle/master/webapps/mobile/templates_html5/<CR><ESC>
 
 "----------------------------------------------------
 " vimShell
@@ -230,8 +270,6 @@ let g:VimShell_EnableInteractive = 1
 let g:vimshell_no_save_history_commands = {}
 
 " キーマッピング
-nnoremap [vimshell] <Nop>
-nmap <Leader>c [vimshell]
 nnoremap <silent> [vimshell]c :VimShell<CR>
 
 
@@ -291,7 +329,7 @@ let g:airline_detect_whitespace=0
 "----------------------------------------------------
 " ref.vim
 "----------------------------------------------------
-let g:ref_phpmanual_path = '/Applications/MAMP/htdocs/Dropbox/Public/manual/phpmanual'
+" let g:ref_phpmanual_path = '/Applications/MAMP/htdocs/Dropbox/Public/manual/phpmanual'
 
 "----------------------------------------------------
 " autodate.vim
@@ -317,9 +355,6 @@ map <leader>= :%! tidy -config ~/tidy/html<CR>
 " venus.vim
 "----------------------------------------------------
 " キーマッピング
-nnoremap [venus] <Nop>
-nmap <Leader>v [venus]
-
 nnoremap <silent> [venus]g :call VenusSwitchFile("tpl")<CR>
 nnoremap <silent> [venus]s :call VenusSwitchFile("tplSp")<CR>
 nnoremap <silent> [venus]p :call VenusSwitchFile("Controller")<CR>

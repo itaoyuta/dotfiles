@@ -304,14 +304,46 @@ abbr イメージタグサンプル
 
 snippet TplTagStyle
 abbr smartyのstyleのタグ
-    {link rel="stylesheet" href="/css/${1:path}.css" charset="utf8"}{/link}
+		{link rel="stylesheet" href="/css/${1:path}.css" charset="utf8"}{/link}
 
 snippet TplTagScript
 abbr smartyのscriptのタグ
-    {script src="/js/${1:path}.js" charset="utf-8"}{/script}
+		{script src="/js/${1:path}.js" charset="utf-8"}{/script}
 
 
 #以下、アヴァロン
 snippet TplAFpEmphasis
 abbr [A]ガラケーの強調文字
 	<span style="{#STYLE_FNT_EMPHASIS#}"></span>
+
+
+
+#以下、モンタマ
+snippet TplMOverlay
+abbr	モンタマオーバーレイ
+	<a href="#test1" class="btn_sub" data-modal>test1</a>
+	<script id="test1" type="text/html">
+		test1の内容
+	</script>
+
+
+snippet TplMSwitch
+abbr	モンタマスイッチ
+	<ul class="btn_switch">
+		<li class="current"><a href="#reward1" data-parent-content="view_content" data-switch-class><i class="txt_line"></i></a></li>
+		<li><a href="#reward2" data-parent-content="view_content" data-switch-class><i class="txt_rainbow"></i></a></li>
+	</ul>
+	<ul class="switch_content_box switch_contents">
+		<li id="reward1" class="view_content sub event no_margin_top" type="text/html">
+			reward1の内容
+		</li>
+		<script id="reward2" class="view_content" type="text/html">
+			reward2の内容
+		</script>
+	</ul>
+
+
+
+snippet TplIButton
+abbr	IKUSAボタン
+		{button href="neptune://???Tag===WebBrowser&&&Url===http://www.facebook.com/sharer.php?u=http://monsteregg.jp/" type="type2" size="medium" class="fnt_small" style="position: relative;"}{/button}
