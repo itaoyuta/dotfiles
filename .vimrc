@@ -40,7 +40,7 @@ nmap <C-J><C-J> :set transparency=6<CR><ESC>
 
 
 "----------------------------------------------------
-" カスタムのキーマップ 
+" カスタムのキーマップ(パーシャルしているものもわからなくなるので全てここに記述) 
 "----------------------------------------------------
 "タブの切り替えを行う
 nnoremap [tabmove] <Nop>
@@ -57,12 +57,9 @@ nmap <Leader>f [vimfiler]
 "VimShell
 nnoremap [vimshell] <Nop>
 nmap <Leader>c [vimshell]
-"Venus
+"Venus(officeで利用)
 nnoremap [venus] <Nop>
 nmap <Leader>v [venus]
-
-
-
 
 
 "タブの切り替えを行う
@@ -213,33 +210,6 @@ nnoremap <silent> [unite]m :Unite bookmark<CR>
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
-" 自作unite
-" アクション
-let diff_dev_pre = {'description' : 'devとpreをDirDiff'}
-function! diff_dev_pre.func(candidate)
-	let path = expand('#:p')
-	let vimfiler = vimfiler#get_current_vimfiler()
-	let marked_files = vimfiler#get_marked_files()
-
-	let dirA = marked_files[0].action__path
-	if empty(dirA)
-			let dirA =  [ vimfiler#get_file(cursor_linenr) ]
-	endif
-
-	if dirA =~ "DEV"
-		let dirB = substitute(dirA, "DEV", "PRE", "") 
-	else 
-		let dirB = substitute(dirA, "PRE", "DEV", "") 
-	endif
-
-	:tabnew<CR>
-	call DirDiff(dirA,dirB)
-
-endfunction
-
-call unite#custom_action('file' , 'diff_dev_pre' , diff_dev_pre)
-unlet diff_dev_pre
-
 
 "----------------------------------------------------
 " vimfiler
@@ -254,14 +224,6 @@ autocmd FileType vimfiler call unite#custom_default_action('directory', 'cd')
 " キーマッピング
 nnoremap <silent> [vimfiler]f :VimFiler<CR>
 nnoremap <silent> [vimfiler]c :VimFilerBufferDir<CR>
-nnoremap <silent> [vimfiler]rs :VimFiler /Users/yito1/Documents/svn/RAGNA_MBG/__DEV__/mragnarok/webapps/mobile/templates_html5<CR><ESC>
-nnoremap <silent> [vimfiler]rg :VimFiler /Users/yito1/Documents/svn/RAGNA_MBG/__DEV__/mragnarok/webapps/mobile/templates<CR><ESC>
-nnoremap <silent> [vimfiler]prs :VimFiler /Users/yito1/Documents/svn/RAGNA_MBG/__PRE__/mragnarok/webapps/mobile/templates_html5<CR><ESC>
-nnoremap <silent> [vimfiler]prg :VimFiler /Users/yito1/Documents/svn/RAGNA_MBG/__PRE__/mragnarok/webapps/mobile/templates<CR><ESC>
-nnoremap <silent> [vimfiler]ms :VimFiler /crooz/venus4_space/venus/venus_4.0/project/gsmonsteregg/master/apps/web/view/SP/<CR><ESC>
-nnoremap <silent> [vimfiler]bs :VimFiler /crooz/venus3_space/venus/venus_3.0/project/msbattle/master/webapps/mobile/templates_html5/<CR><ESC>
-nnoremap <silent> [vimfiler]bg :VimFiler /crooz/venus3_space/venus/venus_3.0/project/msbattle/master/webapps/mobile/templates/<CR><ESC>
-nnoremap <silent> [vimfiler]gs :VimFiler /crooz/venus3_space/venus/venus_3.0/project/gsbattle/master/webapps/mobile/templates_html5/<CR><ESC>
 
 "----------------------------------------------------
 " vimShell
@@ -351,15 +313,6 @@ map <Leader>S :OverCommandLine<CR>
 "----------------------------------------------------
 map <leader>= :%! tidy -config ~/tidy/html<CR>
 
-"----------------------------------------------------
-" venus.vim
-"----------------------------------------------------
-" キーマッピング
-nnoremap <silent> [venus]g :call VenusSwitchFile("tpl")<CR>
-nnoremap <silent> [venus]s :call VenusSwitchFile("tplSp")<CR>
-nnoremap <silent> [venus]p :call VenusSwitchFile("Controller")<CR>
-nnoremap <silent> [venus]i :call VenusSwitchFile("Include")<CR>
-nnoremap <silent> [venus]tt :call VenusSwitchFile("tpl_switch_devpre")<CR>
 
 "----------------------------------------------------
 " .vim/plugin/TplCommon.vim
@@ -369,10 +322,6 @@ nmap <S-R><S-R> :ChromeReload<CR><ESC>
 nmap <S-C><S-C> :call TplComment()<CR>
 nmap <S-S><S-S> :call TplSection()<CR>
 nmap <S-N><S-N> :call TplLineComment()<CR>
-
-
-
-
 
 
 "----------------------------------------------------
@@ -397,3 +346,10 @@ augroup END
 "colorscheme pyte
 colorscheme molokai
 hi DiffAdd term=bold ctermbg=1 guibg=#ff0000
+
+
+"----------------------------------------------------
+" パーシャルファイル
+"----------------------------------------------------
+set runtimepath+=~/.vim/
+runtime! conf.d/*.vim
