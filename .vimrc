@@ -152,6 +152,8 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 " NeoBundle 'vcscommand.vim'
 " NeoBundle 'https://github.com/vim-scripts/DirDiff.vim'
 " NeoBundle 'git://gist.github.com/rcmachado/256840' "html5のシンタックス
+
+NeoBundle 'mattn/yamada2-vim'
 filetype plugin indent on
 
 

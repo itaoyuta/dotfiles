@@ -9,7 +9,7 @@ alias safari='open -a safari'
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 # export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
 
-#rbenvの初期化
+#rbenv,pyenvの初期化
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
 

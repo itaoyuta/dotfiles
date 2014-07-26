@@ -12,6 +12,7 @@
 tap homebrew/versions || true
 tap caskroom/cask || true
 tap caskroom/versions || true
+tap homebrew/dupes || true
 
 #Homebrewを最新版にアップデート
 update || true
@@ -27,6 +28,7 @@ install rbenv ruby-build || true
 install pyenv || true
 install node || true
 install go || true
+install apple-gcc42
 
 #Install Cask formulae
 #cask install google-chrome || true
