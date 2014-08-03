@@ -118,7 +118,7 @@ NeoBundle 'mattn/emmet-vim'
 call neobundle#config('emmet-vim', {
       \ 'autoload' : {
       \   'filetypes' : [
-      \     'html',
+		  \     'html',
       \     'haml',
       \     'slim',
       \     'css',
@@ -180,7 +180,7 @@ let g:indent_guides_guide_size = 1
 "" unite
 "----------------------------------------------------
 " 設定ファイルを書き出すディレクトリ
-let g:unite_data_directory = '~/.vim/data/.unite'
+" let g:unite_data_directory = '~/.vim/data/.unite'
 " nmap <C-R> :Unite -start-insert file_rec:!
 let g:unite_source_rec_max_cache_files = 20000
 " 入力モードで開始する
@@ -216,7 +216,7 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 "----------------------------------------------------
 " vimfiler
 "----------------------------------------------------
-let g:vimfiler_data_directory = '~/.vim/data/.vimfiler'
+" let g:vimfiler_data_directory = '~/.vim/data/.vimfiler'
 let g:vimfiler_as_default_explorer=1
 let g:vimfiler_safe_mode_by_default=0
 "ダブルクリックで起動するシステムを設定
@@ -241,7 +241,7 @@ nnoremap <silent> [vimshell]c :VimShell<CR>
 " neocomplacache(neosnippet)
 "----------------------------------------------------
 "設定ファイルを書き出すディレクトリ
-let g:neocomplcache_temporary_dir = '~/.vim/data/.neocon'
+" let g:neocomplcache_temporary_dir = '~/.vim/data/.neocon'
 let g:neocomplcache_auto_completion_start_length = 2
 " <C-k> にマッピング
 let g:neocomplcache_enable_at_startup=1
