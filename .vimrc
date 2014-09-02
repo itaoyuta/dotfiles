@@ -11,6 +11,8 @@ set showmatch "対応括弧をハイライト
 set cursorline "カーソル行をハイライト
 set hlsearch 
 set undodir=./.vimundo,~/.vimundo
+set formatoptions=q "自動改行off
+
 "全角スペースを視覚化
 augroup higlightIdegtaphicSpace
 	autocmd!
@@ -69,6 +71,7 @@ nmap <silent> [tabmove]p :tabprevious<CR><ESC>
 "fontサイズとwindowのリサイズをする
 nmap <silent> [windowAndFont]1 :call SetFontAndWindow(1) <CR><ESC>
 nmap <silent> [windowAndFont]2 :call SetFontAndWindow(2) <CR><ESC>
+nmap <silent> [windowAndFont]3 :call SetFontAndWindow(3) <CR><ESC>
 
 function! SetFontAndWindow(v1)
 	if a:v1 == 1
@@ -78,6 +81,10 @@ function! SetFontAndWindow(v1)
 	elseif a:v1 == 2
 		set guifont=Ricty_for_Powerline:h12
 		set columns=250
+		set lines=200
+	elseif a:v1 == 3
+		set guifont=Ricty_for_Powerline:h12
+		set columns=350
 		set lines=200
 	endif
 endfunction
