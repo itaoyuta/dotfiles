@@ -1,5 +1,5 @@
 scriptencoding utf-8
-set guifont=Ricty_for_Powerline:h18
+set guifont=Ricty_for_Powerline:h12
 set number
 set encoding=utf-8
 set fileencodings=iso-2022-jp,utf-8,cp932,euc-jp,default,latin
@@ -165,14 +165,16 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 
 NeoBundle 'mattn/yamada2-vim'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'nosami/Omnisharp'
+NeoBundle 'junegunn/vim-easy-align'
 
-NeoBundleLazy 'nosami/Omnisharp', {
-\   'autoload': {'filetypes': ['cs']},
-\   'build': {
-\     'mac': 'xbuild server/OmniSharp.sln',
-\     'unix': 'xbuild server/OmniSharp.sln',
-\   }
-\ }
+" NeoBundleLazy 'nosami/Omnisharp', {
+" \   'autoload': {'filetypes': ['cs']},
+" \   'build': {
+" \     'mac': 'xbuild server/OmniSharp.sln',
+" \     'unix': 'xbuild server/OmniSharp.sln',
+" \   }
+" \ }
 
 filetype plugin indent on
 
@@ -278,10 +280,16 @@ set completeopt-=preview
 nmap <S-T><S-T> :NeoComplCacheToggle<CR>
 
 "C#の設定
-if !exists('g:neocomplcache_force_omni_patterns')
-  let g:neocomplcache_force_omni_patterns = {}
-endif
-let g:neocomplcache_force_omni_patterns.cs = '[^.]\.\%(\u\{2,}\)\?'
+" if !exists('g:neocomplcache_force_omni_patterns')
+"   let g:neocomplcache_force_omni_patterns = {}
+" endif
+" let g:neocomplcache_force_omni_patterns.cs = '[^.]\.\%(\u\{2,}\)\?'
+
+
+
+
+
+
 
 
 " let g:neocomplcache_enable_at_startup = 1
@@ -557,3 +565,19 @@ nnoremap [omnisharp]sp :OmniSharpStopServer<cr>
 nnoremap [omnisharp]th :OmniSharpHighlightTypes<cr>
 "Don't ask to save when changing buffers (i.e. when jumping to a type definition)
 set hidden
+
+
+
+
+
+" C#の場合は、bomb付きutf-8で保存
+autocmd BufWritePre *.cs :se fenc=utf-8 bomb
+
+
+" easy-align
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
