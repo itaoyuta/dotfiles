@@ -268,7 +268,7 @@ let g:neocomplcache_auto_completion_start_length = 2
 " <C-k> にマッピング
 let g:neocomplcache_enable_at_startup=1
 "let g:neocomplcache_enable_auto_select=1
-let g:neocomplcache_snippets_dir = '~/.vim/snippets'
+" let g:neocomplcache_snippets_dir = '~/.vim/snippets'
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 imap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"

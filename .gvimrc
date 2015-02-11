@@ -39,9 +39,9 @@ set guifont=Ricty_for_Powerline:h12
 augroup hack234
   autocmd!
   if has('mac')
-    autocmd FocusGained * set transparency=16
+    autocmd FocusGained * set transparency=10
     autocmd FocusLost * set transparency=50
-    autocmd GUIEnter * set transparency=16
+    autocmd GUIEnter * set transparency=10
   endif
 augroup END
 

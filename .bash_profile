@@ -17,5 +17,5 @@ eval "$(pyenv init -)"
 
 
 # MacPorts Installer addition on 2011-08-23_at_18:15:04: adding an appropriate PATH variable for use with MacPorts.
-# export PATH=/opt/local/bin:/opt/local/sbin:$PATH:~/bin
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH:~/bin
 # Finished adapting your PATH environment variable for use with MacPorts.
