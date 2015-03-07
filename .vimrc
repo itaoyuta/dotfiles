@@ -175,6 +175,7 @@ NeoBundle 'junegunn/vim-easy-align'
 " \     'unix': 'xbuild server/OmniSharp.sln',
 " \   }
 " \ }
+NeoBundle 'tpope/vim-dispatch'
 
 filetype plugin indent on
 
