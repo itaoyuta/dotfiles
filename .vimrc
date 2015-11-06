@@ -97,85 +97,91 @@ endfunction
 " neobundle.vim
 "----------------------------------------------------
 filetype plugin indent off
+
+
 if has('vim_starting')
 	set runtimepath+=~/.vim/bundle/neobundle.vim/
-	call neobundle#rc(expand('~/.vim/bundle/'))
+"	call neobundle#rc(expand('~/.vim/bundle/'))
+  call neobundle#begin(expand('~/.vim/bundle/'))
+
+	"利用中のプラグインをBundle
+	"githubにあるプラグイン
+	NeoBundle 'Shougo/neobundle.vim'
+	NeoBundle 'Shougo/neomru.vim'
+	NeoBundle 'Shougo/unite.vim'
+	NeoBundle 'Shougo/neosnippet'
+	NeoBundle 'Shougo/neosnippet-snippets'
+	" NeoBundle 'Shougo/neocomplcache'
+	NeoBundle 'Shougo/neocomplete'
+	NeoBundle 'Shougo/vimfiler'
+	NeoBundle 'Shougo/vimshell'
+	NeoBundle 'Shougo/vimproc', {
+				\ 'build' : {
+				\     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
+				\     'cygwin' : 'make -f make_cygwin.mak',
+				\     'mac' : 'make -f make_mac.mak',
+				\     'unix' : 'make -f make_unix.mak',
+				\    },
+				\ }
+	NeoBundle 'thinca/vim-qfreplace' "個人的に修正したのでいったん除外
+	NeoBundle 'thinca/vim-quickrun'
+	NeoBundle 'thinca/vim-ref'
+	NeoBundle 'mattn/livestyle-vim'
+	NeoBundle 'mattn/emmet-vim'
+	call neobundle#config('emmet-vim', {
+				\ 'autoload' : {
+				\   'filetypes' : [
+				\     'html',
+				\     'haml',
+				\     'slim',
+				\     'css',
+				\   ],
+				\ },
+				\ })
+	NeoBundle 'kana/vim-textobj-user'
+	NeoBundle 'kana/vim-operator-user'
+	NeoBundle 'kana/vim-operator-replace'
+	NeoBundle 'osyo-manga/vim-textobj-multitextobj'
+	NeoBundle 'osyo-manga/vim-over'
+	NeoBundle 'tpope/vim-surround'
+	NeoBundle 'tpope/vim-markdown'
+	NeoBundle 'tpope/vim-fugitive'
+	NeoBundle 'rking/ag.vim'
+	NeoBundle 'jimsei/winresizer'
+	NeoBundle 'tsukkee/unite-help'
+	" NeoBundle 'kmnk/vim-unite-svn.git'
+	NeoBundle 'fuenor/qfixgrep'
+	NeoBundle 'tomtom/tcomment_vim'
+	"ステータスライン
+	NeoBundle 'osyo-manga/unite-airline_themes'
+	NeoBundle 'bling/vim-airline.git'
+	NeoBundle 'alpaca-tc/alpaca_powertabline'
+	NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+
+	" www.vim.orgにあるプラグイン
+	NeoBundle 'CSApprox' 
+	NeoBundle 'autodate.vim'
+	NeoBundle 'nathanaelkane/vim-indent-guides'
+	" NeoBundle 'vcscommand.vim'
+	" NeoBundle 'https://github.com/vim-scripts/DirDiff.vim'
+	" NeoBundle 'git://gist.github.com/rcmachado/256840' "html5のシンタックス
+
+	NeoBundle 'mattn/yamada2-vim'
+	NeoBundle 'scrooloose/syntastic'
+	NeoBundle 'nosami/Omnisharp'
+	NeoBundle 'junegunn/vim-easy-align'
+
+	" NeoBundleLazy 'nosami/Omnisharp', {
+	" \   'autoload': {'filetypes': ['cs']},
+	" \   'build': {
+	" \     'mac': 'xbuild server/OmniSharp.sln',
+	" \     'unix': 'xbuild server/OmniSharp.sln',
+	" \   }
+	" \ }
+	NeoBundle 'tpope/vim-dispatch'
+
+	call neobundle#end()
 endif
-
-"利用中のプラグインをBundle
-"githubにあるプラグイン
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/vimproc', {
-			\ 'build' : {
-			\     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
-			\     'cygwin' : 'make -f make_cygwin.mak',
-			\     'mac' : 'make -f make_mac.mak',
-			\     'unix' : 'make -f make_unix.mak',
-			\    },
-			\ }
-NeoBundle 'thinca/vim-qfreplace' "個人的に修正したのでいったん除外
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'mattn/livestyle-vim'
-NeoBundle 'mattn/emmet-vim'
-call neobundle#config('emmet-vim', {
-      \ 'autoload' : {
-      \   'filetypes' : [
-		  \     'html',
-      \     'haml',
-      \     'slim',
-      \     'css',
-      \   ],
-      \ },
-      \ })
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kana/vim-operator-user'
-NeoBundle 'kana/vim-operator-replace'
-NeoBundle 'osyo-manga/vim-textobj-multitextobj'
-NeoBundle 'osyo-manga/vim-over'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'jimsei/winresizer'
-NeoBundle 'tsukkee/unite-help'
-" NeoBundle 'kmnk/vim-unite-svn.git'
-NeoBundle 'fuenor/qfixgrep'
-NeoBundle 'tomtom/tcomment_vim'
-"ステータスライン
-NeoBundle 'osyo-manga/unite-airline_themes'
-NeoBundle 'bling/vim-airline.git'
-NeoBundle 'alpaca-tc/alpaca_powertabline'
-NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
-
-" www.vim.orgにあるプラグイン
-NeoBundle 'CSApprox' 
-NeoBundle 'autodate.vim'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-" NeoBundle 'vcscommand.vim'
-" NeoBundle 'https://github.com/vim-scripts/DirDiff.vim'
-" NeoBundle 'git://gist.github.com/rcmachado/256840' "html5のシンタックス
-
-NeoBundle 'mattn/yamada2-vim'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'nosami/Omnisharp'
-NeoBundle 'junegunn/vim-easy-align'
-
-" NeoBundleLazy 'nosami/Omnisharp', {
-" \   'autoload': {'filetypes': ['cs']},
-" \   'build': {
-" \     'mac': 'xbuild server/OmniSharp.sln',
-" \     'unix': 'xbuild server/OmniSharp.sln',
-" \   }
-" \ }
-NeoBundle 'tpope/vim-dispatch'
 
 filetype plugin indent on
 
@@ -261,17 +267,17 @@ nnoremap <silent> [vimshell]c :VimShell<CR>
 
 
 "----------------------------------------------------
-" neocomplacache(neosnippet)
+" neocomplete(neosnippet)
 "----------------------------------------------------
+let g:neocomplete#enable_at_startup = 1
 "設定ファイルを書き出すディレクトリ
 " let g:neocomplcache_temporary_dir = '~/.vim/data/.neocon'
-let g:neocomplcache_auto_completion_start_length = 2
-" <C-k> にマッピング
-let g:neocomplcache_enable_at_startup=1
+let g:neocomplete_auto_completion_start_length = 2
+let g:neocomplete_enable_at_startup=1
 "let g:neocomplcache_enable_auto_select=1
-let g:neocomplcache_snippets_directory = '~/.vim/neosnippets'
+let g:neocomplete_snippets_directory = '~/.vim/neosnippets'
+" <C-k> にマッピング
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
 imap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 " imap <C-k> <Plug>(neocomplcache_snippets_expand)
@@ -280,13 +286,17 @@ set completeopt-=preview
 "スニペットが日本語入力の邪魔をするときのために
 nmap <S-T><S-T> :NeoComplCacheToggle<CR>
 
-"C#の設定
+" "C#の設定
 " if !exists('g:neocomplcache_force_omni_patterns')
 "   let g:neocomplcache_force_omni_patterns = {}
 " endif
-" let g:neocomplcache_force_omni_patterns.cs = '[^.]\.\%(\u\{2,}\)\?'
+" let g:neocomplcache_force_omni_patterns
 
-
+" 補完のとき、関数とか見えるようになる
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.cs = '[^.]\.\%(\u\{2,}\)\?'
 
 
 
@@ -378,16 +388,16 @@ else
 	let g:airline_powerline_fonts = 0
 endif
 
-let g:airline_linecolumn_prefix = '␊ '
-let g:airline_linecolumn_prefix = '␤ '
-let g:airline_linecolumn_prefix = '¶ '
-let g:airline#extensions#branch#symbol = '⎇ '
-let g:airline_paste_symbol = 'ρ'
-let g:airline_paste_symbol = 'Þ'
-let g:airline_paste_symbol = '∥'
-let g:airline#extensions#whitespace#symbol = 'Ξ'
+" let g:airline_linecolumn_prefix = '␊ '
+" let g:airline_linecolumn_prefix = '␤ '
+" let g:airline_linecolumn_prefix = '¶ '
+" let g:airline#extensions#branch#symbol = '⎇ '
+" let g:airline_paste_symbol = 'ρ'
+" let g:airline_paste_symbol = 'Þ'
+" let g:airline_paste_symbol = '∥'
+" let g:airline#extensions#whitespace#symbol = 'Ξ'
 let g:airline_theme='light'
-let g:airline_detect_whitespace=0
+" let g:airline_detect_whitespace=0
 
 "----------------------------------------------------
 " ref.vim
@@ -472,6 +482,8 @@ let g:OmniSharp_host = "http://localhost:2000"
 
 "Timeout in seconds to wait for a response from the server
 let g:OmniSharp_timeout = 1
+
+let g:OmniSharp_selector_ui = 'unite'
 
 "Showmatch significantly slows down omnicomplete
 "when the first match contains parentheses.
@@ -567,6 +579,16 @@ nnoremap [omnisharp]sp :OmniSharpStopServer<cr>
 nnoremap [omnisharp]th :OmniSharpHighlightTypes<cr>
 "Don't ask to save when changing buffers (i.e. when jumping to a type definition)
 set hidden
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,21 @@
+set expandtab
+#comment
+snippet CsButtonCallback
+abbr ボタンのコールバック(UIButtonTween)
+  void OnClick_${1:$hoge}Button(UIButtonTween _v){
+		// Debug.Log("===================tween name " + _v.commandValue);
+	}
+
+
+snippet CsDialogMsgShowDialog
+abbr メッセージダイアログのコールバック付き(UIDialogMsg.ShowDialog)
+	UIDialogMsg.ShowDialog("レベル上限に達しました","マナをxxxxxx獲得しました",UIDialog.CommandType.OK,x=>{
+		GUIManager.ReqScreen ("UIScreenCardInventory");
+	});
+
+snippet CsInitFunc
+abbr screenとダイアログのinit関数
+  public override IEnumerator Init( bool _anim=true ){
+		yield return null;
+		base.OnInitializedSuccess( _anim );
+  }

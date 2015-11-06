@@ -1,0 +1,71 @@
+#comment
+snippet CsButtonCallback
+abbr ボタンのコールバック(UIButtonTween)
+  void OnClick_${1:$hoge}Button(UIButtonTween _v){
+		// Debug.Log("===================tween name " + _v.commandValue);
+	}
+
+
+
+snippet CsDialogMsgShowDialog
+abbr メッセージダイアログのコールバック付き(UIDialogMsg.ShowDialog)
+	UIDialogMsg.ShowDialog("レベル上限に達しました","マナをxxxxxx獲得しました",UIDialog.CommandType.OK,x=>{
+		RsGUIManager.ReqScreen ("UIScreenCardInventory");
+	});
+
+
+snippet CsInitFunc
+abbr screenとダイアログのinit関数
+	protected override IEnumerator Init(){
+		yield break;
+  }
+
+snippet CsOrange
+abbr オレンジ色
+  [ff9900][-]
+
+snippet CsPoco
+abbr ポコフッター
+  UIPartsPocoSystem.Create(this);
+
+
+snippet CsScaleParts
+abbr オブジェスケールの変更
+  _icon.gameObject.transform.localScale = new Vector3((float)0.8, (float)0.8, (float)0.8);
+
+
+snippet CsCanvasAnim
+abbr canvasAnim
+	[SerializeField] UICanvasWidgetBase canvasAnim;
+	canvasAnim.CanvasIn();
+	protected override void OnShown(){
+		base.OnShown();
+		StartCoroutine(StartInitAnim());
+	}
+  IEnumerator StartInitAnim(){
+		yield return StartCoroutine(canvasAnim.FadeIn());
+	}
+
+
+
+snippet CsCbtClose
+abbr cbtClose
+  // CBTクローズ対応
+  if(masterDataManager.Instance.IS_CBT){
+    UIDialogMsgCbt.ShowDialog();
+    return;
+  }
+
+
+snippet CsMarquee
+abbr createMarquee
+    //マーキー
+	  [SerializeField] UILabel labelmsgMarquee;// マーキー用のラベル
+    SimpleMessageData data = masterDataManager.Instance.GetSimpleMessageForKey("MARQUEE_SOCIAL_SEARCH_RESULT");
+    if(data != null){
+      labelmsgMarquee.text = data.Message; //マーキー用のラベル
+    }
+
+
+
+
