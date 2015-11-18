@@ -168,16 +168,17 @@ if has('vim_starting')
 
 	NeoBundle 'mattn/yamada2-vim'
 	NeoBundle 'scrooloose/syntastic'
-	NeoBundle 'nosami/Omnisharp'
+	" NeoBundle 'nosami/Omnisharp'
 	NeoBundle 'junegunn/vim-easy-align'
 
-	" NeoBundleLazy 'nosami/Omnisharp', {
-	" \   'autoload': {'filetypes': ['cs']},
-	" \   'build': {
-	" \     'mac': 'xbuild server/OmniSharp.sln',
-	" \     'unix': 'xbuild server/OmniSharp.sln',
-	" \   }
-	" \ }
+	NeoBundleLazy 'OmniSharp/omnisharp-vim', {
+	\   'autoload': { 'filetypes': [ 'cs', 'csi', 'csx' ] },
+	\   'build': {
+	\     'windows' : 'msbuild server/OmniSharp.sln',
+	\     'mac': 'xbuild server/OmniSharp.sln',
+	\     'unix': 'xbuild server/OmniSharp.sln',
+	\   },
+	\ }
 	NeoBundle 'tpope/vim-dispatch'
 
 	call neobundle#end()
