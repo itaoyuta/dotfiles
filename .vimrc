@@ -285,7 +285,7 @@ smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : 
 " smap <C-k> <Plug>(neocomplcache_snippets_expand)
 set completeopt-=preview
 "スニペットが日本語入力の邪魔をするときのために
-nmap <S-T><S-T> :NeoComplCacheToggle<CR>
+nmap <S-T><S-T> :NeoCompleteToggle<CR>
 
 " "C#の設定
 " if !exists('g:neocomplcache_force_omni_patterns')
