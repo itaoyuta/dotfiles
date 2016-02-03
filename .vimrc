@@ -149,6 +149,7 @@ if has('vim_starting')
 	NeoBundle 'rking/ag.vim'
 	NeoBundle 'jimsei/winresizer'
 	NeoBundle 'tsukkee/unite-help'
+	NeoBundle 'tsukkee/unite-tag'
 	" NeoBundle 'kmnk/vim-unite-svn.git'
 	NeoBundle 'fuenor/qfixgrep'
 	NeoBundle 'tomtom/tcomment_vim'
@@ -180,6 +181,7 @@ if has('vim_starting')
 	\   },
 	\ }
 	NeoBundle 'tpope/vim-dispatch'
+	NeoBundle 'kmnk/vim-unite-giti'
 
 	call neobundle#end()
 endif
@@ -237,6 +239,7 @@ nnoremap <silent> [unite]a :Unite file_rec/async<CR>
 nnoremap <silent> [unite]d :Unite directory_mru<CR>
 nnoremap <silent> [unite]b :Unite buffer<CR>
 nnoremap <silent> [unite]m :Unite bookmark<CR>
+nnoremap <silent> [unite]c :Unite tag<CR>
 
 " ESCキーを2回押すと終了する
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
