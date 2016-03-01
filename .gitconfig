@@ -1,8 +1,8 @@
 [user]
-	name = 伊藤 悠太
-	email = yito1@crooz.co.jp
+	name = itao
+	email = itaoyuta@gmail.com
 [core]
-	excludesfile = /Users/yito1/.gitignore_global
+	editor = vim -c \"set fenc=utf-8\"
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 

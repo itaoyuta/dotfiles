@@ -3,8 +3,10 @@
 #全ての隠しファイルを除外
 /*.
 
+!/.tmux.conf
 !/.bash_profile
 !/.zshrc
+!/.bashrc
 !/.vimshrc
 !/.vimrc
 !/.gvimrc
@@ -19,13 +21,8 @@
 /.vim/tmp/*
 /.vim/bundle/*
 /.vim/data/*
-/.vim/conf.d/office.vim
+/.vim/vim.d/office.vim
 
 #各静的プラグインディレクトリのキャッシュファイルを取り除く
-/.vim/colors/.DS_Store
-/.vim/indent/.DS_Store
-/.vim/plugin/.DS_Store
-/.vim/snippets/.DS_Store
-/.vim/syntax/.DS_Store
-/.vim/template/.DS_Store
-/.vim/vimfiles/.DS_Store
+*.DS_Store
+

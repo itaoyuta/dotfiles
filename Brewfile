@@ -1,38 +1,38 @@
-#参考 : http://qiita.com/hidekuro/items/4c926587f3a1cb2ec1e0
-#前提 : AppStore より Xcode の最新版がインストールされていて、Xcodeのコマンドラインツールがインストールされている
-#その他
-#バージョン指定してインストール : http://qiita.com/semind/items/f8f647e757842f08b9ec
-#rbenvとpyenvは必要に応じて設定ひとまずは、systemのdefaultを利用している
-#
-#ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-#あとは以下設定を読み込ませる
-#brew bundle ~/Brewfile
 
-#Add repositories
-tap homebrew/versions || true
-tap caskroom/cask || true
-tap caskroom/versions || true
-tap homebrew/dupes || true
+# tap repositories and their packages
 
-#Homebrewを最新版にアップデート
+tap argon/mas
+brew mas
+
+tap caskroom/cask
+cask java
+
+tap caskroom/versions
+cask java7
+
+tap homebrew/dupes
+
+tap homebrew/versions
+
+tap rcmdnk/file
+brew brew-file
+
+# Other Homebrew packages
+brew git
+brew libevent
+brew npm
+brew nvm
+brew openssl
+brew reattach-to-user-namespace
+brew tmux
+
+# App Store applications
+appstore 682658836 GarageBand
+appstore 409183694 Keynote
+appstore 409203825 Numbers
+appstore 409201541 Pages
+appstore 497799835 Xcode
+appstore 408981434 iMovie
+
+# Other commands
 update || true
-
-#Install formulae
-install brew-cask || true
-install wget || true
-install git || true
-install subversion17 || true
-install ag || true
-install yuicompressor || true
-install rbenv ruby-build || true
-install pyenv || true
-install node || true
-install go || true
-install apple-gcc42
-
-#Install Cask formulae
-#cask install google-chrome || true
-cask install java || true
-cask install java7 || true
-
-

@@ -1,8 +1,11 @@
 scriptencoding utf-8
-set guifont=Ricty_for_Powerline:h12
+set guifont=Ricty_for_Powerline_Regular:h12
+set guifont=:h12
+set guifont=:h12
 set number
 set encoding=utf-8
-set fileencodings=iso-2022-jp,utf-8,cp932,euc-jp,default,latin
+" set fileencodings=iso-2022-jp,utf-8,cp932,euc-jp,default,latin
+set fileencodings=utf-8,cp932,euc-jp,default,latin
 set fileformats=unix,dos,mac
 set directory=~/.vim/tmp
 set backupdir=~/.vim/tmp
@@ -12,6 +15,14 @@ set cursorline "カーソル行をハイライト
 set hlsearch 
 set undodir=./.vimundo,~/.vimundo
 set formatoptions=q "自動改行off
+set clipboard+=autoselect
+set laststatus=2
+
+" 英字キーボードに変えてから使いづらいので
+nnoremap ; :
+nnoremap : ;
+
+
 
 "全角スペースを視覚化
 augroup higlightIdegtaphicSpace
@@ -59,9 +70,9 @@ nmap <Leader>f [vimfiler]
 "VimShell
 nnoremap [vimshell] <Nop>
 nmap <Leader>c [vimshell]
-"Omnisharp
-nnoremap [omnisharp] <Nop>
-nmap <Leader>o [omnisharp]
+""Omnisharp
+"nnoremap [omnisharp] <Nop>
+"nmap <Leader>o [omnisharp]
 "Venus(officeで利用)
 nnoremap [venus] <Nop>
 nmap <Leader>v [venus]
@@ -154,10 +165,14 @@ if has('vim_starting')
 	NeoBundle 'fuenor/qfixgrep'
 	NeoBundle 'tomtom/tcomment_vim'
 	"ステータスライン
-	NeoBundle 'osyo-manga/unite-airline_themes'
-	NeoBundle 'bling/vim-airline.git'
-	NeoBundle 'alpaca-tc/alpaca_powertabline'
-	NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+	" NeoBundle 'osyo-manga/unite-airline_themes'
+	" NeoBundle 'bling/vim-airline.git'
+	" NeoBundle 'alpaca-tc/alpaca_powertabline'
+	" NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+	
+	NeoBundle 'itchyny/lightline.vim'
+	
+
 
 	" www.vim.orgにあるプラグイン
 	NeoBundle 'CSApprox' 
@@ -172,14 +187,14 @@ if has('vim_starting')
 	" NeoBundle 'nosami/Omnisharp'
 	NeoBundle 'junegunn/vim-easy-align'
 
-	NeoBundleLazy 'OmniSharp/omnisharp-vim', {
-	\   'autoload': { 'filetypes': [ 'cs', 'csi', 'csx' ] },
-	\   'build': {
-	\     'windows' : 'msbuild server/OmniSharp.sln',
-	\     'mac': 'xbuild server/OmniSharp.sln',
-	\     'unix': 'xbuild server/OmniSharp.sln',
-	\   },
-	\ }
+	"NeoBundleLazy 'OmniSharp/omnisharp-vim', {
+	"\   'autoload': { 'filetypes': [ 'cs', 'csi', 'csx' ] },
+	"\   'build': {
+	"\     'windows' : 'msbuild server/OmniSharp.sln',
+	"\     'mac': 'xbuild server/OmniSharp.sln',
+	"\     'unix': 'xbuild server/OmniSharp.sln',
+	"\   },
+	"\ }
 	NeoBundle 'tpope/vim-dispatch'
 	NeoBundle 'kmnk/vim-unite-giti'
 
@@ -377,33 +392,40 @@ let g:neocomplete#force_omni_input_patterns.cs = '[^.]\.\%(\u\{2,}\)\?'
 let g:DirDiffExcludes = ".svn,*.swp,.DS_Store,.git"
 
 
-"----------------------------------------------------
-" vim-airlines
-"----------------------------------------------------
-if has('gui_running')
-	let g:airline_powerline_fonts = 1
-	let g:airline_right_sep = ''
-	let g:airline_right_sep = ''
-else
-	let g:airline_left_sep = '»'
-	let g:airline_left_sep = '▶'
-	let g:airline_right_sep = '«'
-	let g:airline_right_sep = '◀'
-	let g:airline_powerline_fonts = 0
-endif
+" "----------------------------------------------------
+" " vim-airlines
+" "----------------------------------------------------
+" if has('gui_running')
+" 	let g:airline_powerline_fonts = 1
+" 	let g:airline_right_sep = ''
+" 	let g:airline_right_sep = ''
+" else
+" 	let g:airline_left_sep = '»'
+" 	let g:airline_left_sep = '▶'
+" 	let g:airline_right_sep = '«'
+" 	let g:airline_right_sep = '◀'
+" 	let g:airline_powerline_fonts = 0
+" endif
+"
+" " let g:airline_linecolumn_prefix = '␊ '
+" " let g:airline_linecolumn_prefix = '␤ '
+" " let g:airline_linecolumn_prefix = '¶ '
+" " let g:airline#extensions#branch#symbol = '⎇ '
+" " let g:airline_paste_symbol = 'ρ'
+" " let g:airline_paste_symbol = 'Þ'
+" " let g:airline_paste_symbol = '∥'
+" " let g:airline#extensions#whitespace#symbol = 'Ξ'
+" let g:airline_theme='light'
+" " let g:airline_detect_whitespace=0
 
-" let g:airline_linecolumn_prefix = '␊ '
-" let g:airline_linecolumn_prefix = '␤ '
-" let g:airline_linecolumn_prefix = '¶ '
-" let g:airline#extensions#branch#symbol = '⎇ '
-" let g:airline_paste_symbol = 'ρ'
-" let g:airline_paste_symbol = 'Þ'
-" let g:airline_paste_symbol = '∥'
-" let g:airline#extensions#whitespace#symbol = 'Ξ'
-let g:airline_theme='light'
-" let g:airline_detect_whitespace=0
 
-"----------------------------------------------------
+
+
+
+
+
+
+
 " ref.vim
 "----------------------------------------------------
 " let g:ref_phpmanual_path = '/Applications/MAMP/htdocs/Dropbox/Public/manual/phpmanual'
@@ -460,7 +482,13 @@ augroup templateload
 augroup END
 
 "colorscheme pyte
+" colorscheme molokai
+" colorscheme darkblue
+
+syntax on
 colorscheme molokai
+set t_Co=256
+
 hi DiffAdd term=bold ctermbg=1 guibg=#ff0000
 
 
@@ -468,123 +496,123 @@ hi DiffAdd term=bold ctermbg=1 guibg=#ff0000
 " パーシャルファイル
 "----------------------------------------------------
 set runtimepath+=~/.vim/
-runtime! conf.d/*.vim
+runtime! vim.d/*.vim
 
 
 
-"----------------------------------------------------
-" omnisharp
-"----------------------------------------------------
-" OmniSharp won't work without this setting
-filetype plugin on
-
-"This is the default value, setting it isn't actually necessary
-let g:OmniSharp_host = "http://localhost:2000"
-
-"Set the type lookup function to use the preview window instead of the status line
-"let g:OmniSharp_typeLookupInPreview = 1
-
-"Timeout in seconds to wait for a response from the server
-let g:OmniSharp_timeout = 1
-
-let g:OmniSharp_selector_ui = 'unite'
-
-"Showmatch significantly slows down omnicomplete
-"when the first match contains parentheses.
-set noshowmatch
-
-"Super tab settings - uncomment the next 4 lines
-"let g:SuperTabDefaultCompletionType = 'context'
-"let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-"let g:SuperTabDefaultCompletionTypeDiscovery = ["&omnifunc:<c-x><c-o>","&completefunc:<c-x><c-n>"]
-"let g:SuperTabClosePreviewOnPopupClose = 1
-
-"don't autoselect first item in omnicomplete, show if only one item (for preview)
-"remove preview if you don't want to see any documentation whatsoever.
-set completeopt=longest,menuone,preview
-" Fetch full documentation during omnicomplete requests. 
-" There is a performance penalty with this (especially on Mono)
-" By default, only Type/Method signatures are fetched. Full documentation can still be fetched when
-" you need it with the :OmniSharpDocumentation command.
-" let g:omnicomplete_fetch_documentation=1
-
-"Move the preview window (code documentation) to the bottom of the screen, so it doesn't move the code!
-"You might also want to look at the echodoc plugin
-set splitbelow
-
-" Get Code Issues and syntax errors
-let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
-
-augroup omnisharp_commands
-    autocmd!
-
-    "Set autocomplete function to OmniSharp (if not using YouCompleteMe completion plugin)
-    autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
-
-    " Synchronous build (blocks Vim)
-    "autocmd FileType cs nnoremap <F5> :wa!<cr>:OmniSharpBuild<cr>
-    " Builds can also run asynchronously with vim-dispatch installed
-    autocmd FileType cs nnoremap <leader>b :wa!<cr>:OmniSharpBuildAsync<cr>
-    " automatic syntax check on events (TextChanged requires Vim 7.4)
-    autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
-
-    " Automatically add new cs files to the nearest project on save
-    autocmd BufWritePost *.cs call OmniSharp#AddToProject()
-
-    "show type information automatically when the cursor stops moving
-    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
-
-    "The following commands are contextual, based on the current cursor position.
-
-    autocmd FileType cs nnoremap [omnisharp]gd :OmniSharpGotoDefinition<cr>
-    autocmd FileType cs nnoremap [omnisharp]fi :OmniSharpFindImplementations<cr>
-    autocmd FileType cs nnoremap [OmniSharp]ft :OmniSharpFindType<cr>
-    autocmd FileType cs nnoremap [omnisharp]fs :OmniSharpFindSymbol<cr>
-    autocmd FileType cs nnoremap [omnisharp]fu :OmniSharpFindUsages<cr>
-    autocmd FileType cs nnoremap [omnisharp]fm :OmniSharpFindMembers<cr> "finds members in the current buffer
-    " cursor can be anywhere on the line containing an issue 
-    autocmd FileType cs nnoremap [omnisharp]x  :OmniSharpFixIssue<cr>  
-    autocmd FileType cs nnoremap [omnisharp]fx :OmniSharpFixUsings<cr>
-    autocmd FileType cs nnoremap [omnisharp]tt :OmniSharpTypeLookup<cr>
-    autocmd FileType cs nnoremap [omnisharp]dc :OmniSharpDocumentation<cr>
-    " autocmd FileType cs nnoremap <C-K> :OmniSharpNavigateUp<cr> "navigate up by method/property/field
-    " autocmd FileType cs nnoremap <C-J> :OmniSharpNavigateDown<cr> "navigate down by method/property/field
-
-augroup END
-
-
-" this setting controls how long to wait (in ms) before fetching type / symbol information.
-set updatetime=500
-" Remove 'Press Enter to continue' message when type information is longer than one line.
-set cmdheight=2
-
-" Contextual code actions (requires CtrlP)
-nnoremap [omnisharp]<space> :OmniSharpGetCodeActions<cr>
-" Run code actions with text selected in visual mode to extract method
-vnoremap [omnisharp]<space> :call OmniSharp#GetCodeActions('visual')<cr>
-
-" rename with dialog
-nnoremap [omnisharp]nm :OmniSharpRename<cr>
-nnoremap [omnisharp]<F2> :OmniSharpRename<cr>      
-" rename without dialog - with cursor on the symbol to rename... ':Rename newname'
-command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
-
-" Force OmniSharp to reload the solution. Useful when switching branches etc.
-nnoremap [omnisharp]rl :OmniSharpReloadSolution<cr>
-nnoremap [omnisharp]cf :OmniSharpCodeFormat<cr>
-" Load the current .cs file to the nearest project
-nnoremap [omnisharp]tp :OmniSharpAddToProject<cr>
-
-" (Experimental - uses vim-dispatch or vimproc plugin) - Start the omnisharp server for the current solution
-nnoremap [omnisharp]ss :OmniSharpStartServer<cr>
-nnoremap [omnisharp]sp :OmniSharpStopServer<cr>
-
-" Add syntax highlighting for types and interfaces
-nnoremap [omnisharp]th :OmniSharpHighlightTypes<cr>
-"Don't ask to save when changing buffers (i.e. when jumping to a type definition)
-set hidden
-
-
+""----------------------------------------------------
+"" omnisharp
+""----------------------------------------------------
+"" OmniSharp won't work without this setting
+"filetype plugin on
+"
+""This is the default value, setting it isn't actually necessary
+"let g:OmniSharp_host = "http://localhost:2000"
+"
+""Set the type lookup function to use the preview window instead of the status line
+""let g:OmniSharp_typeLookupInPreview = 1
+"
+""Timeout in seconds to wait for a response from the server
+"let g:OmniSharp_timeout = 1
+"
+"let g:OmniSharp_selector_ui = 'unite'
+"
+""Showmatch significantly slows down omnicomplete
+""when the first match contains parentheses.
+"set noshowmatch
+"
+""Super tab settings - uncomment the next 4 lines
+""let g:SuperTabDefaultCompletionType = 'context'
+""let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+""let g:SuperTabDefaultCompletionTypeDiscovery = ["&omnifunc:<c-x><c-o>","&completefunc:<c-x><c-n>"]
+""let g:SuperTabClosePreviewOnPopupClose = 1
+"
+""don't autoselect first item in omnicomplete, show if only one item (for preview)
+""remove preview if you don't want to see any documentation whatsoever.
+"set completeopt=longest,menuone,preview
+"" Fetch full documentation during omnicomplete requests. 
+"" There is a performance penalty with this (especially on Mono)
+"" By default, only Type/Method signatures are fetched. Full documentation can still be fetched when
+"" you need it with the :OmniSharpDocumentation command.
+"" let g:omnicomplete_fetch_documentation=1
+"
+""Move the preview window (code documentation) to the bottom of the screen, so it doesn't move the code!
+""You might also want to look at the echodoc plugin
+"set splitbelow
+"
+"" Get Code Issues and syntax errors
+"let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
+"
+"augroup omnisharp_commands
+"    autocmd!
+"
+"    "Set autocomplete function to OmniSharp (if not using YouCompleteMe completion plugin)
+"    autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
+"
+"    " Synchronous build (blocks Vim)
+"    "autocmd FileType cs nnoremap <F5> :wa!<cr>:OmniSharpBuild<cr>
+"    " Builds can also run asynchronously with vim-dispatch installed
+"    autocmd FileType cs nnoremap <leader>b :wa!<cr>:OmniSharpBuildAsync<cr>
+"    " automatic syntax check on events (TextChanged requires Vim 7.4)
+"    autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
+"
+"    " Automatically add new cs files to the nearest project on save
+"    autocmd BufWritePost *.cs call OmniSharp#AddToProject()
+"
+"    "show type information automatically when the cursor stops moving
+"    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+"
+"    "The following commands are contextual, based on the current cursor position.
+"
+"    autocmd FileType cs nnoremap [omnisharp]gd :OmniSharpGotoDefinition<cr>
+"    autocmd FileType cs nnoremap [omnisharp]fi :OmniSharpFindImplementations<cr>
+"    autocmd FileType cs nnoremap [OmniSharp]ft :OmniSharpFindType<cr>
+"    autocmd FileType cs nnoremap [omnisharp]fs :OmniSharpFindSymbol<cr>
+"    autocmd FileType cs nnoremap [omnisharp]fu :OmniSharpFindUsages<cr>
+"    autocmd FileType cs nnoremap [omnisharp]fm :OmniSharpFindMembers<cr> "finds members in the current buffer
+"    " cursor can be anywhere on the line containing an issue 
+"    autocmd FileType cs nnoremap [omnisharp]x  :OmniSharpFixIssue<cr>  
+"    autocmd FileType cs nnoremap [omnisharp]fx :OmniSharpFixUsings<cr>
+"    autocmd FileType cs nnoremap [omnisharp]tt :OmniSharpTypeLookup<cr>
+"    autocmd FileType cs nnoremap [omnisharp]dc :OmniSharpDocumentation<cr>
+"    " autocmd FileType cs nnoremap <C-K> :OmniSharpNavigateUp<cr> "navigate up by method/property/field
+"    " autocmd FileType cs nnoremap <C-J> :OmniSharpNavigateDown<cr> "navigate down by method/property/field
+"
+"augroup END
+"
+"
+"" this setting controls how long to wait (in ms) before fetching type / symbol information.
+"set updatetime=500
+"" Remove 'Press Enter to continue' message when type information is longer than one line.
+"set cmdheight=2
+"
+"" Contextual code actions (requires CtrlP)
+"nnoremap [omnisharp]<space> :OmniSharpGetCodeActions<cr>
+"" Run code actions with text selected in visual mode to extract method
+"vnoremap [omnisharp]<space> :call OmniSharp#GetCodeActions('visual')<cr>
+"
+"" rename with dialog
+"nnoremap [omnisharp]nm :OmniSharpRename<cr>
+"nnoremap [omnisharp]<F2> :OmniSharpRename<cr>      
+"" rename without dialog - with cursor on the symbol to rename... ':Rename newname'
+"command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
+"
+"" Force OmniSharp to reload the solution. Useful when switching branches etc.
+"nnoremap [omnisharp]rl :OmniSharpReloadSolution<cr>
+"nnoremap [omnisharp]cf :OmniSharpCodeFormat<cr>
+"" Load the current .cs file to the nearest project
+"nnoremap [omnisharp]tp :OmniSharpAddToProject<cr>
+"
+"" (Experimental - uses vim-dispatch or vimproc plugin) - Start the omnisharp server for the current solution
+"nnoremap [omnisharp]ss :OmniSharpStartServer<cr>
+"nnoremap [omnisharp]sp :OmniSharpStopServer<cr>
+"
+"" Add syntax highlighting for types and interfaces
+"nnoremap [omnisharp]th :OmniSharpHighlightTypes<cr>
+""Don't ask to save when changing buffers (i.e. when jumping to a type definition)
+"set hidden
+"
+"
 
 
 
@@ -608,4 +636,43 @@ vmap <Enter> <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+" 以下、.gvimrcの設定
+
+
+" set guifont=Ricty_for_Powerline:h12
+
+
+" augroup hack234
+"   autocmd!
+"   if has('mac')
+"     autocmd FocusGained * set transparency=10
+"     " autocmd FocusLost * set transparency=50
+"     autocmd GUIEnter * set transparency=10
+"   endif
+" augroup END
+" Ricty for Powerline Regular
+" set guifont=Ricty\ for\ Powerline\ Regular:h12
+" set guifont=Ricty:h14
+" set guifont=Ricty:h14
+" set guifont=Ricty-RegularForPowerline:h14
+
+
+
 
