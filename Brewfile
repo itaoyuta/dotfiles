@@ -23,6 +23,7 @@ brew libevent
 brew npm
 brew nvm
 brew openssl
+brew peco
 brew reattach-to-user-namespace
 brew tmux
 
