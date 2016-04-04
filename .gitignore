@@ -13,6 +13,7 @@
 !/.gitignore
 !/.gitconfig
 !/.gitmodules
+!/.peco
 !/.vim
 !Brewfile
 
