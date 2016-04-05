@@ -1,4 +1,5 @@
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/opt:$PATH
+export PATH=$HOME/.rbenv/bin:$PATH
 export TERM=xterm-256color
 export EDITOR=vim
 
@@ -24,6 +25,12 @@ function peco-history-selection() {
 
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
+
+
+# rbenv
+eval "$(rbenv init -)"
+
+
 
 # 履歴
 HISTFILE=~/.zsh_history
