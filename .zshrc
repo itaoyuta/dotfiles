@@ -9,12 +9,13 @@ if [ -f $(brew --prefix)/etc/brew-wrap ];then
 fi
 
 #brew-file
+source $(brew --prefix nvm)/nvm.sh
 if [[ -s ~/.nvm/nvm.sh ]];
  then source ~/.nvm/nvm.sh
 fi
 
 
-
+#peco
 function peco-history-selection() {
 	BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
 	CURSOR=$#BUFFER
@@ -24,9 +25,26 @@ function peco-history-selection() {
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
 
+# 履歴
+HISTFILE=~/.zsh_history
 
+# メモリ上に保存される件数（検索できる件数）
+HISTSIZE=100000
 
-alias vi='/usr/local/bin/vim'
+# ファイルに保存される件数
+SAVEHIST=100000
+
+# 履歴を複数の端末で共有する
+setopt share_history
+#
+# # 直前と同じコマンドの場合は履歴に追加しない
+setopt hist_ignore_dups
+#
+# # 重複するコマンドは古い法を削除する
+setopt hist_ignore_all_dups
+#
+# # 複数のzshを同時に使用した際に履歴ファイルを上書きせず追加する
+setopt append_history	
 
 # The next line updates PATH for the Google Cloud SDK.
 # source '/Users/yutaito/google-cloud-sdk/path.zsh.inc'
