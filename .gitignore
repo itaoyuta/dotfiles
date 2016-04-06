@@ -14,8 +14,9 @@
 !/.gitconfig
 !/.gitmodules
 !/.peco
+!/.brewfile
 !/.vim
-!Brewfile
+# !Brewfile
 
 #一時ファイル系と、git管理のプラグインを省く
 /.vim/.DS_Store
