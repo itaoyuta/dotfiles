@@ -2,6 +2,7 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/lo
 export PATH=$HOME/.rbenv/bin:$PATH
 export TERM=xterm-256color
 export EDITOR=vim
+export PROMPT='[%n@%m]# '
 alias vi='/usr/local/bin/vim'
 
 #brew-file

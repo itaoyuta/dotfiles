@@ -45,11 +45,11 @@ let mapleader=","
 " ,のデフォルトの機能は、\で使えるように退避
 noremap \  ,
 "Escの2回押しでハイライト消去
-nmap <ESC><ESC> :nohlsearch<CR><ESC>
+nnoremap <ESC><ESC> :nohlsearch<CR><ESC>
 "vimの裏がみたい
-nmap <C-K><C-K> :set transparency=80<CR><ESC>
+nnoremap <C-K><C-K> :set transparency=80<CR><ESC>
 "vimの裏がみたいをもどしたい
-nmap <C-J><C-J> :set transparency=16<CR><ESC>
+nnoremap <C-J><C-J> :set transparency=16<CR><ESC>
 
 
 "----------------------------------------------------
