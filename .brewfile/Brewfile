@@ -6,6 +6,7 @@ brew mas
 
 tap caskroom/cask
 cask java
+cask macdown
 cask vagrant-manager
 cask vagrant
 
