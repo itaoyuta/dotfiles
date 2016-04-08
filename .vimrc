@@ -392,38 +392,6 @@ let g:neocomplete#force_omni_input_patterns.cs = '[^.]\.\%(\u\{2,}\)\?'
 let g:DirDiffExcludes = ".svn,*.swp,.DS_Store,.git"
 
 
-" "----------------------------------------------------
-" " vim-airlines
-" "----------------------------------------------------
-" if has('gui_running')
-" 	let g:airline_powerline_fonts = 1
-" 	let g:airline_right_sep = ''
-" 	let g:airline_right_sep = ''
-" else
-" 	let g:airline_left_sep = '»'
-" 	let g:airline_left_sep = '▶'
-" 	let g:airline_right_sep = '«'
-" 	let g:airline_right_sep = '◀'
-" 	let g:airline_powerline_fonts = 0
-" endif
-"
-" " let g:airline_linecolumn_prefix = '␊ '
-" " let g:airline_linecolumn_prefix = '␤ '
-" " let g:airline_linecolumn_prefix = '¶ '
-" " let g:airline#extensions#branch#symbol = '⎇ '
-" " let g:airline_paste_symbol = 'ρ'
-" " let g:airline_paste_symbol = 'Þ'
-" " let g:airline_paste_symbol = '∥'
-" " let g:airline#extensions#whitespace#symbol = 'Ξ'
-" let g:airline_theme='light'
-" " let g:airline_detect_whitespace=0
-
-
-
-
-
-
-
 
 
 " ref.vim
