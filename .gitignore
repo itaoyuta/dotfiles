@@ -25,6 +25,9 @@
 /.vim/data/*
 /.vim/vim.d/office.vim
 
+
+!/.vim/tmp/.gitkeep
+
 #各静的プラグインディレクトリのキャッシュファイルを取り除く
 *.DS_Store
 
