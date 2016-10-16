@@ -16,6 +16,7 @@ set undodir=./.vimundo,~/.vimundo
 set formatoptions=q "自動改行off
 set clipboard+=autoselect
 set laststatus=2
+filetype indent on
 
 " 英字キーボードに変えてから使いづらいので
 nnoremap ; :
@@ -33,8 +34,8 @@ augroup END
 "Tab
 set smartindent
 set ts=2 sw=2 sts=2
-"set expandtab
-set noexpandtab
+set expandtab
+" set noexpandtab
 "javascript実行環境をnodejsへ
 let $JS_CMD='node'
 
@@ -49,6 +50,12 @@ nnoremap <ESC><ESC> :nohlsearch<CR><ESC>
 nnoremap <C-K><C-K> :set transparency=80<CR><ESC>
 "vimの裏がみたいをもどしたい
 nnoremap <C-J><C-J> :set transparency=16<CR><ESC>
+
+vmap ,xx :s/>\s</></g \| :s/></>\r</g <CR>
+vmap ,x :s/></>\r</g <CR>
+" vmap ,xx :s/>\s</></g
+" vmap ,x :s/></>\r</g
+" vmap ,x :!tidy -q -i --show-errors 0<CR>
 
 
 "----------------------------------------------------
@@ -287,34 +294,111 @@ nnoremap <silent> [vimshell]c :VimShell<CR>
 "----------------------------------------------------
 " neocomplete(neosnippet)
 "----------------------------------------------------
-let g:neocomplete#enable_at_startup = 1
-"設定ファイルを書き出すディレクトリ
-" let g:neocomplcache_temporary_dir = '~/.vim/data/.neocon'
-let g:neocomplete_auto_completion_start_length = 2
-let g:neocomplete_enable_at_startup=1
-"let g:neocomplcache_enable_auto_select=1
-let g:neocomplete_snippets_directory = '~/.vim/neosnippets'
+" let g:neocomplete#enable_at_startup = 1
+" "設定ファイルを書き出すディレクトリ
+" " let g:neocomplcache_temporary_dir = '~/.vim/data/.neocon'
+" let g:neocomplete_auto_completion_start_length = 2
+" let g:neocomplete_enable_at_startup=1
+" "let g:neocomplcache_enable_auto_select=1
+" let g:neocomplete_snippets_directory = '~/.vim/neosnippets'
 " <C-k> にマッピング
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
-imap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-" imap <C-k> <Plug>(neocomplcache_snippets_expand)
-" smap <C-k> <Plug>(neocomplcache_snippets_expand)
-set completeopt-=preview
-"スニペットが日本語入力の邪魔をするときのために
-nmap <S-T><S-T> :NeoCompleteToggle<CR>
-
-" "C#の設定
-" if !exists('g:neocomplcache_force_omni_patterns')
-"   let g:neocomplcache_force_omni_patterns = {}
+" imap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+" smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" " imap <C-k> <Plug>(neocomplcache_snippets_expand)
+" " smap <C-k> <Plug>(neocomplcache_snippets_expand)
+" set completeopt-=preview
+" "スニペットが日本語入力の邪魔をするときのために
+" nmap <S-T><S-T> :NeoCompleteToggle<CR>
+"
+" " "C#の設定
+" " if !exists('g:neocomplcache_force_omni_patterns')
+" "   let g:neocomplcache_force_omni_patterns = {}
+" " endif
+" " let g:neocomplcache_force_omni_patterns
+"
+" " 補完のとき、関数とか見えるようになる
+" if !exists('g:neocomplete#force_omni_input_patterns')
+"   let g:neocomplete#force_omni_input_patterns = {}
 " endif
-" let g:neocomplcache_force_omni_patterns
+" let g:neocomplete#force_omni_input_patterns.cs = '[^.]\.\%(\u\{2,}\)\?'
 
-" 補完のとき、関数とか見えるようになる
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
+
+
+
+" Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+"" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+		\ 'vimshell' : $HOME.'/.vimshell_hist',
+		\ 'scheme' : $HOME.'/.gosh_completions'
+		\ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+		let g:neocomplete#keyword_patterns = {}
 endif
-let g:neocomplete#force_omni_input_patterns.cs = '[^.]\.\%(\u\{2,}\)\?'
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g> neocomplete#undo_completion()
+inoremap <expr><C-l> neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+
+function! s:my_cr_function()
+	return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+	"return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+	let g:neocomplete#sources#omni#input_patterns = {}
+endif
+" let g:neocomplete#sources#omni#input_patterns.php = '[^.  \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 
 
@@ -434,7 +518,7 @@ nmap <S-N><S-N> :call TplLineComment()<CR>
 " 関連付け
 au BufNewFile,BufRead *.jsx set filetype=javascript
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
+autocmd BufRead,BufNewFile *.{erb,hbs} set filetype=html
 " au BufRead,BufNewFile *.cs set filetype=csharp
 " au BufNewFile,BufRead *.tpl set filetype=tpl
 " au BufNewFile,BufRead *.tpl set filetype=html

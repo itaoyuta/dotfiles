@@ -55,7 +55,7 @@ setopt hist_ignore_all_dups
 setopt append_history	
 
 # The next line updates PATH for the Google Cloud SDK.
-# source '/Users/yutaito/google-cloud-sdk/path.zsh.inc'
+source '/Users/yutaito/Downloads/google-cloud-sdk/path.zsh.inc'
 
 # The next line enables shell command completion for gcloud.
-# source '/Users/yutaito/google-cloud-sdk/completion.zsh.inc'
+source '/Users/yutaito/Downloads/google-cloud-sdk/completion.zsh.inc'

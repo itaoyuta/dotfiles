@@ -1,4 +1,5 @@
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/opt:$PATH
+export PATH=$PATH:/Users/yutaito/Library/Developer/Xamarin/android-sdk-macosx/platform-tools
 export TERM=xterm-256color
 export EDITOR=vim
 

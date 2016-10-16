@@ -2,32 +2,31 @@
 # tap repositories and their packages
 
 tap argon/mas
-brew mas
 
 tap caskroom/cask
-cask java
-cask macdown
-cask vagrant-manager
-cask vagrant
 
 tap caskroom/versions
-cask java7
 
 tap homebrew/dupes
+
+tap homebrew/dupes
+
+tap homebrew/php
 
 tap homebrew/versions
 
 tap rcmdnk/file
-brew brew-file
 
 # Other Homebrew packages
 brew ag
 brew ansible
 brew autoconf
 brew automake
+brew brew-file
 brew cairo
 brew cmake
 brew czmq
+brew docker-machine-nfs
 brew fontconfig
 brew fontforge
 brew freetype
@@ -39,6 +38,7 @@ brew gobject-introspection
 brew graphite2
 brew harfbuzz
 brew icu4c
+brew jenkins
 brew jpeg
 brew libevent
 brew libffi
@@ -48,8 +48,12 @@ brew libsodium
 brew libspiro
 brew libtiff
 brew libtool
+brew libxml2
 brew libyaml
+brew lua
+brew luajit
 brew makedepend
+brew mas
 brew mysql
 brew norm
 brew npm
@@ -58,15 +62,28 @@ brew openssl
 brew pango
 brew pcre
 brew peco
+brew php56
 brew pixman
 brew pkg-config
+brew python
+brew python3
 brew rbenv
+brew readline
 brew reattach-to-user-namespace
 brew ruby-build
 brew sphinx-doc
 brew tmux
+brew unixodbc
+brew vim --with-lua
 brew xz
 brew zeromq
+
+# Cask applications
+cask java
+cask macdown
+cask vagrant-manager
+cask vagrant
+cask java7
 
 # App Store applications
 appstore 682658836 GarageBand
