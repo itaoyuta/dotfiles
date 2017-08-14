@@ -3,6 +3,7 @@ export PATH=$HOME/.rbenv/bin:$PATH
 export TERM=xterm-256color
 export EDITOR=vim
 export PROMPT='[%n@%m]# '
+export HOMEBREW_CACHE=/opt/homebrew/cache
 alias vi='/usr/local/bin/vim'
 
 #brew-file
@@ -11,10 +12,12 @@ if [ -f $(brew --prefix)/etc/brew-wrap ];then
 fi
 
 #brew-file
-source $(brew --prefix nvm)/nvm.sh
-if [[ -s ~/.nvm/nvm.sh ]];
- then source ~/.nvm/nvm.sh
-fi
+# なんか動かなくなった泣
+# source $(brew --prefix nvm)/nvm.sh
+# if [[ -s ~/.nvm/nvm.sh ]];
+#  then source ~/.nvm/nvm.sh
+# fi
+source /usr/local/Cellar/nvm/0.31.0/nvm.sh
 
 
 #peco
@@ -55,7 +58,8 @@ setopt hist_ignore_all_dups
 setopt append_history	
 
 # The next line updates PATH for the Google Cloud SDK.
-source '/Users/yutaito/Downloads/google-cloud-sdk/path.zsh.inc'
+source '/Users/yutaito/google-cloud-sdk/path.zsh.inc'
 
 # The next line enables shell command completion for gcloud.
-source '/Users/yutaito/Downloads/google-cloud-sdk/completion.zsh.inc'
+source '/Users/yutaito/google-cloud-sdk/completion.zsh.inc'
+eval $(/usr/libexec/path_helper -s)
