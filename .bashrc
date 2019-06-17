@@ -1,7 +1,17 @@
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/opt:$PATH
 export PATH=$PATH:/Users/yutaito/Library/Developer/Xamarin/android-sdk-macosx/platform-tools
+export PATH=$PATH:/opt/yarn-[version]/bin
 export TERM=xterm-256color
 export EDITOR=vim
+export PATH="~/.rbenv/shims:/usr/local/bin:$PATH"
+eval "$(rbenv init -)"
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+export XDG_CONFIG_HOME="$HOME/.config"
 
 
 #brew-file

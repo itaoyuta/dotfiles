@@ -32,3 +32,21 @@
 #各静的プラグインディレクトリのキャッシュファイルを取り除く
 *.DS_Store
 
+#VSCode環境
+!/Library
+/Library/*
+!/Library/Application\ Support
+/Library/Application\ Support/*
+!/Library/Application\ Support/Code
+/Library/Application\ Support/Code/*
+!/Library/Application\ Support/Code/User
+/Library/Application\ Support/Code/User/*
+!/Library/Application\ Support/Code/User/keybindings.json
+!/Library/Application\ Support/Code/User/settings.json
+
+
+
+
+
+
+#!Library/Application\ Support/Code/User/keybindings.json

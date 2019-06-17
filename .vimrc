@@ -518,7 +518,7 @@ nmap <S-N><S-N> :call TplLineComment()<CR>
 " 関連付け
 au BufNewFile,BufRead *.jsx set filetype=javascript
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-autocmd BufRead,BufNewFile *.{erb,hbs} set filetype=html
+autocmd BufRead,BufNewFile *.{erb,hbs,vue} set filetype=html
 " au BufRead,BufNewFile *.cs set filetype=csharp
 " au BufNewFile,BufRead *.tpl set filetype=tpl
 " au BufNewFile,BufRead *.tpl set filetype=html

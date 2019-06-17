@@ -7,6 +7,8 @@ tap caskroom/cask
 
 tap caskroom/versions
 
+tap eugenmayer/dockersync
+
 tap homebrew/dupes
 
 tap homebrew/dupes
@@ -18,6 +20,7 @@ tap homebrew/versions
 tap rcmdnk/file
 
 # Other Homebrew packages
+brew Graphviz
 brew ag
 brew ansible
 brew autoconf
@@ -25,15 +28,19 @@ brew automake
 brew brew-file
 brew cairo
 brew cmake
+brew curl --with-ssl --with-libah2
 brew czmq
 brew docker-machine-nfs
 brew fontconfig
 brew fontforge
 brew freetype
+brew fswatch
 brew gcc5
+brew gd
 brew gettext
 brew giflib
 brew git
+brew git-ftp
 brew glib
 brew gmp
 brew gobject-introspection
@@ -41,17 +48,24 @@ brew graphite2
 brew harfbuzz
 brew icu4c
 brew isl@0.14
+brew jemalloc
 brew jenkins
 brew jpeg
+brew lftp
 brew libevent
 brew libffi
+brew libidn
 brew libmpc
 brew libpgm
 brew libpng
 brew libsodium
 brew libspiro
+brew libssh2
+brew libtermkey
 brew libtiff
 brew libtool
+brew libuv
+brew libvterm
 brew libxml2
 brew libyaml
 brew lua
@@ -59,7 +73,10 @@ brew luajit
 brew makedepend
 brew mas
 brew mpfr
+brew msgpack
 brew mysql
+brew neovim
+brew node
 brew norm
 brew npm
 brew nvm
@@ -70,6 +87,9 @@ brew peco
 brew php56
 brew pixman
 brew pkg-config
+brew pulumi
+brew pyenv
+brew pyenv-virtualenv
 brew python
 brew python3
 brew rbenv
@@ -78,9 +98,13 @@ brew reattach-to-user-namespace
 brew ruby-build
 brew sphinx-doc
 brew tmux
+brew unibilium
+brew unison
 brew unixodbc
-brew vim --with-lua
+brew unox
+brew webp
 brew xz
+brew yarn --without-node
 brew zeromq
 
 # Cask applications

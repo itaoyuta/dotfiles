@@ -63,3 +63,6 @@ source '/Users/yutaito/google-cloud-sdk/path.zsh.inc'
 # The next line enables shell command completion for gcloud.
 source '/Users/yutaito/google-cloud-sdk/completion.zsh.inc'
 eval $(/usr/libexec/path_helper -s)
+
+export PATH="$HOME/.fastlane/bin:$PATH"
+

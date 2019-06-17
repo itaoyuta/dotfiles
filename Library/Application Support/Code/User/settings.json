@@ -1,0 +1,66 @@
+// 既定の設定を上書きするには、このファイル内に設定を挿入します
+{
+    "vim.leader": ",",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                ";"
+            ],
+            "after": [
+                ":"
+            ]
+        },
+        {
+            "before": [
+                ":"
+            ],
+            "after": [
+                ";"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                ";"
+            ],
+            "after": [
+                ":"
+            ]
+        },
+        {
+            "before": [
+                ":"
+            ],
+            "after": [
+                ";"
+            ]
+        }
+    ],
+    "vim.useSystemClipboard": true,
+
+    "editor.lineNumbers": "relative",
+    "editor.renderWhitespace":"all",
+    "editor.fontFamily": "HackGen",
+    "editor.fontSize": 14,
+    "terminal.integrated.fontFamily": "HackGen",
+    "files.associations": {
+        "*.vue": "vue"
+    },
+    //ミニマップをfalse
+    "editor.minimap.enabled": false,
+    "[typescript]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.formatOnSave": false
+    },
+    "[vue]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.formatOnSave": false
+    },
+    "[scss]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+    },
+}
