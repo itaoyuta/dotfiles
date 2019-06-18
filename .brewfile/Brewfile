@@ -76,6 +76,7 @@ brew mpfr
 brew msgpack
 brew mysql
 brew neovim
+brew nim
 brew node
 brew norm
 brew npm
@@ -95,6 +96,7 @@ brew python3
 brew rbenv
 brew readline
 brew reattach-to-user-namespace
+brew rsync
 brew ruby-build
 brew sphinx-doc
 brew tmux
