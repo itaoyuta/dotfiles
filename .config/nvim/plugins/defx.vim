@@ -1,4 +1,5 @@
 nnoremap <silent> [defx]f :Defx<CR><ESC>
+nnoremap <silent> [defx]c :Defx `expand('%:p:h')` -new -search=`expand('%:p')`<CR><ESC>
 
 " キーマッピング
 autocmd FileType defx call s:defx_my_settings()
