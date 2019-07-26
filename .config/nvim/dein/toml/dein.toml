@@ -4,6 +4,9 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'leico/autodate.vim'
 
+[[plugins]]
+repo = 'simeji/winresizer'
+
 # -- denite ------------------
 [[plugins]]
 repo = 'Shougo/denite.nvim'
