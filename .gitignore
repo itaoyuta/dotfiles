@@ -17,6 +17,7 @@
 !/.peco
 !/.brewfile
 !/.vim
+!/.config
 # !Brewfile
 
 #一時ファイル系と、git管理のプラグインを省く
@@ -26,8 +27,12 @@
 /.vim/data/*
 /.vim/vim.d/office.vim
 
-
 !/.vim/tmp/.gitkeep
+
+#一時ファイル系と、git管理のプラグインを省く
+/.config/*
+!/.config/nvim
+/.config/nvim/dein/*
 
 #各静的プラグインディレクトリのキャッシュファイルを取り除く
 *.DS_Store

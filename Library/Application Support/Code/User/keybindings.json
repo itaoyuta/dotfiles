@@ -11,12 +11,12 @@
     },
     // Panel と　Editor 間の移動
     {
-        "key": "ctrl+k",
+        "key": "ctrl+k t",
         "command": "workbench.action.terminal.toggleTerminal",
         "when": "editorTextFocus"
     },
     {
-        "key": "ctrl+k",
+        "key": "ctrl+k e",
         "command": "workbench.action.focusActiveEditorGroup",
         "when": "terminalFocus"
     },
@@ -63,5 +63,13 @@
         "key": "ctrl+k",
         "command": "workbench.action.quickOpenSelectPrevious",
         "when": "inQuickOpen ",
+    },
+
+    ///// plugins
+    // open in finder
+    {
+        "key": "ctrl+k r",
+        "command": "openInFinder.open",
+        "when": "editorTextFocus"
     },
 ]
