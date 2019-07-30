@@ -1,5 +1,7 @@
 " Denite Settings
 nnoremap <silent> [denite]u :Denite file_mru<CR><ESC>
+nnoremap <silent> [denite]r :Denite file/rec<CR><ESC>
+nnoremap <silent> [denite]g :Denite grep<CR><ESC>
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
   nnoremap <silent><buffer><expr> <CR>
@@ -17,3 +19,9 @@ function! s:denite_my_settings() abort
 endfunction
 
 call denite#custom#alias('source', 'file/rec/py', 'file/rec')
+
+call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+call denite#custom#var('grep', 'command', ['ag'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', [])
+call denite#custom#var('grep', 'default_opts', ['--follow', '--nogroup', '--nocolor'])

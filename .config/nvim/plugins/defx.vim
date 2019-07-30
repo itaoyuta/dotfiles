@@ -67,3 +67,4 @@ autocmd FileType defx call s:defx_my_settings()
 	  nnoremap <silent><buffer><expr> cd
 	  \ defx#do_action('change_vim_cwd')
 endfunction
+
