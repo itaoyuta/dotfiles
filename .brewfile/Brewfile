@@ -37,6 +37,7 @@ brew freetype
 brew fswatch
 brew gcc5
 brew gd
+brew gdbm
 brew gettext
 brew giflib
 brew git
@@ -47,15 +48,20 @@ brew gobject-introspection
 brew graphite2
 brew harfbuzz
 brew icu4c
+brew ilmbase
+brew imagemagick
 brew isl@0.14
 brew jemalloc
 brew jenkins
 brew jpeg
 brew lftp
+brew libde265
 brew libevent
 brew libffi
+brew libheif
 brew libidn
 brew libmpc
+brew libomp
 brew libpgm
 brew libpng
 brew libsodium
@@ -68,6 +74,7 @@ brew libuv
 brew libvterm
 brew libxml2
 brew libyaml
+brew little-cms2
 brew lua
 brew luajit
 brew makedepend
@@ -81,6 +88,8 @@ brew node
 brew norm
 brew npm
 brew nvm
+brew openexr
+brew openjpeg
 brew openssl
 brew pango
 brew pcre
@@ -98,13 +107,16 @@ brew readline
 brew reattach-to-user-namespace
 brew rsync
 brew ruby-build
+brew shared-mime-info
 brew sphinx-doc
+brew sqlite
 brew tmux
 brew unibilium
 brew unison
 brew unixodbc
 brew unox
 brew webp
+brew x265
 brew xz
 brew yarn --without-node
 brew zeromq
