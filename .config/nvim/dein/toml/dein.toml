@@ -20,3 +20,6 @@ repo = 'Shougo/defx.nvim'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'

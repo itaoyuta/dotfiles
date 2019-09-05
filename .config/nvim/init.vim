@@ -143,6 +143,7 @@ inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 source ~/.config/nvim/plugins/denite.vim
 source ~/.config/nvim/plugins/tab.vim
 source ~/.config/nvim/plugins/defx.vim
+source ~/.config/nvim/plugins/statusline.vim
 
 
 
