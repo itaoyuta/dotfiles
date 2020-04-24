@@ -7,13 +7,13 @@ repo = 'leico/autodate.vim'
 [[plugins]]
 repo = 'simeji/winresizer'
 
-# -- denite ------------------
+# -- start denite ------------------
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
-# -- denite ------------------
+# -- end denite ------------------
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
@@ -23,3 +23,7 @@ repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+

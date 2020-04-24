@@ -63,4 +63,5 @@
         "editor.tabSize": 2,
         "editor.insertSpaces": true,
     },
+    "diffEditor.renderSideBySide": true,
 }
