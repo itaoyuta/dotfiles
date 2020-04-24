@@ -25,5 +25,8 @@ repo = 'tpope/vim-fugitive'
 repo = 'itchyny/lightline.vim'
 
 [[plugins]]
+repo = 'posva/vim-vue'
+
+[[plugins]]
 repo = 'mattn/emmet-vim'
 
