@@ -9,6 +9,26 @@
         "key": "ctrl+l",
         "command": "workbench.action.nextEditor"
     },
+    // 上のエディターへ移動
+    {
+        "key": "ctrl+w ctrl+k",
+        "command": "workbench.action.focusAboveGroup"
+    },
+    // 下のエディターへ移動
+    {
+        "key": "ctrl+w ctrl+j",
+        "command": "workbench.action.focusBelowGroup"
+    },
+    // 左のエディターへ移動
+    {
+        "key": "ctrl+w ctrl+h",
+        "command": "workbench.action.focusLeftGroup"
+    },
+    // 右のエディターへ移動
+    {
+        "key": "ctrl+w ctrl+l",
+        "command": "workbench.action.focusRightGroup"
+    },
     // Panel と　Editor 間の移動
     {
         "key": "ctrl+k t",
@@ -19,6 +39,15 @@
         "key": "ctrl+k e",
         "command": "workbench.action.focusActiveEditorGroup",
         "when": "terminalFocus"
+    },
+
+
+
+
+    // explorerを開く
+    {
+        "key": "ctrl+e ctrl+e",
+        "command": "workbench.view.explorer"
     },
     //----------------------------------------------------------
     // 検索関連(* -> 検索UI)

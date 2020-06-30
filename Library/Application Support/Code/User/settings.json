@@ -45,6 +45,7 @@
     "editor.fontSize": 14,
     "terminal.integrated.fontFamily": "HackGen",
     "files.associations": {
+    
         "*.vue": "vue"
     },
     //ミニマップをfalse
@@ -64,4 +65,6 @@
         "editor.insertSpaces": true,
     },
     "diffEditor.renderSideBySide": true,
+    "javascript.format.enable": false,
+    "stylelint.autoFixOnSave": true,
 }
