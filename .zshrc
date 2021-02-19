@@ -1,23 +1,22 @@
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/opt:$PATH
-export PATH=$HOME/.rbenv/bin:$PATH
 export TERM=xterm-256color
 export EDITOR=vim
 export PROMPT='[%n@%m]# '
-export HOMEBREW_CACHE=/opt/homebrew/cache
+#export HOMEBREW_CACHE=/opt/homebrew/cache
 alias vi='/usr/local/bin/vim'
 
 #brew-file
-if [ -f $(brew --prefix)/etc/brew-wrap ];then
-  source $(brew --prefix)/etc/brew-wrap
-fi
+#if [ -f $(brew --prefix)/etc/brew-wrap ];then
+#  source $(brew --prefix)/etc/brew-wrap
+#fi
 
 #brew-file
 # なんか動かなくなった泣
-# source $(brew --prefix nvm)/nvm.sh
-# if [[ -s ~/.nvm/nvm.sh ]];
-#  then source ~/.nvm/nvm.sh
-# fi
-source /usr/local/Cellar/nvm/0.35.3/nvm.sh
+source $(brew --prefix nvm)/nvm.sh
+if [[ -s ~/.nvm/nvm.sh ]];
+  then source ~/.nvm/nvm.sh
+fi
+# source /usr/local/opt/nvm/nvm.sh
 
 
 #peco
@@ -31,8 +30,6 @@ zle -N peco-history-selection
 bindkey '^R' peco-history-selection
 
 
-# rbenv
-eval "$(rbenv init -)"
 
 
 # pyenv
@@ -41,6 +38,8 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+# pyenv_virtualenv
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 
 # 履歴
@@ -65,11 +64,38 @@ setopt hist_ignore_all_dups
 setopt append_history	
 
 # The next line updates PATH for the Google Cloud SDK.
-source '/Users/yutaito/google-cloud-sdk/path.zsh.inc'
+# source '/Users/yutaito/google-cloud-sdk/path.zsh.inc'
 
 # The next line enables shell command completion for gcloud.
-source '/Users/yutaito/google-cloud-sdk/completion.zsh.inc'
-eval $(/usr/libexec/path_helper -s)
+# source '/Users/yutaito/google-cloud-sdk/completion.zsh.inc'
+#eval $(/usr/libexec/path_helper -s)
 
-export PATH="$HOME/.fastlane/bin:$PATH"
+#export PATH="$HOME/.fastlane/bin:$PATH"
+
+
+
+# vcs_infoを読み込み
+autoload -Uz vcs_info
+ 
+# vcs_info_msg_0_変数をどのように表示するかフォーマットの指定
+## デフォルトのフォーマット
+### %s: どのバージョン管理システムを使っているか（git, svnなど）
+### %r: リポジトリ名
+### %b: ブランチ名
+zstyle ':vcs_info:*' formats '(%r)[%b]'
+## 特別な状態（mergeでコンフリクトしたときなど）でのフォーマット
+### %a: アクション名（merge, rebaseなど）
+zstyle ':vcs_info:*' actionformats '(%r)[%b|%a]'
+ 
+# プロンプトが表示される毎にバージョン管理システムの情報を取得
+## precmd: プロンプトが表示される毎に実行される関数
+## vcs_info: バージョン管理システムから情報を取得
+precmd () { vcs_info }
+ 
+# 右プロンプトに表示
+## prompt_subst: プロンプトを表示する際に変数を展開するオプション
+setopt prompt_subst
+## vcs_info_msg_0_: バージョン管理システムの情報
+## RPROMPT: 右プロンプトに情報を表示するときの環境変数
+RPROMPT=%F{238}$RPROMPT'${vcs_info_msg_0_}'%f
 

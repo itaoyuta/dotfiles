@@ -1,5 +1,5 @@
-let g:python_host_prog = $HOME.'/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = $HOME.'/.pyenv/versions/neovim3/bin/python3'
+let g:python_host_prog = $PYENV_ROOT.'/versions/neovim2/bin/python'
+let g:python3_host_prog = $PYENV_ROOT.'/versions/neovim3/bin/python'
 
 scriptencoding utf-8
 set guifont=Ricty_for_Powerline_Regular:h12
@@ -37,7 +37,7 @@ nnoremap : ;
 
 "Tab
 set smartindent
-set ts=2 sw=2 sts=2
+set ts=2 sw=0 sts=-1
 set expandtab
 
 
@@ -52,9 +52,9 @@ nnoremap <ESC><ESC> :nohlsearch<CR><ESC>
 nnoremap <C-K><C-K> :set transparency=80<CR><ESC>
 "vimの裏がみたいをもどしたい
 nnoremap <C-J><C-J> :set transparency=16<CR><ESC>
-
-
-
+ 
+ 
+ 
 "----------------------------------------------------
 " カスタムのキーマップ(パーシャルしているものもわからなくなるので全てここに記述) 
 "----------------------------------------------------
@@ -144,6 +144,8 @@ source ~/.config/nvim/plugins/denite.vim
 source ~/.config/nvim/plugins/tab.vim
 source ~/.config/nvim/plugins/defx.vim
 source ~/.config/nvim/plugins/statusline.vim
+source ~/.config/nvim/plugins/vim-markdown.vim
+source ~/.config/nvim/plugins/neosnippet.vim
 
 
 

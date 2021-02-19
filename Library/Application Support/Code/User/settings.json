@@ -67,4 +67,5 @@
     "diffEditor.renderSideBySide": true,
     "javascript.format.enable": false,
     "stylelint.autoFixOnSave": true,
+    "window.zoomLevel": 1,
 }
