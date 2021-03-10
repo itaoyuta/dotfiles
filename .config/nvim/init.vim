@@ -148,6 +148,8 @@ source ~/.config/nvim/plugins/vim-markdown.vim
 source ~/.config/nvim/plugins/neosnippet.vim
 
 
+autocmd FileType markdown imap <Nul> <Esc><S-a><Space><Space><CR>
 
+autocmd FileType php set filetype=html
 
 
