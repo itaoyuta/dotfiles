@@ -42,7 +42,6 @@
     "editor.lineNumbers": "relative",
     "editor.renderWhitespace":"all",
     "editor.fontFamily": "HackGen",
-    "editor.fontSize": 14,
     "terminal.integrated.fontFamily": "HackGen",
     "files.associations": {
     

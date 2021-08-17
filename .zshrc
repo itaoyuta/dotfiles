@@ -99,3 +99,9 @@ setopt prompt_subst
 ## RPROMPT: 右プロンプトに情報を表示するときの環境変数
 RPROMPT=%F{238}$RPROMPT'${vcs_info_msg_0_}'%f
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/yutaito/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yutaito/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/yutaito/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yutaito/google-cloud-sdk/completion.zsh.inc'; fi

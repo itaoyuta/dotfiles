@@ -1,7 +1,7 @@
 " Denite Settings
-nnoremap <silent> [denite]u :Denite file_mru<CR><ESC>
-nnoremap <silent> [denite]r :Denite file/rec<CR><ESC>
-nnoremap <silent> [denite]g :Denite grep<CR><ESC>
+nnoremap <silent> [denite]u :Denite file_mru -match-highlight<CR><ESC>
+nnoremap <silent> [denite]r :Denite file/rec -match-highlight<CR><ESC>
+nnoremap <silent> [denite]g :Denite grep -match-highlight<CR><ESC>
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
   nnoremap <silent><buffer><expr> <CR>
@@ -16,6 +16,8 @@ function! s:denite_my_settings() abort
   \ denite#do_map('open_filter_buffer')
   nnoremap <silent><buffer><expr> <Space>
   \ denite#do_map('toggle_select').'j'
+  nnoremap <silent><buffer><expr> r
+  \ denite#do_map('do_action', 'replace')
 endfunction
 
 call denite#custom#alias('source', 'file/rec/py', 'file/rec')

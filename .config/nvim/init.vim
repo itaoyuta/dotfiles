@@ -13,7 +13,10 @@ set backupdir=~/.vim/tmp
 set nocompatible "vi互換
 set showmatch "対応括弧をハイライト
 set cursorline "カーソル行をハイライト
-hi clear CursorLine
+" hi clear CursorLine
+" hi CursorLine guifg=#E19972
+set cursorline
+hi CursorLine term=bold cterm=bold ctermbg=235
 set hlsearch 
 set undodir=./.vimundo,~/.vimundo
 set formatoptions=q "自動改行off
@@ -92,7 +95,6 @@ if dein#load_state('/Users/yutaito/.cache/dein')
 
   " Let dein manage dein
   " Required:
-  " call dein#add('/Users/yutaito/.cache/dein/repos/github.com/Shougo/dein.vim')
 
 
   " プラグインリストを収めた TOML ファイル
