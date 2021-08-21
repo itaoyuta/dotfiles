@@ -51,3 +51,10 @@ repo = 'tyru/open-browser.vim'
 
 
 # -- end markdown -----
+
+
+[[plugins]]
+repo = 'tpope/vim-commentary'
+
+[[plugins]]
+repo = 'sheerun/vim-polyglot'

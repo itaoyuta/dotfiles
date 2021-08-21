@@ -152,6 +152,9 @@ source ~/.config/nvim/plugins/neosnippet.vim
 
 autocmd FileType markdown imap <Nul> <Esc><S-a><Space><Space><CR>
 
-autocmd FileType php set filetype=html
+" autocmd FileType php set filetype=html
+"
+
+autocmd FileType blade setlocal commentstring={{--\ %s\ --}}
 
 
