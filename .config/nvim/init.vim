@@ -51,34 +51,27 @@ let mapleader=","
 noremap \  ,
 "Escの2回押しでハイライト消去
 nnoremap <ESC><ESC> :nohlsearch<CR><ESC>
-"vimの裏がみたい
-nnoremap <C-K><C-K> :set transparency=80<CR><ESC>
-"vimの裏がみたいをもどしたい
-nnoremap <C-J><C-J> :set transparency=16<CR><ESC>
  
  
  
 "----------------------------------------------------
 " カスタムのキーマップ(パーシャルしているものもわからなくなるので全てここに記述) 
 "----------------------------------------------------
-"タブの切り替えを行う
-nnoremap [tabmove] <Nop>
-nmap <Leader>t [tabmove]
-"windowのリサイズをする
-nnoremap [windowAndFont] <Nop>
-nmap <Leader>w [windowAndFont]
 "Denite
 nnoremap [denite] <Nop>
 nmap <Leader>u [denite]
 "Defx
 nnoremap [defx] <Nop>
 nmap <Leader>f [defx]
-"VimShell
-nnoremap [vimshell] <Nop>
-nmap <Leader>c [vimshell]
-""Omnisharp
-"nnoremap [omnisharp] <Nop>
-"nmap <Leader>o [omnisharp]
+"coc
+nnoremap [coc] <Nop>
+nmap <Leader>c [coc]
+" バッファリストの一つ前のバッファを開く
+nnoremap <silent>fp :bprevious<CR>
+" バッファリストの次のバッファを開く
+nnoremap <silent>fn :bnext<CR>
+" 直前のバッファを開く
+nnoremap <silent>fb :b#<CR>
 
 
 "dein Scripts-----------------------------
@@ -148,6 +141,7 @@ source ~/.config/nvim/plugins/defx.vim
 source ~/.config/nvim/plugins/statusline.vim
 source ~/.config/nvim/plugins/vim-markdown.vim
 source ~/.config/nvim/plugins/neosnippet.vim
+source ~/.config/nvim/plugins/coc.vim
 
 
 autocmd FileType markdown imap <Nul> <Esc><S-a><Space><Space><CR>

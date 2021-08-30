@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/Users/yutaito/Documents/works/art-of-w/src'
+let g:netrw_dirhist_9='/Users/yutaito/.ssh'
+let g:netrw_dirhist_8='/Users/yutaito'
+let g:netrw_dirhist_7='/Users/yutaito/Documents/works/cinra.net/www/fuel/app/vendor/facebook'
+let g:netrw_dirhist_6='/Users/yutaito/Documents/works/cinra.net/www/fuel/app/vendor'
+let g:netrw_dirhist_5='/Users/yutaito/Documents/works/cinra.net/www/fuel/app'
+let g:netrw_dirhist_4='/Users/yutaito/Documents/works/cinra.net/www/fuel'
+let g:netrw_dirhist_3='/Users/yutaito/Documents/works/cinra.net/www'
+let g:netrw_dirhist_2='/Users/yutaito/Documents/works/cinra.net'
+let g:netrw_dirhist_1='/Users/yutaito/Documents/works'

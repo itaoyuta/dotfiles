@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/Users/yutaito/Documents/works/jff/src/assets/scripts'
+let g:netrw_dirhist_4='/Users/yutaito/Documents/works/jff/src/assets'
+let g:netrw_dirhist_3='/Users/yutaito/Documents/works/jff/src/assets/scripts'
+let g:netrw_dirhist_2='/Users/yutaito/Documents/works/jff/src/assets'
+let g:netrw_dirhist_1='/Users/yutaito/Documents/works/jff/src'
+let g:netrw_dirhist_0='/Users/yutaito/Documents/works/jff'
+let g:netrw_dirhist_9='/Users/yutaito/Documents/works/jff/src'
+let g:netrw_dirhist_8='/Users/yutaito/Documents/works/jff/src/node_modules'
+let g:netrw_dirhist_7='/Users/yutaito/Documents/works/jff/src'
+let g:netrw_dirhist_6='/Users/yutaito/Documents/works/jff'

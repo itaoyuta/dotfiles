@@ -58,3 +58,8 @@ repo = 'tpope/vim-commentary'
 
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
+
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
